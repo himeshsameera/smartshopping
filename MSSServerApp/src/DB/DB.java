@@ -13,6 +13,7 @@ import java.sql.ResultSet;
  *
  * @author Palaa
  */
+
 public class DB {
     private static final String URL = "jdbc:mysql://localhost:3306/mss";
     private static final String USERNAME="abc";
@@ -22,11 +23,13 @@ public class DB {
     /**
      * Creates the connection to the database.
      **/
+    
     private static Connection connect() throws Exception{
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         Connection con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
         return con;
     }
+    
     /*
     public static boolean executeQuery(String sql) throws Exception{
         Connection con = connect();
