@@ -26,7 +26,7 @@ public class UserContentProvider {
 	final static Logger logger = LoggerFactory.getLogger(UserContentProvider.class);
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public @ResponseBody String test(HttpServletRequest req,HttpServletResponse res) throws Exception{
+	public @ResponseBody String processLogin(HttpServletRequest req,HttpServletResponse res) throws Exception{
 
             
             res.setContentType("plain/text");
@@ -34,8 +34,8 @@ public class UserContentProvider {
             String pass = req.getParameter("pass");
             System.out.println(".....................Processing request.................");
             if(com.mss.DAO.DB.verifyLogin(user, pass)){
-                return req.getParameter("callback")+"true";
+                return "true";
             }
-            return req.getParameter("callback")+"{\"ans\":\"false\"}";
+            return "false";
 	}
 }

@@ -16,10 +16,13 @@ import java.sql.ResultSet;
 
 public class DB {
     
-    private static final String URL = "jdbc:mysql://localhost:3306/mss";
-    private static final String USERNAME="abc";
-    private static final String PASSWORD="123";
-    
+//    private static final String URL = "jdbc:mysql://localhost:3306/mss";
+//    private static final String USERNAME="abc";
+//    private static final String PASSWORD="123";
+//    
+       private static final String URL = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql418593";
+    private static final String USERNAME="sql418593";
+    private static final String PASSWORD="yT2%iF7*"; 
     
     /**
      * Creates the connection to the database.
@@ -47,11 +50,12 @@ public class DB {
     }
     
     public static boolean verifyLogin(String user,String pass) throws Exception{
-        ResultSet r=getDBResult("SELECT username,password FROM users WHERE username='"+user+"' AND password='"+pass+"'");
+        ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+user+"' AND pass='"+pass+"'");
         if(r.next()){
             return true;
         }else{
             return false;
         }
+        
     }
 }
