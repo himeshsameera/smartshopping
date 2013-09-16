@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package DB;
+package com.mss.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +15,7 @@ import java.sql.ResultSet;
  */
 
 public class DB {
+    
     private static final String URL = "jdbc:mysql://localhost:3306/mss";
     private static final String USERNAME="abc";
     private static final String PASSWORD="123";
@@ -45,7 +46,7 @@ public class DB {
             return r;
     }
     
-    private static boolean verify(String user,String pass) throws Exception{
+    public static boolean verifyLogin(String user,String pass) throws Exception{
         ResultSet r=getDBResult("SELECT username,password FROM users WHERE username='"+user+"' AND password='"+pass+"'");
         if(r.next()){
             return true;

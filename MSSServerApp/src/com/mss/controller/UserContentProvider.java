@@ -20,70 +20,22 @@ import com.mss.model.JsonConverter;
 
 
 @Controller
-@RequestMapping("/cp/*")
-public class ContentProvider {
+@RequestMapping("/user/*")
+public class UserContentProvider {
 	
-	final static Logger logger = LoggerFactory.getLogger(ContentProvider.class);
+	final static Logger logger = LoggerFactory.getLogger(UserContentProvider.class);
 	
-	@RequestMapping(value = { "products" }, method = RequestMethod.GET)
-	public void handleGetProgramsRequest(HttpServletRequest req,
-			HttpServletResponse res, Model model) throws Exception {
-		logger.debug(" Get Product List");
-		Item item1 = new Item(1, "TestItem1");
-		Item item2 = new Item(2, "TestItem2");
-		ArrayList<Item> list = new ArrayList<Item>();
-		list.add(item1);
-		list.add(item2);
-		Items items = new Items(list);
-		String json = JsonConverter.convertToJson(items);
-		res.setContentType("application/json;");	
-		PrintWriter writer = res.getWriter();
-		writer.print(json);
-	}
-	
-	@RequestMapping(value = { "product/{pid}" })
-	public void getProduct(HttpServletRequest req,
-			HttpServletResponse res, Model model,
-			@PathVariable("pid") String pid) throws NumberFormatException, Exception {
-		logger.debug(" +++handleGetContentRequest begin");
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public @ResponseBody String test(HttpServletRequest req,HttpServletResponse res) throws Exception{
 
-		Item item1 = new Item(1, "TestItem1");
-		String json = JsonConverter.convertToJson(item1);	   
-		res.setContentType("application/json;");
-		PrintWriter writer = res.getWriter();
-		writer.print(json);
+            
+            res.setContentType("plain/text");
+            String user = req.getParameter("user");
+            String pass = req.getParameter("pass");
+            System.out.println(".....................Processing request.................");
+            if(com.mss.DAO.DB.verifyLogin(user, pass)){
+                return req.getParameter("callback")+"true";
+            }
+            return req.getParameter("callback")+"{\"ans\":\"false\"}";
 	}
-	
-	@RequestMapping(value = "sample/{id}", method = RequestMethod.GET, produces = {"application/json" })
-	public @ResponseBody Book test(HttpServletRequest req,HttpServletResponse res) throws Exception{
-		res.setHeader("Location", "http://server:port/car/123");
-		Book book=new Book(12, "Book1");
-		return book;
-	}
-	
-	class Book{
-		private int id;
-		private String name;
-		
-		public int getId() {
-			return id;
-		}
-		
-		public void setId(int id) {
-			this.id = id;
-		}
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public Book(int id, String name) {
-			super();
-			this.id = id;
-			this.name = name;
-		}
-	}
-
 }

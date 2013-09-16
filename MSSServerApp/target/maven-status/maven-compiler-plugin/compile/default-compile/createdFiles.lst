@@ -1,6 +1,0 @@
-com\mss\model\Item.class
-com\mss\controller\ContentProvider.class
-DB\DB.class
-com\mss\controller\ContentProvider$Book.class
-com\mss\model\Items.class
-com\mss\model\JsonConverter.class
