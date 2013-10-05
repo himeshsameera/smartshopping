@@ -58,4 +58,13 @@ public class DB {
         }
         
     }
+
+    public static boolean fetchingProfile(String Id) throws Exception{
+        ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+Id+"'");
+        if(r.next()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
