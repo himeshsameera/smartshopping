@@ -38,4 +38,17 @@ public class UserContentProvider {
             }
             return "false";
 	}
+        
+        @RequestMapping(value = "profile", method = RequestMethod.GET)
+	public @ResponseBody String profileFetch(HttpServletRequest req,HttpServletResponse res) throws Exception{
+
+            
+            res.setContentType("plain/text");
+            String Id = req.getParameter("user");
+            System.out.println(".....................Processing request.................");
+            if(com.mss.DAO.DB.fetchingProfile(Id)){
+                return "true";
+            }
+            return "false";
+	}
 }
