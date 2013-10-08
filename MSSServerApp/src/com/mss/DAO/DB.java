@@ -4,10 +4,15 @@
  */
 package com.mss.DAO;
 
+import com.mss.model.Item;
+import com.mss.model.Items;
+import com.mysql.jdbc.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.sql.rowset.serial.SerialBlob;
 
 /**
  *
@@ -15,14 +20,14 @@ import java.sql.ResultSet;
  */
 
 public class DB {
-    
-//    private static final String URL = "jdbc:mysql://localhost:3306/mss";
-//    private static final String USERNAME="abc";
-//    private static final String PASSWORD="123";
+   
+    private static final String URL = "jdbc:mysql://localhost:3306/mss";
+    private static final String USERNAME="root";
+    private static final String PASSWORD="";
 //    
-       private static final String URL = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql418593";
-    private static final String USERNAME="sql418593";
-    private static final String PASSWORD="yT2%iF7*"; 
+      // private static final String URL = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql418593";
+   // private static final String USERNAME="sql418593";
+   // private static final String PASSWORD="yT2%iF7*"; 
     
     /**
      * Creates the connection to the database.
@@ -55,7 +60,24 @@ public class DB {
             return true;
         }else{
             return false;
+        }       
+    }
+    
+    public static Items searchItem(String itemName,int categoryID,int cityID) throws Exception{
+        //System.out.println("333");
+        ResultSet r=getDBResult("SELECT itemName,itemPrice,itemImage from ITEMS where itemName='"+itemName+"' AND categoryID="+categoryID+" AND cityID="+cityID+";");
+        ArrayList<Item> itemList= null; 
+        while(r.next()){
+            Item item=new Item(r.getString("itemName"), r.getDouble("itemPrice"), r.getString("itemImage"));
+            //System.out.println(r.getString("itemImage"));
+            //System.out.println(r.getDouble("itemPrice"));
+            itemList.add(item);
         }
+        //System.out.println("444");
+        Items items=new Items(itemList);
+        //System.out.println(itemList);
+        return items;
         
     }
 }
+//r.getString("itemName"), r.getDouble("itemPrice"), r.getBlob("itemImage")

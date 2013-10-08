@@ -32,7 +32,7 @@ public class UserContentProvider {
             res.setContentType("plain/text");
             String user = req.getParameter("user");
             String pass = req.getParameter("pass");
-            System.out.println(".....................Processing request.................");
+          //  System.out.println(".....................Processing request.................");
             if(com.mss.DAO.DB.verifyLogin(user, pass)){
                 return "true";
             }
