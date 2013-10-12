@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+  <title>Login Form</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+	 <script src="http://code.jquery.com/jquery-1.10.2.min.js">
+	</script>
+	<script>
+	function pppp(){
+	$.get("http://10.0.2.2:8084/MSSServerApp/user/login", { user:$("#user").val(), pass:$("#pass").val() },function(data){
+		if(data == "true"){
+			alert("Login Success");
+		}else{
+			alert("Login Failed");
+		}
+    });
+	
+
+
+        };
+
+                
+	</script>
+</head>
+<body>
+
+  <section class="container">
+    <div class="login">
+      <h1>Login </h1>
+
+        <p><input id="user" type="text" name="login" value="" placeholder="Username or Email"></p>
+        <p><input id="pass" type="password" name="password" value="" placeholder="Password"></p>
+        <p class="remember_me">
+          <label>
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+<button id="abc" onclick = pppp()>Login</button>
+
+    </div>
+
+    <!-- <div class="login-help">
+      <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+    </div> -->
+  </section>
+
+ 
+</body>
+</html>
