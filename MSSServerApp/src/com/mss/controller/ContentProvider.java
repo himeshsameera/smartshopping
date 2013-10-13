@@ -28,15 +28,29 @@ public class ContentProvider {
 	@RequestMapping(value = { "products" }, method = RequestMethod.GET)
 	public void handleGetProgramsRequest(HttpServletRequest req,
 			HttpServletResponse res, Model model) throws Exception {
+            
+            
 		logger.debug(" Get Product List");
-		//Item item1 = new Item(1, "TestItem1");
-		//Item item2 = new Item(2, "TestItem2");
+
+                
+                
+                
+                
+		Item item1 = new Item();
+		Item item2 = new Item();
 		ArrayList<Item> list = new ArrayList<Item>();
 		//list.add(item1);
 		//list.add(item2);
 		Items items = new Items(list);
+                
+                
+                
+                
+                
 		String json = JsonConverter.convertToJson(items);
-		res.setContentType("application/json;");	
+		res.setContentType("application/json;");
+                
+                
 		PrintWriter writer = res.getWriter();
 		writer.print(json);
 	}
@@ -47,8 +61,15 @@ public class ContentProvider {
 			@PathVariable("pid") String pid) throws NumberFormatException, Exception {
 		logger.debug(" +++handleGetContentRequest begin");
 
-		//Item item1 = new Item(1, "TestItem1");
-		//String json = JsonConverter.convertToJson(item1);	   
+
+                
+                
+		Item item1 = new Item();
+                
+
+                
+                
+		String json = JsonConverter.convertToJson(item1);	   
 		res.setContentType("application/json;");
 		PrintWriter writer = res.getWriter();
 		//writer.print(json);

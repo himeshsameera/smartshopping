@@ -60,8 +60,9 @@ public class DB {
             return true;
         }else{
             return false;
-        }       
+        } 
     }
+    
     
     public static Items searchItem(String itemName,int categoryID,int cityID) throws Exception{
         //System.out.println("333");
