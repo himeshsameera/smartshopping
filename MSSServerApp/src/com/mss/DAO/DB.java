@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
 
 /**
@@ -21,7 +23,7 @@ import javax.sql.rowset.serial.SerialBlob;
 
 public class DB {
    
-    private static final String URL = "jdbc:mysql://localhost:3306/mss";
+    private static final String URL = "jdbc:mysql://localhost:3306/mssystem";
     private static final String USERNAME="root";
     private static final String PASSWORD="";
 //    
@@ -39,15 +41,15 @@ public class DB {
         return con;
     }
     
-    /*
-    public static boolean executeQuery(String sql) throws Exception{
+
+    private static boolean executeQuery(String sql) throws Exception{
         Connection con = connect();
         PreparedStatement p =con.prepareStatement(sql);
         p.executeUpdate();
         p.close();
         return true;
     }
-    */
+ 
     public static ResultSet getDBResult(String sql) throws Exception{
             Connection con = connect();
             ResultSet r = con.createStatement().executeQuery(sql);
@@ -87,6 +89,17 @@ public class DB {
             return true;
         }else{
             return false;
+        }
+    }
+
+    public static void editPrice(int shopid, int id, double d) {
+        try {
+            String sql ="UPDATE shop_item_unit_price set price = "+d+" WHERE shop_id = "+shopid+" AND item_unit_id ="+id+";";
+            System.out.println("SQL is : "+sql);
+            executeQuery(sql);
+          //  throw new UnsupportedOperationException("Not yet implemented");
+        } catch (Exception ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

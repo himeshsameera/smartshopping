@@ -20,17 +20,19 @@ import java.util.regex.Pattern;
 public class Updater {
     public static void main(String[] args) {
         try {
-            FileReader fr = new FileReader("resources/test.txt");
+            FileReader fr = new FileReader("D:/test.txt");
             BufferedReader br = new BufferedReader(fr);
-            String date = br.readLine();
-            String location = br.readLine();
+
+            int shopid = 2;
+            
             while(br.ready()){
-                String data = br.readLine();
-                Scanner s = new Scanner(data);
-                s.useDelimiter(Pattern.compile(":"));
-                String ItemName = s.next();
-                String unit = s.next();
-                String price = s.next();
+                String data = br.readLine();              // TIARA ROLLO SWISS ROLL 30G
+                int id = com.mss.DAO.update.getItemUnitbyScrapedName(data);
+                String value = br.readLine();               // Rs.25.00    (US$0.20)
+                Scanner s = new Scanner(value.replaceAll("Rs.", ""));
+                double d = s.nextDouble();
+                System.out.println("Adding item "+ data +"price : " +d);
+                com.mss.DAO.DB.editPrice(shopid,id,d);
                
                 /*
                  Code to add data to database
