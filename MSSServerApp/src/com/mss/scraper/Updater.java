@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mss.scraper_dbupdate;
+package com.mss.scraper;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

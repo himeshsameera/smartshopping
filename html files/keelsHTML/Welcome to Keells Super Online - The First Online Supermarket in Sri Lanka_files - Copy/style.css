@@ -1,0 +1,39 @@
+.head {
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #FFFFFF;
+
+}
+.menu {
+	font-size: 10px;
+	font-weight: bolder;
+	color: #FFCC33;
+}
+
+.fixedfont1 { 
+	font-size : 9px 
+}
+
+.fixedfont2 { 
+	font-size : 10px 
+}
+
+.fixedfont3 { 
+	font-size : 16px; 
+	font-weight: bold;
+}
+.captchabox { 
+height:30px;
+width: 200px; 
+padding:5px;
+background-color:gray;
+font-size:24px;
+color:white;
+font-weight:bold;
+border:solid 2px gray;
+text-align:center;
+font-style:italic;
+text-decoration:line-through;
+
+}
