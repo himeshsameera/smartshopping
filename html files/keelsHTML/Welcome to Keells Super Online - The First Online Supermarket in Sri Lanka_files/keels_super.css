@@ -1,0 +1,347 @@
+.header_link_txt
+{
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.header_link_txt A
+{
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.header_link_txt A:hover
+{
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: underline
+}
+.topnav_link_txt
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.topnav_link_txt A
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.topnav_link_txt A:hover
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #cc3300;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: underline
+}
+.item_search
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #cc3300;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.item_search A
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #cc3300;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.blck_bold_txt_home
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    margin-top: 12px;
+}
+.blck_bold_txt
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.blck_bold_txt A
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.blck_txt
+{
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.blck_txt A
+{
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.body_text
+{
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.more_text
+{
+    FONT-SIZE: 11px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.more_text A
+{
+    FONT-SIZE: 11px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.more_text A:hover
+{
+    FONT-SIZE: 11px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.deliver_text
+{
+    FONT-SIZE: 11px;
+    COLOR: #ca0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.deliver_text A
+{
+    FONT-SIZE: 11px;
+    COLOR: #ca0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.deliver_text A:hover
+{
+    FONT-SIZE: 11px;
+    COLOR: #ca0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.instrument_text
+{
+    FONT-SIZE: 11px;
+    COLOR: #878787;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.instrument_text A
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.instrument_text A:hover
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.news_text
+{
+    FONT-SIZE: 9px;
+    BACKGROUND-IMAGE: url(/images/home2008/news_BG.jpg);
+    COLOR: #878787;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.bottom_links
+{
+    FONT-SIZE: 11px;
+    COLOR: #d70000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.bottom_links A
+{
+    FONT-SIZE: 11px;
+    COLOR: #d70000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.bottom_links A:hover
+{
+    FONT-SIZE: 11px;
+    COLOR: #d70000;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    TEXT-DECORATION: none
+}
+.footer_text
+{
+    FONT-SIZE: 10px;
+    COLOR: #a6a6a6;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma
+}
+.item_search_frm
+{
+    BORDER-RIGHT: #999999 1px solid;
+    BORDER-TOP: #999999 1px solid;
+    FONT-SIZE: 11px;
+    MARGIN-BOTTOM: 2px;
+    BORDER-LEFT: #999999 1px solid;
+    COLOR: #333333;
+    BORDER-BOTTOM: #999999 1px solid;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    HEIGHT: 16px;
+    
+}
+.cart_box_frm
+{
+    BORDER-RIGHT: #999999 1px solid;
+    BORDER-TOP: #999999 1px solid;
+    FONT-SIZE: 11px;
+    MARGIN-BOTTOM: 2px;
+    BORDER-LEFT: #999999 1px solid;
+    COLOR: #333333;
+    BORDER-BOTTOM: #999999 1px solid;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    HEIGHT: 13px;
+    BACKGROUND-COLOR: #efefef
+
+}
+.cart_box_frm_inside
+{
+    BORDER-RIGHT: #999999 1px solid;
+    BORDER-TOP: #999999 1px solid;
+    FONT-SIZE: 11px;
+    MARGIN-BOTTOM: 2px;
+    BORDER-LEFT: #999999 1px solid;
+    COLOR: #333333;
+    BORDER-BOTTOM: #999999 1px solid;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    HEIGHT: 17px;
+    BACKGROUND-COLOR: #efefef
+
+}
+
+.select_city_frm
+{
+    BORDER-RIGHT: #999999 1px solid;
+    BORDER-TOP: #999999 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #999999 1px solid;
+    WIDTH: 130px;
+    COLOR: #333333;
+    BORDER-BOTTOM: #999999 1px solid;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #efefef
+}
+.background1
+{
+    BACKGROUND-IMAGE: url(/images/home2008/top_nav_BG.jpg)
+}
+.background2
+{
+    BACKGROUND-IMAGE: url(/images/home2008/mid_BG.jpg)
+}
+.background3
+{
+    BACKGROUND-IMAGE: url(/images/home2008/deliver_top_BG.jpg)
+}
+.background4
+{
+    BACKGROUND-IMAGE: url(/images/home2008/deliver_top_BG.jpg)
+}
+.background5
+{
+    BACKGROUND-IMAGE: url(/images/home2008/deliver_body_BG.jpg)
+}
+.background7
+{
+    BACKGROUND-IMAGE: url(/images/home2008/Instrument_BG.jpg)
+}
+.background8
+{
+    BACKGROUND-IMAGE: url(/images/home2008/ico_gift_idears_BG.jpg)
+}
+.background9{
+	background-image:url(/images/home2008/gift_vouchers_BG.jpg);
+}
+.background9_1{
+	background-image:url(/images/home2008/delivery_area_BG.gif);
+}
+.background10{
+	background-image:url(/images/home2008/Promotions_BG.jpg);
+}
+.background11{
+	background-image:url(/images/home2008/Register_BG.jpg);
+}
+.background12{
+	background-image:url(/images/home2008/New_Arrivals_BG.jpg);
+}
+div.contact_branchesmain{
+width:700px !important;
+/*border:1px solid #000000;*/
+}
+div.contact_branches{
+width:214px !important;
+height:120px;
+padding:4px;
+margin:4px;
+/*border:1px solid #000000;*/
+float:left;
+font-size:11px;
+/*background-color:#efefef;*/
+font-family: Verdana !important;
+
+
+/*
+
+background-color:#efefef;
+word-wrap:break-word;
+
+
+text-align:justify;
+
+*/
+}
+div.contact_branches span.branch{
+font-size:12px !important;
+font-weight:bold;
+/*color:#CA0000;*/
+margin:0;
+padding:0;
+}
+div.contact_branches p{
+margin:8px 0 4px 0;
+padding:0;
+text-align:left;
+}
+div.contact_branches ul{
+margin:0;
+padding:0;
+}
+div.contact_branches ul li{
+margin:0;
+padding:0;
+list-style-type: none;
+margin-top:1px;
+margin-bottom:1px;
+margin-left:0;
+margin-right:0;
+}
+div.contact_branches ul li.contact a{
+text-decoration:underline;
+color:#CA0000;
+list-style-type: none;
+}
