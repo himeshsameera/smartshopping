@@ -46,4 +46,19 @@ public class ItemContentProvider {
 		PrintWriter writer = res.getWriter();
 		writer.print(json);
         }
+        
+        @RequestMapping(value = { "item" }, method = RequestMethod.GET)
+	public void processItem(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
+            
+            
+		logger.debug(" Get item");
+                int itemid=Integer.parseInt(req.getParameter("id"));
+                Item item=DB.getItem(itemid);
+                //System.out.println("222");
+		String json = JsonConverter.convertToJson(item);
+		res.setContentType("application/json;");	
+		PrintWriter writer = res.getWriter();
+		writer.print(json);
+        }
+        
 }

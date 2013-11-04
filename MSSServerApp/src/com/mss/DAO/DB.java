@@ -102,5 +102,20 @@ public class DB {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static Item getItem(int id){
+         try {
+            String sql ="SELECT * FROM WHERE itemid='"+id+"';";
+            System.out.println("SQL is : "+sql);
+            ResultSet r = getDBResult(sql);
+            if(r.next()){
+                return new Item(r.getString("index"), r.getDouble("price"), r.getString("image"));
+            }
+          //  throw new UnsupportedOperationException("Not yet implemented");
+        } catch (Exception ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        return null;
+    }
 }
 //r.getString("itemName"), r.getDouble("itemPrice"), r.getBlob("itemImage")
