@@ -4,6 +4,8 @@
  */
 package com.mss.DAO;
 
+import com.mss.model.Categories;
+import com.mss.model.Category;
 import com.mss.model.Item;
 import com.mss.model.Items;
 import com.mysql.jdbc.Blob;
@@ -56,6 +58,14 @@ public class DB {
             return r;
     }
     
+    
+    
+    
+    
+    
+    
+    // todo : add session 
+    
     public static boolean verifyLogin(String user,String pass) throws Exception{
         ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+user+"' AND pass='"+pass+"'");
         if(r.next()){
@@ -65,24 +75,25 @@ public class DB {
         } 
     }
     
-    
+      /**
+     * Search the database for a given item.
+     **/
     public static Items searchItem(String itemName,int categoryID,int cityID) throws Exception{
         //System.out.println("333");
-        ResultSet r=getDBResult("SELECT itemName,itemPrice,itemImage from ITEMS where itemName='"+itemName+"' AND categoryID="+categoryID+" AND cityID="+cityID+";");
-        ArrayList<Item> itemList= null; 
+        String sql="SELECT name,price,address FROM item AS a,item_unit AS b,shop_item_unit_price AS c,shop AS d WHERE a.name='"+itemName+"'AND b.item_id=a.id AND c.item_unit_id=b.id AND d.id=c.shop_id;";
+        ResultSet r=getDBResult(sql);
+        ArrayList<Item> itemList= new ArrayList<Item>();
         while(r.next()){
-            Item item=new Item(r.getString("itemName"), r.getDouble("itemPrice"), r.getString("itemImage"));
-            //System.out.println(r.getString("itemImage"));
-            //System.out.println(r.getDouble("itemPrice"));
+            
+            Item item=new Item(r.getString("name"), r.getDouble("price"), r.getString("address"));
             itemList.add(item);
         }
-        //System.out.println("444");
         Items items=new Items(itemList);
-        //System.out.println(itemList);
         return items;
-        
     }
 
+    
+    
     public static boolean fetchingProfile(String Id) throws Exception{
         ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+Id+"'");
         if(r.next()){
@@ -92,6 +103,10 @@ public class DB {
         }
     }
 
+    
+     /**
+     * Changes the price of the given item in the given shop.
+     **/
     public static void editPrice(int shopid, int id, double d) {
         try {
             String sql ="UPDATE shop_item_unit_price set price = "+d+" WHERE shop_id = "+shopid+" AND item_unit_id ="+id+";";
@@ -103,6 +118,9 @@ public class DB {
         }
     }
     
+     /**
+     * Returns the item with the given id
+     **/ 
     public static Item getItem(int id){
          try {
             String sql ="SELECT * FROM WHERE itemid='"+id+"';";
@@ -117,5 +135,20 @@ public class DB {
         }   
         return null;
     }
+    
+    /**
+     * Returns the list of categories available
+     **/
+    public static Categories getCategories() throws Exception{
+        ResultSet r= DB.getDBResult("SELECT * FROM category;");
+        ArrayList<Category> categoryList=new ArrayList<Category>(); 
+        while(r.next()){ 
+            Category category = new Category(r.getInt("id"),r.getString("name"));
+            categoryList.add(category);
+        } 
+        
+        Categories categories=new Categories(categoryList);
+        return categories;
+    }
+
 }
-//r.getString("itemName"), r.getDouble("itemPrice"), r.getBlob("itemImage")

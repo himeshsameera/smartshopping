@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>search</title>
+        
+		 <link rel="shortcut icon" href="../favicon.ico"> 
+		 <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+		
+		
+		<script type='text/javascript' src='knockoutjs.js'></script>
+		<script type='text/javascript' src="jquarry.js"></script>
+    </head>
+    <body>
+	
+	
+		
+		
+		<div class="container">
+				 
+        
+						
+						<form class="form-wrapper">
+							<input type="text" placeholder="What are you looking for?" size="45">
+							&nbsp;&nbsp;&nbsp;
+							<select name="Category" >
+								<option>Select category</option>
+								<option>Vegitables</option>
+								<option>Supermarkets</option>
+								<option>Electronic devices</option>
+							</select> 
+							&nbsp;&nbsp;&nbsp;
+							
+							<select name="City" >
+								<option>Select city</option>
+								<option>Kandy</option>
+								<option>Polonnaruwa</option>
+								<option>Bandarawela</option>
+								<option>Rathnapura</option>
+								<option>Colombo</option>
+							</select> 
+							
+							
+							<input type="button" value="Search" id="button" onclick="readJSON()">
+						</form >
+					
+					<div id="results">
+						
+						<table data-bind="foreach : items">
+							<tr>
+							<td> 
+							<br>
+							<br>
+								Name : <input data-bind="value:itemName"></input>
+								Price : <input data-bind="value:itemPrice"></input>
+								
+							<br>
+							<br>
+							</td>	
+							</tr>
+						</table>
+					</div>
+				
+        
+		</div>
+
+<script type="text/javascript">    
+    
+var editorModel=function(){ 
+
+	var self =this;
+	self.items = ko.observableArray([]);
+	
+
+	///////////////////// Jeson
+	self.save = function() {
+ //           self.lastSavedJson(JSON.stringify(ko.toJS(self), null, 2));
+ //var jsonData = ko.toJSON(viewModel);
+            document.getElementById("data").value=ko.toJSON(self);
+            document.forms["sender"].submit();
+        };
+  //  self.lastSavedJson = ko.observable("")
+	
+	////////////////////
+}
+
+
+	 function item(){
+		 var seg = this;
+		 seg.itemName= ko.observable("test name");		 
+		 seg.itemPrice= ko.observable("Rshhhhh 5/=");
+		return this;
+
+		}
+
+	
+        var modal = new editorModel();
+        
+        function readJSON(){
+//                  alert("new h");
+					$.get("http://10.0.2.2:8084/MSSServerApp/cp/testing",{},function(data){
+
+						var parsed = eval("("+data+")");
+				//		alert(data );	
+                            modal.items([]);
+                  //          document.getElementById("abc").innerHTML=document.getElementById("abc").innerHTML+"  "+parsed.items.length; 
+                    
+                            for(i=0;i<parsed.items.length;i++){
+                                var seg = new item();
+								seg.itemName(parsed.items[i].itemName);
+                                seg.itemPrice(parsed.items[i].itemPrice);
+                                modal.items.push(seg);
+                            }
+				    });
+        			};
+           
+                    
+	ko.applyBindings(modal);
+	
+</script>
+	
+	    </body>
+</html>

@@ -54,7 +54,23 @@ public class ContentProvider {
 		PrintWriter writer = res.getWriter();
 		writer.print(json);
 	}
-	
+
+        	@RequestMapping(value = { "testing" }, method = RequestMethod.GET)
+	public void handleGettestRequest(HttpServletRequest req,
+			HttpServletResponse res, Model model) throws Exception {
+   
+                    
+		logger.debug(" Get Product List");
+            //        System.out.println("bawwaaaaaaaa");
+		String json = "{\"items\":[{\"itemName\":\"Banana\",\"itemPrice\":\"Rs 10\"},{\"itemName\":\"Rice\",\"itemPrice\":\"Rs 80\"},{\"itemName\":\"Rice\",\"itemPrice\":\"Rs 80\"}]}";
+	//	res.setContentType("application/json;");
+                
+                
+		PrintWriter writer = res.getWriter();
+		writer.print(json);
+	}
+        
+        
 	@RequestMapping(value = { "product/{pid}" })
 	public void getProduct(HttpServletRequest req,
 			HttpServletResponse res, Model model,

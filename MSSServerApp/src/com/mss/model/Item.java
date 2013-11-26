@@ -1,15 +1,11 @@
 package com.mss.model;
 
-import com.mysql.jdbc.Blob;
-
-
-
 public class Item  implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private int id;
-    private String name;
-    private Double price;
+    private String itemName;
+    private Double itemPrice;
     private String image;
     
     public Item(){
@@ -17,8 +13,8 @@ public class Item  implements java.io.Serializable {
     }
     
      public Item(String name, Double price, String image){
-    	this.price = price;
-    	this.name = name;
+    	this.itemPrice = price;
+    	this.itemName = name;
         this.image=image;
     }
        
@@ -28,25 +24,25 @@ public class Item  implements java.io.Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getitemName() {
+		return itemName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setitemName(String name) {
+		this.itemName = name;
 	}
 
     /**
      * @return the price
      */
-    public Double getPrice() {
-        return price;
+    public Double getitemPrice() {
+        return itemPrice;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setitemPrice(Double price) {
+        this.itemPrice = price;
     }
 
     /**

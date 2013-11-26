@@ -11,7 +11,7 @@ public class Items implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	ArrayList<Item> itemList;
+	ArrayList<Item> items;
 
 
 	public Items() {
@@ -20,16 +20,16 @@ public class Items implements Serializable {
 
 	public Items(ArrayList<Item> itemList) {
 		
-		this.itemList = itemList;
+		this.items = itemList;
 	}
 
 	
-	public ArrayList<Item> getItemList() {
-		return itemList;
+	public ArrayList<Item> getitems() {
+		return items;
 	}
 
 
-	public void setItemList(ArrayList<Item> itemList) {
-		this.itemList = itemList;
+	public void setitems(ArrayList<Item> itemList) {
+		this.items = itemList;
 	}
 }
