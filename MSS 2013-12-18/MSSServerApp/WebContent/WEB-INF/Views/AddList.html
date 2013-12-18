@@ -40,15 +40,15 @@
 
 <script type="text/javascript">
         
-   var bindings = 0;    	
+    var bindings = 0;    	
     
     var editorModel=function(){ 
 
 	var self = this;
 	self.selecteditems = ko.observableArray([]);
-        self.availableItems = ko.observableArray([new Item("abc" , "aa"),new Item("abcde" , "aaaa") ]);
+        self.availableItems = ko.observableArray([]);
 	
-        self.categories = ko.observableArray([new Catagory("Vegitables" , "1"),new Catagory("Bakery" , "2") ])
+        self.categories = ko.observableArray([new Catagory("Vegitables" , "1")])
         
 	self.addItem = function(){
 		self.selecteditems.push(new Item($('#select-native-2 :selected').text(),$('#select-native-2').val()));	
@@ -70,20 +70,30 @@
     
     var modal = new editorModel(); 
     
-    function Item( myName,myID){
+    // this is to view item name price etc. taken from server
+    function Item(myName,myID){
         var seg = this;
         seg.name = ko.observable( myName);
         seg.id= ko.observable(myID);
         return this;
     }
-    
+    // this is to view catagories
     function Catagory( myName,myID){
         var seg = this;
         seg.name = ko.observable( myName);
         seg.id= ko.observable(myID);
         return this;
     }
-        
+       
+    // This is to add items to the shopping list   
+    function ListItem(myName,myID){
+        var seg = this;
+        seg.name = ko.observable( myName);
+        seg.id= ko.observable(myID);
+        return this;
+    }       
+
+
     function load(){
         
 	ko.applyBindings(modal);
