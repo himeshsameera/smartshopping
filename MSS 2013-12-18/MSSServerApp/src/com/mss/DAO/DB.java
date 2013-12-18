@@ -86,6 +86,11 @@ public class DB {
         Items items=new Items(itemList);
         return items;
     }
+    
+    public static void addItemByShopOwner(int shopId, int itemId, double price) throws Exception{
+        String sql = "INSERT INTO shop_item_unit_price (shop_id,item_id,price) VALUES ("+shopId+","+itemId+","+price+");";
+        executeQuery(sql);
+    }
 
     
     

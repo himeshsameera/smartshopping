@@ -7,6 +7,7 @@ package com.mss.controller;
 import com.mss.DAO.DB;
 import com.mss.model.*;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -89,20 +90,22 @@ public class ItemContentProvider {
 		writer.print(output);
    }
     
+    //return itemnames for the given  categoryId
     @RequestMapping(value = { "itemNames" }, method = RequestMethod.GET)
     public void getItemNames(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
-        
+            
             res.setContentType("text/html");
-            ItemName cat1  = new ItemName(1, "malupaan");
-            ItemName cat2 = new ItemName(5, "roos paan");
-
-            ArrayList<ItemName> cats = new ArrayList<ItemName>();
-            cats.add(cat1);
-            cats.add(cat2);
-            ItemNames c = new ItemNames(cats);
-
-            String output = JsonConverter.convertToJson(c);
-
+            int categoryId = Integer.parseInt(req.getParameter("categoryId"));
+            ItemName itemName = new ItemName();
+            ArrayList<ItemName> itemNameList = new ArrayList<ItemName>();
+            ResultSet r = DB.getDBResult("SELECT * FROM item WHERE category_id="+categoryId+";");
+            while(r.next()){
+                itemName.setId(r.getInt("id"));
+                itemName.setName(r.getString("name"));
+                itemNameList.add(itemName);
+            }
+            ItemNames itemNames = new ItemNames(itemNameList);
+            String output = JsonConverter.convertToJson(itemNames);
    //         String deb = "{\"myitems\":[{\"itemName\":\"malupaan\",\"itemid\":\"1\"},{\"itemName\":\"roospaan\",\"itemid\":\"5\"}]}";
             PrintWriter writer = res.getWriter();
             writer.print(output);
