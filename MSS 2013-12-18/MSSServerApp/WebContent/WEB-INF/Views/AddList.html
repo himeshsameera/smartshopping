@@ -117,7 +117,7 @@
     function loadItems(){
         console.log("loading items");
         $.get("../item/itemNames",  {
-    id:$('#select-native-1').val()
+    categoryId:$('#select-native-1').val()
             },function(data){
                 
                 console.log(data);
