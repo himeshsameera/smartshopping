@@ -32,8 +32,9 @@
 </form>
   </div>
         <table data-bind="foreach:selecteditems">
-            <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text"> </p> </td></tr>
+            <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
         </table>
+        
    <input type="button" value="Search" onclick="modal.save();">
    <input type="button" value="Clear" onclick="clearList();">
 </div> 
@@ -51,7 +52,7 @@
         self.categories = ko.observableArray([new Catagory("Vegitables" , "1")])
         
 	self.addItem = function(){
-		self.selecteditems.push(new Item($('#select-native-2 :selected').text(),$('#select-native-2').val()));	
+		self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(),$('#select-native-2').val(),0));	
 	}
         
 	self.removeItem = function(seg){
@@ -115,7 +116,9 @@
     
     function loadItems(){
         console.log("loading items");
-        $.get("../item/itemNames",function(data){
+        $.get("../item/itemNames",  {
+    id:$('#select-native-1').val()
+            },function(data){
                 
                 console.log(data);
 
