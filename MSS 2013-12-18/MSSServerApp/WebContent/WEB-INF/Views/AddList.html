@@ -32,26 +32,27 @@
 </form>
   </div>
         <table data-bind="foreach:selecteditems">
-            <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text"> </p> </td></tr>
+            <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
         </table>
+        
    <input type="button" value="Search" onclick="modal.save();">
    <input type="button" value="Clear" onclick="clearList();">
 </div> 
 
 <script type="text/javascript">
         
-   var bindings = 0;    	
+    var bindings = 0;    	
     
     var editorModel=function(){ 
 
 	var self = this;
 	self.selecteditems = ko.observableArray([]);
-        self.availableItems = ko.observableArray([new Item("abc" , "aa"),new Item("abcde" , "aaaa") ]);
+        self.availableItems = ko.observableArray([]);
 	
-        self.categories = ko.observableArray([new Catagory("Vegitables" , "1"),new Catagory("Bakery" , "2") ])
+        self.categories = ko.observableArray([new Catagory("Vegitables" , "1")])
         
 	self.addItem = function(){
-		self.selecteditems.push(new Item($('#select-native-2 :selected').text(),$('#select-native-2').val()));	
+		self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(),$('#select-native-2').val(),0));	
 	}
         
 	self.removeItem = function(seg){
@@ -70,20 +71,31 @@
     
     var modal = new editorModel(); 
     
-    function Item( myName,myID){
+    // this is to view item name price etc. taken from server
+    function Item(myName,myID){
         var seg = this;
         seg.name = ko.observable( myName);
         seg.id= ko.observable(myID);
         return this;
     }
-    
+    // this is to view catagories
     function Catagory( myName,myID){
         var seg = this;
         seg.name = ko.observable( myName);
         seg.id= ko.observable(myID);
         return this;
     }
-        
+       
+    // This is to add items to the shopping list   
+    function ListItem(myName,myID,myAmount){
+        var seg = this;
+        seg.name = ko.observable( myName);
+        seg.id= ko.observable(myID);
+        seg.amount = ko.observable(myAmount);
+        return this;
+    }       
+
+
     function load(){
         
 	ko.applyBindings(modal);
@@ -104,7 +116,9 @@
     
     function loadItems(){
         console.log("loading items");
-        $.get("../item/itemNames",function(data){
+        $.get("../item/itemNames",  {
+    categoryId:$('#select-native-1').val()
+            },function(data){
                 
                 console.log(data);
 
