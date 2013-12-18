@@ -86,10 +86,11 @@
     }
        
     // This is to add items to the shopping list   
-    function ListItem(myName,myID){
+    function ListItem(myName,myID,myAmount){
         var seg = this;
         seg.name = ko.observable( myName);
         seg.id= ko.observable(myID);
+        seg.amount = ko.observable(myAmount);
         return this;
     }       
 
