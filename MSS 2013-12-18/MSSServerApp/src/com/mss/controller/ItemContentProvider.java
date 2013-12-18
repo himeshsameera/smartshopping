@@ -97,10 +97,10 @@ public class ItemContentProvider {
             
             res.setContentType("text/html");
             int categoryId = Integer.parseInt(req.getParameter("categoryId"));
-            ItemName itemName = new ItemName();
             ArrayList<ItemName> itemNameList = new ArrayList<ItemName>();
             ResultSet r = DB.getDBResult("SELECT * FROM item WHERE category_id="+categoryId+";");
             while(r.next()){
+                ItemName itemName = new ItemName();
                 itemName.setId(r.getInt("id"));
                 itemName.setName(r.getString("name"));
                 itemNameList.add(itemName);
