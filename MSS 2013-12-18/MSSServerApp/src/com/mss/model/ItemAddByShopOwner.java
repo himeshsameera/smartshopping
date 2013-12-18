@@ -10,94 +10,43 @@ package com.mss.model;
  */
 public class ItemAddByShopOwner {
     
-    private String itemName;
-    private String itemCategoryName;
-    private String itemUnit;
-    private int itemCategoryId;
-    private int itemUnitId;
-    private double itemDouble;
+    private int itemId;
+    private double itemPrice;
     
     public ItemAddByShopOwner(){
         
     }
     
-    public ItemAddByShopOwner(String name, String categoryName, int categoryId,String unit, int unitId, double price){
-        this.itemName = name;
-        this.itemCategoryName = categoryName;
-        this.itemCategoryId = categoryId;
-        this.itemUnitId = unitId;
-        this.itemUnit = unit;
-        this.itemDouble = price;
+    public ItemAddByShopOwner(int itemId, double price){
+        this.itemId = itemId;
+        this.itemPrice = price;
     }
 
     /**
-     * @return the itemName
+     * @return the itemId
      */
-    public String getItemName() {
-        return itemName;
+    public int getItemId() {
+        return itemId;
     }
 
     /**
-     * @param itemName the itemName to set
+     * @param itemId the itemId to set
      */
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     /**
-     * @return the itemCategoryName
+     * @return the itemPrice
      */
-    public String getItemCategoryName() {
-        return itemCategoryName;
+    public double getItemPrice() {
+        return itemPrice;
     }
 
     /**
-     * @param itemCategoryName the itemCategoryName to set
+     * @param itemPrice the itemPrice to set
      */
-    public void setItemCategoryName(String itemCategoryName) {
-        this.itemCategoryName = itemCategoryName;
-    }
-
-    /**
-     * @return the itemUnit
-     */
-    public String getItemUnit() {
-        return itemUnit;
-    }
-
-    /**
-     * @param itemUnit the itemUnit to set
-     */
-    public void setItemUnit(String itemUnit) {
-        this.itemUnit = itemUnit;
-    }
-
-    /**
-     * @return the itemCategoryId
-     */
-    public int getItemCategoryId() {
-        return itemCategoryId;
-    }
-
-    /**
-     * @param itemCategoryId the itemCategoryId to set
-     */
-    public void setItemCategoryId(int itemCategoryId) {
-        this.itemCategoryId = itemCategoryId;
-    }
-
-    /**
-     * @return the itemUnitId
-     */
-    public int getItemUnitId() {
-        return itemUnitId;
-    }
-
-    /**
-     * @param itemUnitId the itemUnitId to set
-     */
-    public void setItemUnitId(int itemUnitId) {
-        this.itemUnitId = itemUnitId;
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
     }
 }
-

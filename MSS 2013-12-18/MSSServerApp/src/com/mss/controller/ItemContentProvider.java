@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -111,6 +112,15 @@ public class ItemContentProvider {
             writer.print(output);
 
     }    
+    
+    @RequestMapping(value = { "addItem" }, method = RequestMethod.GET)
+    public void addItem(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
+        res.setContentType("text/html");
+        String s = req.getParameter("json");
+        ObjectMapper mapper = new ObjectMapper();
+        ItemAddByShopOwner addingItem = mapper.readValue(s, ItemAddByShopOwner.class);
+        DB.addItemByShopOwner(1, addingItem.getItemId(), addingItem.getItemPrice());
+    }
 }
 
         
