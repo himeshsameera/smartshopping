@@ -1,164 +1,172 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+    <head>
+        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
         <script type='text/javascript' src='js/knockoutjs.js'></script>
         <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
-</head>
-<body>
+    </head>
+    <body>
 
-<div data-role="AddList" data-theme="b">
- <div data-role="header" data-theme="b" data-icon="home">
+        <div data-role="AddList" data-theme="b">
+            <div data-role="header" data-theme="b" data-icon="home">
                 <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-				<a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-        </div><!-- /header -->
+                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+            </div><!-- /header -->
 
 
-<div data-role="content">
-<form>
-<div data-role="fieldcontain">
-    
-    
-    <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
-        <option data-bind="value:id , text:name"></option>
-    </select>
- </div>
-
-    <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
-        <option data-bind="value:id , text:name"></option>
-    </select>
-   <input type="button" value="Add item" data-bind="click:$root.addItem">
-</form>
-  </div>
-        <table data-bind="foreach:selecteditems">
-            <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
-        </table>
-        
-   <input type="button" value="Search" onclick="modal.save();">
-   <input type="button" value="Clear" onclick="clearList();">
-</div> 
-
-<script type="text/javascript">
-        
-    var bindings = 0;    	
-    
-    var editorModel=function(){ 
-
-	var self = this;
-	self.selecteditems = ko.observableArray([]);
-        self.availableItems = ko.observableArray([]);
-	
-        self.categories = ko.observableArray([new Catagory("Vegitables" , "1")])
-        
-	self.addItem = function(){
-		self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(),$('#select-native-2').val(),0));	
-	}
-        
-	self.removeItem = function(seg){
-		self.selecteditems.remove(seg);
-	}
-        
-	///////////////////// Jeson
-	self.save = function() {
-            console.log(ko.toJSON(self.selecteditems));
-        //    document.forms["sender"].submit();
-        };
-        
-    }
-    
-    
-    
-    var modal = new editorModel(); 
-    
-    // this is to view item name price etc. taken from server
-    function Item(myName,myID){
-        var seg = this;
-        seg.name = ko.observable( myName);
-        seg.id= ko.observable(myID);
-        return this;
-    }
-    // this is to view catagories
-    function Catagory( myName,myID){
-        var seg = this;
-        seg.name = ko.observable( myName);
-        seg.id= ko.observable(myID);
-        return this;
-    }
-       
-    // This is to add items to the shopping list   
-    function ListItem(myName,myID,myAmount){
-        var seg = this;
-        seg.name = ko.observable( myName);
-        seg.id= ko.observable(myID);
-        seg.amount = ko.observable(myAmount);
-        return this;
-    }       
+            <div data-role="content">
+                <form>
+                    <div data-role="fieldcontain">
 
 
-    function load(){
-        
-	ko.applyBindings(modal);
-        console.log("Ready to load items"); 
-        loadItems();
-        console.log("Ready to load categories"); 
-        loadCategories();
-    }
-    
-    $(document).on( "pageshow", function() {
-    console.log("............page shown..........."); 
-        if(bindings <  1){
-            bindings++;
-            console.log("Applying bindings"); 
-            load();
-        }	
-    });
-    
-    function loadItems(){
-        console.log("loading items");
-        $.get("../item/itemNames",  {
-    categoryId:$('#select-native-1').val()
-            },function(data){
-                
-                console.log(data);
+                        <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
+                            <option data-bind="value:id , text:name"></option>
+                        </select>
+                    </div>
 
-                var parsed = eval("("+data+")");
-                
-                modal.availableItems([]);
-                console.log("length is "+parsed.items.length);
-                for(i=0;i<parsed.items.length;i++){
-                        console.log(i);
-                        var seg = new Item(parsed.items[i].name,parsed.items[i].id);
-                        modal.availableItems.push(seg);
-                }
-        });
-    };
-    
-    
-    function loadCategories(){
-        console.log("loading categories...");
-        $.get("../item/categories",function(data){
-                
-                console.log(data);
+                    <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
+                        <option data-bind="value:id , text:name"></option>
+                    </select>
+                    <input type="button" value="Add item" data-bind="click:$root.addItem">
+                </form>
+            </div>
+            <table data-bind="foreach:selecteditems">
+                <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
+            </table>
 
-                var parsed = eval("("+data+")");
-                
-                modal.categories([]);
-                console.log("length is "+parsed.categories.length);
-                for(i=0;i<parsed.categories.length;i++){
-                        console.log(i);
-                        var seg = new Catagory(parsed.categories[i].name,parsed.categories[i].id);
-                        modal.categories.push(seg);
-                }
-        });
-    };
+            <input type="button" value="Search" onclick="modal.save();">
+            <input type="button" value="Clear" onclick="clearList();">
+        </div> 
 
-    function clearList(){        
-        modal.selecteditems([]);
-    }
-    
-    </script>    
-</body>
+        <script type="text/javascript">
+
+                            var bindings = 0;
+
+                            var editorModel = function() {
+
+                                var self = this;
+                                self.selecteditems = ko.observableArray([]);
+                                self.availableItems = ko.observableArray([]);
+
+                                self.categories = ko.observableArray([new Catagory("Vegitables", "1")])
+
+                                self.addItem = function() {
+                                    self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(), $('#select-native-2').val(), 0));
+                                }
+
+                                self.removeItem = function(seg) {
+                                    self.selecteditems.remove(seg);
+                                }
+
+                                ///////////////////// Jeson
+                                self.save = function() {
+                                    console.log(ko.toJSON(self.selecteditems));
+                                    //    document.forms["sender"].submit();
+                                };
+
+                            }
+
+
+
+                            var modal = new editorModel();
+
+                            // this is to view item name price etc. taken from server
+                            function Item(myName, myID) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                return this;
+                            }
+                            // this is to view catagories
+                            function Catagory(myName, myID) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                return this;
+                            }
+
+                            // This is to add items to the shopping list   
+                            function ListItem(myName, myID, myAmount) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.amount = ko.observable(myAmount);
+                                return this;
+                            }
+
+
+                            function load() {
+
+                                ko.applyBindings(modal);
+                                console.log("Ready to load items");
+                                loadItems();
+                                console.log("Ready to load categories");
+                                loadCategories();
+                            }
+
+                            $(document).on("pageshow", function() {
+                                console.log("............page shown...........");
+                                if (bindings < 1) {
+                                    bindings++;
+                                    console.log("Applying bindings");
+                                    load();
+                                }
+                            });
+
+                            function loadItems() {
+                                console.log("loading items");
+                                $.get("../item/itemNames", {
+                                    categoryId: $('#select-native-1').val()
+                                }, function(data) {
+
+                                    console.log(data);
+
+                                    var parsed = eval("(" + data + ")");
+
+                                    modal.availableItems([]);
+                                    console.log("length is " + parsed.items.length);
+                                    for (i = 0; i < parsed.items.length; i++) {
+                                        console.log(i);
+                                        var seg = new Item(parsed.items[i].name, parsed.items[i].id);
+                                        modal.availableItems.push(seg);
+                                    }
+                                });
+                            }
+                            ;
+
+
+                            function loadCategories() {
+                                console.log("loading categories...");
+                                $.get("../item/categories", function(data) {
+
+                                    console.log(data);
+
+                                    var parsed = eval("(" + data + ")");
+
+                                    modal.categories([]);
+                                    console.log("length is " + parsed.categories.length);
+                                    for (i = 0; i < parsed.categories.length; i++) {
+                                        console.log(i);
+                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id);
+                                        modal.categories.push(seg);
+                                    }
+                                });
+                            }
+                            ;
+
+                            function clearList() {
+                                modal.selecteditems([]);
+                            }
+
+                           
+
+
+
+
+
+        </script>    
+    </body>
 </html>

@@ -78,7 +78,7 @@
 
                     <br /><br />
 
-                    <div class="ui-block-b"><button data-theme="b" type="reset" class="ui-btn-hidden" aria-disabled="false">Add</button></div>
+                    <div class="ui-block-b"><button value="add" data-theme="b" type="reset" class="ui-btn-hidden" aria-disabled="false">Add</button></div>
 
                     </fieldset>
 
@@ -103,35 +103,51 @@
                 var editorModel = function() {
                     var self = this;
                     //self.items = ko.observableArray([]);
-                    self.Quantity=ko.observable("50Kg");
-                    self.Price=ko.observable("Rs.500");
-                    self.TelephoneNumber=ko.observable("071-79326678");
-                    self.Description=ko.observable("Description");
-                    self.Title=ko.observable("Title");
+                    self.Quantity = ko.observable("50Kg");
+                    self.Price = ko.observable("Rs.500");
+                    self.TelephoneNumber = ko.observable("071-79326678");
+                    self.Description = ko.observable("Description");
+                    self.Title = ko.observable("Title");
 
                     self.save = function() {
-                        console.log( ko.toJSON(modal));
-                       //document.forms["sender"].submit();
+                        console.log(ko.toJSON(modal));
+                        //document.forms["sender"].submit();
                     };
                 }
 
 //----------------------------------------------
                 var modal = new editorModel();
-load();
+                load();
                 function load() {
                     ko.applyBindings(modal);
                 }
 
-             $(document).on("pageshow", function() {
-                 console.log("page shown...........");
-                 if (bindings < 1) {
-                     bindings++;
-                     console.log("Applying bindings");
-                     load();
-                 }
-             });
-             
-  //--------------------------------------------------------------
+                $(document).on("pageshow", function() {
+                    console.log("page shown...........");
+                    if (bindings < 1) {
+                        bindings++;
+                        console.log("Applying bindings");
+                        load();
+                    }
+                });
+
+
+
+
+
+            
+
+
+                $("add").click(function() {
+                    $.post("/item/additem",
+                            {
+                               json: ko.toJSON(modal);
+                            },
+                    function(data) {
+                        alert("Data: " + data );
+                    });
+                });
+                //--------------------------------------------------------------
             </script>
 
     </body>
