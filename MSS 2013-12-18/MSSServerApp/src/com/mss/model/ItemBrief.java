@@ -8,6 +8,7 @@ package com.mss.model;
  *
  * @author Himesh_2
  */
+@Deprecated
 public class ItemBrief {
     private String itemName;
     private String itemPrice;

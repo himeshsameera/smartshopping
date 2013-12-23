@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ShoppingListController {
     
     final static Logger logger = LoggerFactory.getLogger(ShoppingListController.class);
-	
+
+    @Deprecated
     @RequestMapping(value = { "process" }, method = RequestMethod.GET)
     public void handleShoppingList(HttpServletRequest req,
                     HttpServletResponse res, Model model) throws Exception {
@@ -91,6 +92,25 @@ public class ShoppingListController {
 
             PrintWriter writer = res.getWriter();
             writer.print(json);
+    }
+    
+    @RequestMapping(value = { "processList" }, method = RequestMethod.GET)
+    public void searchListProcess(HttpServletRequest req,
+                    HttpServletResponse res, Model model) throws Exception {
+
+            String s = req.getParameter("json");
+           
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayList<ItemSearch> shoppingList = mapper.readValue(s, ArrayList<ItemSearch>.class);
+
+//            ArrayList <ShopResult> results = new ArrayList<ShopResult>();
+//         
+//            
+//           // String json = JsonConverter.convertToJson(items);
+//            res.setContentType("application/json;");
+//
+//            PrintWriter writer = res.getWriter();
+//           // writer.print(json);
     }
 
     
