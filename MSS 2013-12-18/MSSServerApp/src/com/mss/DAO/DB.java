@@ -42,7 +42,7 @@ public class DB {
     }
     
 
-    private static boolean executeQuery(String sql) throws Exception{
+    public static boolean executeQuery(String sql) throws Exception{
         Connection con = connect();
         PreparedStatement p =con.prepareStatement(sql);
         p.executeUpdate();
