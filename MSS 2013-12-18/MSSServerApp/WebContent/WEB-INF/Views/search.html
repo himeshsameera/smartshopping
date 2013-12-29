@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
+          <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+      <script type='text/javascript' src='js/knockoutjs.js'></script>
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
 
 </head>
@@ -47,69 +47,69 @@
  
 
 <script type="text/javascript">    
-   var bindings = 0;
 
+            /**
+            *  PART 1 - Create the model
+            **/	
+            var editorModel=function(){ 
+                var self =this;
+                self.items = ko.observableArray([]);
 
-	
-	
-	
-var editorModel=function(){ 
-	var self =this;
-	self.items = ko.observableArray([]);
+                self.save = function() {
+                    document.getElementById("data").value=ko.toJSON(self);
+                    document.forms["sender"].submit();
+                };
+            }
 
-	self.save = function() {
-            document.getElementById("data").value=ko.toJSON(self);
-            document.forms["sender"].submit();
-        };
-}
-
-
-   var modal = new editorModel();
-
-	function load(){
-            	   ko.applyBindings(modal);
-	}
-   
-        $(document).on( "pageshow", function() {
-            console.log("page shown..........."); 
-		if(bindings <  1){
-                    bindings++;
-                    console.log("Applying bindings"); 
-                    load();
-                }	
-        });
-
-	 function item(){
-		 var seg = this;
-		 seg.itemName= ko.observable("test name");		 
-		 seg.itemPrice= ko.observable("Rshhhhh 5/=");
-		return this;
-
-		}
+            function item(){
+                var seg = this;
+                seg.itemName= ko.observable("test name");		 
+                seg.itemPrice= ko.observable("Rshhhhh 5/=");
+                return this;
+            }
         
-        function readJSON(){
 
+            /**
+            *  PART 2 - Declare the variables
+            **/
+            var bindings = 0;
+            var modal = new editorModel();
+   
+   
+            /**
+            *  PART 3 - Declare the functions
+            **/
 
-			$.get("http://localhost/motorolatmp/ajx.html", {},function(data){
-			
-				console.log(data);
-				var parsed = eval("("+data+")");
-				modal.items([]);
-				for(i=0;i<parsed.items.length;i++){
-					console.log(i);
-					var seg = new item();
-					seg.itemName(parsed.items[i].itemName);
-					seg.itemPrice(parsed.items[i].itemPrice);
-					modal.items.push(seg);
-				}
-                                
-		//	   
-			});
-        };
+            function load(){
+                if(bindings <  1){
+                    bindings++;
+                    ko.applyBindings(modal);
+                }
+            }
+
+            function readJSON(){
+                $.get("http://localhost/motorolatmp/ajx.html", {},function(data){
+                    console.log(data);
+                    var parsed = eval("("+data+")");
+                    modal.items([]);
+                    for(i=0;i<parsed.items.length;i++){
+                            console.log(i);
+                            var seg = new item();
+                            seg.itemName(parsed.items[i].itemName);
+                            seg.itemPrice(parsed.items[i].itemPrice);
+                            modal.items.push(seg);
+                    }  
+                });
+            };
            
 
-	  
-
+            /**
+            *  PART 4 - Run the initial functions. With asyncronous jilmart
+            **/                
+                var millisecondsToWait = 1000;
+                setTimeout(function() {
+                    load();
+                }, millisecondsToWait);
 	
 </script>
 

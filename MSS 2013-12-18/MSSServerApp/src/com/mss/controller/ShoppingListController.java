@@ -74,7 +74,6 @@ public class ShoppingListController {
     public void handleGetProgramsRequest(HttpServletRequest req,
                     HttpServletResponse res, Model model) throws Exception {
 
-
             logger.debug(" Get Product List");
 
 
