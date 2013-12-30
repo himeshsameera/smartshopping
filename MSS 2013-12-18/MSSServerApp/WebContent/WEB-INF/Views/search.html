@@ -1,115 +1,117 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+          <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+      <script type='text/javascript' src='js/knockoutjs.js'></script>
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
 
-    </head>
-    <body>
+</head>
+<body>
 
-        <div data-role="Search">
-            <div data-role="header" data-theme="b" data-icon="home">
+<div data-role="Search">
+   <div data-role="header" data-theme="b" data-icon="home">
                 <h1>Search</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-            </div>
+				<a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+        </div>
 
-            <form>
-                <fieldset data-role="controlgroup" data-type="horizontal">
-
-                    <select name="select-native-1" id="select-native-1">
-                        <option value="1">Categories</option>
-                        <option value="2">Car</option>
-                        <option value="3">Phone</option>
-                        <option value="4">Food</option>
-                    </select>
-                    <select name="select-native-1" id="select-native-1">
-                        <option value="1">Districs</option>
-                        <option value="2">Ratnapura</option>
-                        <option value="3">Colombo</option>
-                        <option value="4">Kandy</option>
-                    </select>
-                    <a href="AddList.html" data-role="button" data-icon="plus">Add List</a>
-                </fieldset>
-
-
-                <input type="search" data-mini="true" name="search-4" id="search-4" value="">
-                <a onclick="readJSON()" data-role="button" data-icon="search">Search</a>
-            </form>
-
-            <div data-role="listview" data-inset="true" id ="display" >
-                <table data-bind="foreach : items"> <tr><td><a href="#"><img src="1.jpg"></a></td><td><h3 data-bind="text:itemName"></h3><h6 data-bind="text:itemPrice"></h6></td></tr></table>
-            </div>
-        </div> 
+<form>
+<fieldset data-role="controlgroup" data-type="horizontal">
+    
+    <select name="select-native-1" id="select-native-1">
+        <option value="1">Categories</option>
+        <option value="2">Car</option>
+        <option value="3">Phone</option>
+        <option value="4">Food</option>
+    </select>
+	 <select name="select-native-1" id="select-native-1">
+        <option value="1">Districs</option>
+        <option value="2">Ratnapura</option>
+        <option value="3">Colombo</option>
+        <option value="4">Kandy</option>
+    </select>
+	<a href="AddList.html" data-role="button" data-icon="plus">Add List</a>
+</fieldset>
 
 
+ <input type="search" data-mini="true" name="search-4" id="search-4" value="">
+ <a onclick="readJSON()" data-role="button" data-icon="search">Search</a>
+</form>
+ 
+ <div data-role="listview" data-inset="true" id ="display" >
+<table data-bind="foreach : items"> <tr><td><a href="#"><img src="1.jpg"></a></td><td><h3 data-bind="text:itemName"></h3><h6 data-bind="text:itemPrice"></h6></td></tr></table>
+ </div>
+</div> 
 
-        <script type="text/javascript">
-                    var bindings = 0;
+ 
 
-                    var editorModel = function() {
-                        var self = this;
-                        self.items = ko.observableArray([]);
+<script type="text/javascript">    
 
-                        self.save = function() {
-                            document.getElementById("data").value = ko.toJSON(self);
-                            document.forms["sender"].submit();
-                        };
-                    }
+            /**
+            *  PART 1 - Create the model
+            **/	
+            var editorModel=function(){ 
+                var self =this;
+                self.items = ko.observableArray([]);
 
+                self.save = function() {
+                    document.getElementById("data").value=ko.toJSON(self);
+                    document.forms["sender"].submit();
+                };
+            }
 
-                    var modal = new editorModel();
+            function item(){
+                var seg = this;
+                seg.itemName= ko.observable("test name");		 
+                seg.itemPrice= ko.observable("Rshhhhh 5/=");
+                return this;
+            }
+        
 
-                    function load() {
-                        ko.applyBindings(modal);
-                    }
+            /**
+            *  PART 2 - Declare the variables
+            **/
+            var bindings = 0;
+            var modal = new editorModel();
+   
+   
+            /**
+            *  PART 3 - Declare the functions
+            **/
 
-                    $(document).on("pageshow", function() {
-                        console.log("page shown...........");
-                        if (bindings < 1) {
-                            bindings++;
-                            console.log("Applying bindings");
-                            load();
-                        }
-                    });
+            function load(){
+                if(bindings <  1){
+                    bindings++;
+                    ko.applyBindings(modal);
+                }
+            }
 
-                    function item() {
-                        var seg = this;
-                        seg.itemName = ko.observable("test name");
-                        seg.itemPrice = ko.observable("Rshhhhh 5/=");
-                        return this;
+            function readJSON(){
+                $.get("http://localhost/motorolatmp/ajx.html", {},function(data){
+                    console.log(data);
+                    var parsed = eval("("+data+")");
+                    modal.items([]);
+                    for(i=0;i<parsed.items.length;i++){
+                            console.log(i);
+                            var seg = new item();
+                            seg.itemName(parsed.items[i].itemName);
+                            seg.itemPrice(parsed.items[i].itemPrice);
+                            modal.items.push(seg);
+                    }  
+                });
+            };
+           
 
-                    }
+            /**
+            *  PART 4 - Run the initial functions. With asyncronous jilmart
+            **/                
+                var millisecondsToWait = 1000;
+                setTimeout(function() {
+                    load();
+                }, millisecondsToWait);
+	
+</script>
 
-                    function readJSON() {
-
-
-                        $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
-
-                            console.log(data);
-                            var parsed = eval("(" + data + ")");
-                            modal.items([]);
-                            for (i = 0; i < parsed.items.length; i++) {
-                                console.log(i);
-                                var seg = new item();
-                                seg.itemName(parsed.items[i].itemName);
-                                seg.itemPrice(parsed.items[i].itemPrice);
-                                modal.items.push(seg);
-                            }
-
-                            //	   
-                        });
-                    }
-                    ;
-
-
-
-
-
-        </script>
-
-    </body>
+</body>
 </html>

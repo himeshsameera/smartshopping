@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        
         <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+
         <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+       <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+
+        
     </head>
     <body>
 
@@ -43,129 +47,143 @@
 
         <script type="text/javascript">
 
-                            var bindings = 0;
-
-                            var editorModel = function() {
-
-                                var self = this;
-                                self.selecteditems = ko.observableArray([]);
-                                self.availableItems = ko.observableArray([]);
-
-                                self.categories = ko.observableArray([new Catagory("Vegitables", "1")])
-
-                                self.addItem = function() {
-                                    self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(), $('#select-native-2').val(), 0));
-                                }
-
-                                self.removeItem = function(seg) {
-                                    self.selecteditems.remove(seg);
-                                }
-
-                                ///////////////////// Jeson
-                                self.save = function() {
-                                    console.log(ko.toJSON(self.selecteditems));
-                                    //    document.forms["sender"].submit();
-                                };
-
-                            }
+            /**
+            * Written by Himesh Karunaratne
+            *
+            * This code is to implement a simple knockoutjs structure inside a web page
+            * Mainly there are 4 parts
+            *  1) Create the model
+            *  2) Declare the gobal variables.
+            *  3) Declare the other javascript functions to be used indide
+            *  4) Run the initial code at startup. ie - apply bindings
+            **/
 
 
+            /**
+            *  PART 1 - Create the model
+            **/
+                var editorModel = function() {
 
-                            var modal = new editorModel();
+                    var self = this;
+                    self.selecteditems = ko.observableArray([]);
+                    self.availableItems = ko.observableArray([]);
 
-                            // this is to view item name price etc. taken from server
-                            function Item(myName, myID) {
-                                var seg = this;
-                                seg.name = ko.observable(myName);
-                                seg.id = ko.observable(myID);
-                                return this;
-                            }
-                            // this is to view catagories
-                            function Catagory(myName, myID) {
-                                var seg = this;
-                                seg.name = ko.observable(myName);
-                                seg.id = ko.observable(myID);
-                                return this;
-                            }
+                    self.categories = ko.observableArray([new Catagory("Vegitables", "1")])
 
-                            // This is to add items to the shopping list   
-                            function ListItem(myName, myID, myAmount) {
-                                var seg = this;
-                                seg.name = ko.observable(myName);
-                                seg.id = ko.observable(myID);
-                                seg.amount = ko.observable(myAmount);
-                                return this;
-                            }
+                    self.addItem = function() {
+                        self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(), $('#select-native-2').val(), 0));
+                    }
 
+                    self.removeItem = function(seg) {
+                        self.selecteditems.remove(seg);
+                    }
 
-                            function load() {
+                    self.save = function() {
+                        console.log(ko.toJSON(self.selecteditems));
+                    };
 
-                                ko.applyBindings(modal);
-                                console.log("Ready to load items");
-                                loadItems();
-                                console.log("Ready to load categories");
-                                loadCategories();
-                            }
+                }
+    //models            
+                // this is to view item name price etc. taken from server
+                function Item(myName, myID) {
+                    var seg = this;
+                    seg.name = ko.observable(myName);
+                    seg.id = ko.observable(myID);
+                    return this;
+                }
+				
+                // this is to view catagories
+                function Catagory(myName, myID) {
+                    var seg = this;
+                    seg.name = ko.observable(myName);
+                    seg.id = ko.observable(myID);
+                    return this;
+                }
 
-                            $(document).on("pageshow", function() {
-                                console.log("............page shown...........");
-                                if (bindings < 1) {
-                                    bindings++;
-                                    console.log("Applying bindings");
-                                    load();
-                                }
-                            });
+                // This is to add items to the shopping list   
+                function ListItem(myName, myID, myAmount) {
+                    var seg = this;
+                    seg.name = ko.observable(myName);
+                    seg.id = ko.observable(myID);
+                    seg.amount = ko.observable(myAmount);
+                    return this;
+                }
+//----------------------------------------------------------------------------------
 
-                            function loadItems() {
-                                console.log("loading items");
-                                $.get("../item/itemNames", {
-                                    categoryId: $('#select-native-1').val()
-                                }, function(data) {
+            /**
+            *  PART 2 - Declare the variables
+            **/
+                var bindings = 0;
+                var modal = new editorModel();    
 
-                                    console.log(data);
+            /**
+            *  PART 3 - Declare the functions
+            **/
+                function load() {
+                    if (bindings < 1) {
+                        bindings++;
+                        console.log("Applying bindings");
+                    ko.applyBindings(modal);
+                    }
 
-                                    var parsed = eval("(" + data + ")");
+                    console.log("Ready to load categories");
+                    loadCategories();
+                }
+              
+                
+                function loadItems() {
+                    console.log("loading items");
+                    $.get("../item/itemNames", {
+                        categoryId: $('#select-native-1').val()
+                    }, function(data) {
 
-                                    modal.availableItems([]);
-                                    console.log("length is " + parsed.items.length);
-                                    for (i = 0; i < parsed.items.length; i++) {
-                                        console.log(i);
-                                        var seg = new Item(parsed.items[i].name, parsed.items[i].id);
-                                        modal.availableItems.push(seg);
-                                    }
-                                });
-                            }
-                            ;
+                        console.log(data);
 
+                        var parsed = eval("(" + data + ")");
 
-                            function loadCategories() {
-                                console.log("loading categories...");
-                                $.get("../item/categories", function(data) {
-
-                                    console.log(data);
-
-                                    var parsed = eval("(" + data + ")");
-
-                                    modal.categories([]);
-                                    console.log("length is " + parsed.categories.length);
-                                    for (i = 0; i < parsed.categories.length; i++) {
-                                        console.log(i);
-                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id);
-                                        modal.categories.push(seg);
-                                    }
-                                });
-                            }
-                            ;
-
-                            function clearList() {
-                                modal.selecteditems([]);
-                            }
-
-                           
-
-
+                        modal.availableItems([]);
+                        console.log("length is " + parsed.items.length);
+                        for (i = 0; i < parsed.items.length; i++) {
+                            console.log(i);
+                            var seg = new Item(parsed.items[i].name, parsed.items[i].id);
+                            modal.availableItems.push(seg);
+                        }
+                    });
+                }
+                ;
 
 
+                function loadCategories() {
+                    console.log("loading categories...");
+                    $.get("../item/categories", function(data) {
+
+                        console.log(data);
+
+                        var parsed = eval("(" + data + ")");
+
+                        modal.categories([]);
+                        console.log("length is " + parsed.categories.length);
+                        for (i = 0; i < parsed.categories.length; i++) {
+                            console.log(i);
+                            var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id);
+                            modal.categories.push(seg);
+                        }
+                    });
+                }
+                ;
+
+                function clearList() {
+                    modal.selecteditems([]);
+                }
+                
+                
+            /**
+            *  PART 4 - Run the initial functions. With asyncronous jilmart
+            **/                
+                var millisecondsToWait = 1000;
+                setTimeout(function() {
+                    load();
+                }, millisecondsToWait);
 
         </script>    
     </body>

@@ -16,43 +16,137 @@ and open the template in the editor.
     </head>
     <body>
         <div data-role="Search" data-theme="b">
-        <div data-role="header" data-theme="b" data-icon="home">
-            <h1>Search</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-            <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+            <div data-role="header" data-theme="b" data-icon="home">
+                <h1>Search</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
+                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+            </div>
+
+
+
+
+        </div>
+
+        <div data-role="content">
+
+            <input type="search" data-mini="true" name="search-4" id="search-4" value="">
+            <a href="#" data-role="button" data-mini="true" data-icon="search"></a>
+
+            <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
+                <li data-role="divider">Result</li>
+                <li>
+                    <a href="#">
+                        <img src="1.jpg">
+                        <h2 data-bind="text: Title"></h2>
+                        <p data-bind="text: Address"></p> 
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Items" >
+                                <tr>
+                                    <td ><p data-bind="text: Name">Rice</p></td>
+                                    <td ><p data-bind="text: Price">Rs 55</p> </td>
+
+                                </tr>  
+
+                            </tbody>
+                        </table>
+                        <p>-------------------------------------------------------</p>
+                        <p data-bind="text:total">Total  Rs.500</p>
+                    </a>
+                    <a href="#download" data-rel="dialog" data-transition="pop">Download Browser</a>
+                </li>
+
+            </ul>
+
         </div>
 
 
+        <script type="text/javascript">
+
+            /**
+             *  PART 1 - Create the model
+             **/
+            var editorModel = function() {
+                var self = this;
+                self.Shoplist = ko.observableArray([new Shop("Shan Shop", "No 2A, Ratnapura  / Tel -(0777 9745363)")]);
 
 
-    </div>
+            }
 
-    <div data-role="content">
+            function Shop(name, address) {
+                var seg = this;
+                seg.Title = ko.observable(name);
+                seg.Address = ko.observable(address);
+                seg.Items = ko.observableArray([new Item("Rice", 458),new Item("Rice", 48)]);
+    
+                seg.total =  ko.computed(function() {
+                     tot=0;
+                    for(i=0; i<seg.Items().length ; i++){
+                        tot =tot+seg.Items()[i].Price();
+                    }
+                                return tot ;
+                                });
+                return this;
+            }
+            function Item(name, price) {
+                var sel = this;
+                sel.Name = ko.observable(name);
+                sel.Price = ko.observable(price);
+                return this;
+            }
 
-        <input type="search" data-mini="true" name="search-4" id="search-4" value="">
-        <a href="#" data-role="button" data-mini="true" data-icon="search"></a>
 
-        <ul data-role="listview" data-inset="true">
-            <li data-role="divider">Result</li>
-            <li>
-                <a href="#">
-                    <img src="1.jpg">
-                    <h2>Google Chrome</h2>
-                    <p>Google Chrome is a free, open-source web browser. Released in 2008.</p>
-                </a>
-                <a href="#download" data-rel="dialog" data-transition="pop">Download Browser</a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="1.jpg">
-                    <h2>Mozilla Firefox</h2>
-                    <p>Firefox is a web browser from Mozilla. Released in 2004.</p>
-                </a>
-                <a href="#download" data-rel="dialog" data-transition="pop">Download Browser</a>
-            </li>
-        </ul>
 
-    </div>
+            /**
+             *  PART 2 - Declare the variables
+             **/
+            var bindings = 0;
+            var modal = new editorModel();
 
-</div> 
-</body>
+
+            /**
+             *  PART 3 - Declare the functions
+             **/
+
+            function load() {
+                if (bindings < 1) {
+                    bindings++;
+                    ko.applyBindings(modal);
+                }
+            }
+
+            function readJSON() {
+                $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
+                    console.log(data);
+                    var parsed = eval("(" + data + ")");
+                    modal.items([]);
+                    for (i = 0; i < parsed.items.length; i++) {
+                        console.log(i);
+                        var seg = new item();
+                        seg.itemName(parsed.items[i].itemName);
+                        seg.itemPrice(parsed.items[i].itemPrice);
+                        modal.items.push(seg);
+                    }
+                });
+            }
+            ;
+
+
+            /**
+             *  PART 4 - Run the initial functions. With asyncronous jilmart
+             **/
+            var millisecondsToWait = 1000;
+            setTimeout(function() {
+                load();
+            }, millisecondsToWait);
+
+        </script>
+    </body>
+
 </html>
