@@ -41,7 +41,6 @@ public class DB {
         return con;
     }
     
-
     public static boolean executeQuery(String sql) throws Exception{
         Connection con = connect();
         PreparedStatement p =con.prepareStatement(sql);
@@ -70,7 +69,7 @@ public class DB {
         } 
     }
     
-      /**
+    /**
      * Search the database for a given item.
      **/
     public static Items searchItem(String itemName,int categoryID,int cityID) throws Exception{
@@ -86,14 +85,12 @@ public class DB {
         Items items=new Items(itemList);
         return items;
     }
-    
+   
     public static void addItemByShopOwner(int shopId, int itemId, double price) throws Exception{
         String sql = "INSERT INTO shop_item_unit_price (shop_id,item_id,price) VALUES ("+shopId+","+itemId+","+price+");";
         executeQuery(sql);
     }
 
-    
-    
     public static boolean fetchingProfile(String Id) throws Exception{
         ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+Id+"'");
         if(r.next()){
@@ -121,6 +118,8 @@ public class DB {
      /**
      * Returns the item with the given id
      **/ 
+    // temporary ly depricated
+    @Deprecated
     public static Item getItem(int id){
          try {
             String sql ="SELECT * FROM WHERE itemid='"+id+"';";
@@ -151,7 +150,8 @@ public class DB {
         return categories;
     }
 
- 
+ // New search algorithm will be implemented by pala
+    @Deprecated
     public static ShopResults getValidShops(ListItems items){
         
         int item_count = items.getListItems().size();
@@ -203,10 +203,8 @@ public class DB {
         
         return  result;
     }
-     
-    
-    
-    
+      
+    @Deprecated
     public static ArrayList<Integer> minimalSearch(int id){
     
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -225,6 +223,5 @@ public class DB {
         
         return result;
     }
-    
     
 }
