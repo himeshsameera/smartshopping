@@ -12,17 +12,12 @@ package com.mss.scraper;
 import com.mss.DAO.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
-import org.jsoup.select.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 
 /**
@@ -35,7 +30,7 @@ public class ScraperKeels {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, SQLException, InterruptedException, Exception {
-        String content = readFile("C:/Users/Palaa/Desktop/keels/aa.htm", StandardCharsets.UTF_8);
+        String content = readFile("C:/Users/Palaa/Desktop/keels/aa.htm");
         Document doc = Jsoup.parse(content);
         String title = doc.title();
         
@@ -137,9 +132,17 @@ public class ScraperKeels {
         writer.close();
          
 }
-    private static String readFile(String path, Charset encoding) throws IOException{
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+    private static String readFile(String path) throws IOException{
+        
+        FileReader fr = new FileReader(path);
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(fr);
+        String s;
+        while( (s= br.readLine())!=null){
+            sb.append(s);
+            sb.append('\n');
+        }
+        return sb.toString();
     }
     
 }

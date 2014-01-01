@@ -11,6 +11,7 @@
         <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
     </head> 
 
+
     <body> 
 
         <div data-role="page" data-theme="b">
@@ -31,7 +32,7 @@
 
                     <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
                         <label for="name" class="ui-input-text">Ad Title</label>
-                        <input type="text" data-bind="value : Title" value="" id="name" name="name" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c">
+                        <input type="text" data-bind="value : Title" value="" id="name" name="name" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" />
                     </div>
 
 
@@ -86,70 +87,53 @@
                 <!-- /Login form end-->
 
                 <br /><br />
-
-
                 <!--Content end-->
 
             </div><!-- /page -->
 
 
             <script type="text/javascript">
-                var bindings = 0;
+                
+            /**
+            *  PART 1 - Create the model
+            **/
 
+            var editorModel = function() {
+                var self = this;
+                //self.items = ko.observableArray([]);
+                self.Quantity=ko.observable("50Kg");
+                self.Price=ko.observable("Rs.500");
+                self.TelephoneNumber=ko.observable("071-79326678");
+                self.Description=ko.observable("Description");
+                self.Title=ko.observable("Title");
 
+                self.save = function() {
+                    console.log( ko.toJSON(modal));
+                };
+            }
 
+            /**
+            *  PART 2 - Declare the variables
+            **/
+            var bindings = 0;
+            var modal = new editorModel();  
 
+            /**
+            *  PART 3 - Declare the functions
+            **/
+            function load() {
+                ko.applyBindings(modal);
+            }
 
-                var editorModel = function() {
-                    var self = this;
-                    //self.items = ko.observableArray([]);
-                    self.Quantity = ko.observable("50Kg");
-                    self.Price = ko.observable("Rs.500");
-                    self.TelephoneNumber = ko.observable("071-79326678");
-                    self.Description = ko.observable("Description");
-                    self.Title = ko.observable("Title");
-
-                    self.save = function() {
-                        console.log(ko.toJSON(modal));
-                        //document.forms["sender"].submit();
-                    };
-                }
-
-//----------------------------------------------
-                var modal = new editorModel();
+           /**
+            *  PART 4 - Run the initial functions. With asyncronous jilmart
+            **/                
+            var millisecondsToWait = 1000;
+            setTimeout(function() {
                 load();
-                function load() {
-                    ko.applyBindings(modal);
-                }
+            }, millisecondsToWait);
 
-                $(document).on("pageshow", function() {
-                    console.log("page shown...........");
-                    if (bindings < 1) {
-                        bindings++;
-                        console.log("Applying bindings");
-                        load();
-                    }
-                });
-
-
-
-
-
-            
-
-
-                $("add").click(function() {
-                    $.post("/item/additem",
-                            {
-                               json: ko.toJSON(modal);
-                            },
-                    function(data) {
-                        alert("Data: " + data );
-                    });
-                });
-                //--------------------------------------------------------------
-            </script>
-
+        </script>
     </body>
 
 

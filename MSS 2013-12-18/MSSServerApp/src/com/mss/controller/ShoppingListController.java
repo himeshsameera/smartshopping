@@ -4,12 +4,15 @@
  */
 package com.mss.controller;
 
+import com.google.common.reflect.TypeToken;
 import com.mss.model.*;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.type.TypeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -101,11 +104,12 @@ public class ShoppingListController {
             String s = req.getParameter("json");
            
             ObjectMapper mapper = new ObjectMapper();
-            //ArrayList<ItemSearch> shoppingList = mapper.readValue(s, ArrayList<ItemSearch>.class);
+            ArrayList<ItemBrief> shoppingList = mapper.readValue(s,TypeFactory.collectionType(ArrayList.class, ItemBrief.class.getClass()));
+            
+            
+            ArrayList <ShopResult> results = new ArrayList<ShopResult>();
 
-//            ArrayList <ShopResult> results = new ArrayList<ShopResult>();
-//         
-//            
+            
 //           // String json = JsonConverter.convertToJson(items);
 //            res.setContentType("application/json;");
 //
