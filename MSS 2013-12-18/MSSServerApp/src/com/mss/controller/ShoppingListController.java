@@ -101,7 +101,7 @@ public class ShoppingListController {
             String s = req.getParameter("json");
            
             ObjectMapper mapper = new ObjectMapper();
-            ArrayList<ItemSearch> shoppingList = mapper.readValue(s, ArrayList<ItemSearch>.class);
+            //ArrayList<ItemSearch> shoppingList = mapper.readValue(s, ArrayList<ItemSearch>.class);
 
 //            ArrayList <ShopResult> results = new ArrayList<ShopResult>();
 //         

@@ -10,8 +10,6 @@ package com.mss.scraper;
  */
 
 import com.mss.DAO.DB;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
@@ -19,9 +17,9 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
