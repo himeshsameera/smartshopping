@@ -17,7 +17,7 @@ and open the template in the editor.
     <body>
         <div data-role="Search" data-theme="b">
             <div data-role="header" data-theme="b" data-icon="home">
-                <h1>Search</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
+                <h1>Result</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
                 <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
             </div>
 
@@ -28,11 +28,10 @@ and open the template in the editor.
 
         <div data-role="content">
 
-            <input type="search" data-mini="true" name="search-4" id="search-4" value="">
-            <a href="#" data-role="button" data-mini="true" data-icon="search"></a>
-
+            
+           
             <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
-                <li data-role="divider">Result</li>
+                <li data-role="divider"></li> 
                 <li>
                     <a href="#">
                         <img src="1.jpg">
@@ -74,7 +73,7 @@ and open the template in the editor.
              **/
             var editorModel = function() {
                 var self = this;
-                self.Shoplist = ko.observableArray([new Shop("Shan Shop", "No 2A, Ratnapura  / Tel -(0777 9745363)")]);
+                self.Shoplist = ko.observableArray();
 
 
             }
@@ -83,7 +82,7 @@ and open the template in the editor.
                 var seg = this;
                 seg.Title = ko.observable(name);
                 seg.Address = ko.observable(address);
-                seg.Items = ko.observableArray([new Item("Rice", 458),new Item("Rice", 48)]);
+                seg.Items = ko.observableArray();
     
                 seg.total =  ko.computed(function() {
                      tot=0;
@@ -118,22 +117,42 @@ and open the template in the editor.
                 if (bindings < 1) {
                     bindings++;
                     ko.applyBindings(modal);
+					readJSON();
                 }
             }
 
             function readJSON() {
-                $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
-                    console.log(data);
+               // $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
+		data ='{"Shoplist":[{"Title":"Shan Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]}   , {"Title":"Malitha Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]} ]}';
+                    //console.log(data);
                     var parsed = eval("(" + data + ")");
-                    modal.items([]);
-                    for (i = 0; i < parsed.items.length; i++) {
-                        console.log(i);
-                        var seg = new item();
-                        seg.itemName(parsed.items[i].itemName);
-                        seg.itemPrice(parsed.items[i].itemPrice);
-                        modal.items.push(seg);
+                    modal.Shoplist([]);
+                    for (var i = 0; i < parsed.Shoplist.length; i++) {
+                        //console.log(i);
+                        var myShop = new Shop();
+						
+                        myShop.Title(parsed.Shoplist[i].Title);
+                        myShop.Address(parsed.Shoplist[i].Address);
+                        myShop.Items([]);
+						
+                        for(var  j=0;j<parsed.Shoplist[i].Items.length;j++){
+							
+                            var itm= new Item();
+							
+							
+                            itm.Name(parsed.Shoplist[i].Items[j].Name);
+							
+                            itm.Price(parsed.Shoplist[i].Items[j].Price);
+							
+                            myShop.Items.push(itm);
+							
+							
+                        }
+						
+                        modal.Shoplist.push(myShop);
+						
                     }
-                });
+              // });
             }
             ;
 
