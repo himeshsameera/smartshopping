@@ -41,6 +41,7 @@ public class DB {
         return con;
     }
     
+
     public static boolean executeQuery(String sql) throws Exception{
         Connection con = connect();
         PreparedStatement p =con.prepareStatement(sql);
@@ -69,7 +70,47 @@ public class DB {
         } 
     }
     
-    /**
+    public static ArrayList<ShopForItemList> searchItemList(ArrayList<ItemSearch> itemSearchList) throws Exception{
+        String orSql=" OR item_id=";
+        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM shop_item_unit_price WHERE item_id=");
+        //String sqlQuery = "SELECT * FROM shop_item_unit_price WHERE item_id=";
+        for(int i=0;i<itemSearchList.size();i++){
+            if(i==itemSearchList.size()-1){
+                sqlQuery=sqlQuery.append(itemSearchList.get(i).getItemId()).append(";");
+                //System.out.println("search sql is -->> "+sqlQuery);
+            }
+            if(i<itemSearchList.size()-1){
+                sqlQuery=sqlQuery.append(itemSearchList.get(i).getItemId()).append(orSql);
+                //System.out.println("search sql is -->> "+sqlQuery);
+            }
+        }
+        ArrayList<ShopForItemList> shopForItemList = new ArrayList<ShopForItemList>();
+        ResultSet r1 = DB.getDBResult(sqlQuery.toString());
+        
+        while(r1.next()){
+            int shopId = r1.getInt("shop_id");
+            boolean hasShop = false;
+            for(int i=0;i<shopForItemList.size();i++){
+                if(shopId == shopForItemList.get(i).getShopId()){
+                    ItemPrice itemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
+                    ArrayList<ItemPrice> iPrice = shopForItemList.get(i).getItempriceList();
+                    iPrice.add(itemPrice);
+                    hasShop = true;
+                }  
+            }
+            if(!hasShop){
+                ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
+                ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
+                addItemPriceList.add(addItemPrice);
+                ShopForItemList addNewShop = new ShopForItemList(shopId,addItemPriceList);
+                shopForItemList.add(addNewShop);
+            }
+            //ResultSet r2 = DB.getDBResult("SELECT * FROM shop_item_unit_price WHERE shop_id="+shopId+";");  
+        }
+        return shopForItemList;
+    }
+    
+      /**
      * Search the database for a given item.
      **/
     public static Items searchItem(String itemName,int categoryID,int cityID) throws Exception{
@@ -85,12 +126,14 @@ public class DB {
         Items items=new Items(itemList);
         return items;
     }
-   
+    
     public static void addItemByShopOwner(int shopId, int itemId, double price) throws Exception{
         String sql = "INSERT INTO shop_item_unit_price (shop_id,item_id,price) VALUES ("+shopId+","+itemId+","+price+");";
         executeQuery(sql);
     }
 
+    
+    
     public static boolean fetchingProfile(String Id) throws Exception{
         ResultSet r=getDBResult("SELECT user,pass FROM users WHERE user='"+Id+"'");
         if(r.next()){
@@ -118,8 +161,6 @@ public class DB {
      /**
      * Returns the item with the given id
      **/ 
-    // temporary ly depricated
-    @Deprecated
     public static Item getItem(int id){
          try {
             String sql ="SELECT * FROM WHERE itemid='"+id+"';";
@@ -150,8 +191,7 @@ public class DB {
         return categories;
     }
 
- // New search algorithm will be implemented by pala
-    @Deprecated
+ 
     public static ShopResults getValidShops(ListItems items){
         
         int item_count = items.getListItems().size();
@@ -203,8 +243,10 @@ public class DB {
         
         return  result;
     }
-      
-    @Deprecated
+     
+    
+    
+    
     public static ArrayList<Integer> minimalSearch(int id){
     
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -223,5 +265,6 @@ public class DB {
         
         return result;
     }
+    
     
 }
