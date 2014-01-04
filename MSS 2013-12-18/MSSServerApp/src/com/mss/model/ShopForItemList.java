@@ -4,15 +4,17 @@
  */
 package com.mss.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Palaa
  */
-public class ShopForItemList {
+public class ShopForItemList implements Serializable{
     private int shopId;
     private ArrayList<ItemPrice> itempriceList;
+    private String shopName;
     
     public ShopForItemList(){
     
@@ -49,5 +51,19 @@ public class ShopForItemList {
      */
     public void setItempriceList(ArrayList<ItemPrice> itempriceList) {
         this.itempriceList = itempriceList;
+    }
+
+    /**
+     * @return the shopName
+     */
+    public String getShopName() {
+        return shopName;
+    }
+
+    /**
+     * @param shopName the shopName to set
+     */
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }

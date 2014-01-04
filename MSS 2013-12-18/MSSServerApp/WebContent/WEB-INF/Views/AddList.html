@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         
-        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+      <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+      <link rel="stylesheet" href="css/ShopingUI.css" />
+       
+       <script type='text/javascript' src='js/knockoutjs.js'></script>
+       <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
 
         
@@ -24,24 +25,33 @@
             <div data-role="content">
                 <form>
                     <div data-role="fieldcontain">
-
-
                         <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
                             <option data-bind="value:id , text:name"></option>
                         </select>
                     </div>
-
+<!--
                     <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
                         <option data-bind="value:id , text:name"></option>
                     </select>
+
+                    
                     <input type="button" value="Add item" data-bind="click:$root.addItem">
-                </form>
+-->
+</form>
+                
+                <div data-bind="foreach:availableItems">
+                    <div class = "thumbBox">
+                    <img src="images/carrot.png" data-bind="click: $parent.addItem"/>
+                    <span data-bind="text: name"></span>
+
+                    </div>
+                </div>
             </div>
             <table data-bind="foreach:selecteditems">
-                <tr><td data-bind="text:name"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
+                <tr><td data-bind="text:itemName"></td><td><p> Amount : <input type="text" data-bind="value:amount"> </p> </td></tr>
             </table>
 
-            <input  type="button"  value="Search" onclick="modal.save();location.href='ShowResult.html';">
+            <input  type="button"  value="Search" onclick="modal.save();">
             <input type="button" value="Clear" onclick="clearList();">
         </div> 
 
@@ -68,10 +78,13 @@
                     self.selecteditems = ko.observableArray([]);
                     self.availableItems = ko.observableArray([]);
 
-                    self.categories = ko.observableArray([new Catagory("Vegitables", "1")])
+                    self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
 
-                    self.addItem = function() {
-                        self.selecteditems.push(new ListItem($('#select-native-2 :selected').text(), $('#select-native-2').val(), 0));
+                    self.addItem = function(displayItem) {
+                    //    console.log(ko.toJSON(displayItem));
+                    //    console.log(displayItem.name());
+                    //    console.log(displayItem.id());
+                        self.selecteditems.push(new ListItem(displayItem.name(),displayItem.id() , 0));
                     }
 
                     self.removeItem = function(seg) {
@@ -80,6 +93,26 @@
 
                     self.save = function() {
                         console.log(ko.toJSON(self.selecteditems));
+                        
+                        $.ajax({
+
+                            type: "GET", //Personally i prefer using post, you can swap this to get if you want.
+                            url: "../list/processList",
+                            dataType: "html", //Note the dataType has been changed from default here.
+                                data: { 
+                                    'json': ko.toJSON(self.selecteditems)
+                                },
+                            error: function() {
+                            //You can do a fallback here
+                            },
+                            success: function(data) { //Note the data variable here. This is your returned data
+                                //I also swapped .attr to .val below
+                                console.log(data);
+                                localStorage.setItem('result', data+" ");
+                                document.location ="ShowResult.html" ;
+                            }
+
+                        });          
                     };
 
                 }
@@ -103,8 +136,8 @@
                 // This is to add items to the shopping list   
                 function ListItem(myName, myID, myAmount) {
                     var seg = this;
-                    seg.name = ko.observable(myName);
-                    seg.id = ko.observable(myID);
+                    seg.itemName = ko.observable(myName);
+                    seg.itemId = ko.observable(myID);
                     seg.amount = ko.observable(myAmount);
                     return this;
                 }
@@ -145,7 +178,7 @@
                         console.log("length is " + parsed.items.length);
                         for (i = 0; i < parsed.items.length; i++) {
                             console.log(i);
-                            var seg = new Item(parsed.items[i].name, parsed.items[i].id);
+                            var seg = new Item(parsed.items[i].name, parseInt( parsed.items[i].id));
                             modal.availableItems.push(seg);
                         }
                     });

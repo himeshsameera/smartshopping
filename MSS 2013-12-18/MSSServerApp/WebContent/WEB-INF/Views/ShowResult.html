@@ -123,26 +123,27 @@ and open the template in the editor.
 
             function readJSON() {
                // $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
-		data ='{"Shoplist":[{"Title":"Shan Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]}   , {"Title":"Malitha Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]} ]}';
+		// data ='[{"Title":"Shan Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]}   , {"Title":"Malitha Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]} ]';
+                data = localStorage.getItem('result');
                     //console.log(data);
                     var parsed = eval("(" + data + ")");
                     modal.Shoplist([]);
-                    for (var i = 0; i < parsed.Shoplist.length; i++) {
+                    for (var i = 0; i < parsed.length; i++) {
                         //console.log(i);
                         var myShop = new Shop();
 						
-                        myShop.Title(parsed.Shoplist[i].Title);
-                        myShop.Address(parsed.Shoplist[i].Address);
+                        myShop.Title(parsed[i].shopId);
+                        myShop.Address(parsed[i].shopName);
                         myShop.Items([]);
 						
-                        for(var  j=0;j<parsed.Shoplist[i].Items.length;j++){
+                        for(var  j=0;j<parsed[i].itempriceList.length;j++){
 							
                             var itm= new Item();
 							
 							
-                            itm.Name(parsed.Shoplist[i].Items[j].Name);
+                            itm.Name(parsed[i].itempriceList[j].itemId);
 							
-                            itm.Price(parsed.Shoplist[i].Items[j].Price);
+                            itm.Price(parsed[i].itempriceList[j].price);
 							
                             myShop.Items.push(itm);
 							
