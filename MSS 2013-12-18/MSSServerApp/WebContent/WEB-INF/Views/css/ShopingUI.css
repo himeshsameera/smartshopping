@@ -1,0 +1,10 @@
+.thumbBox {
+width: 90px;
+float: left;
+margin: 5px;
+
+height:95px;
+overflow: hidden;
+border:#ddd dotted 1px;
+text-align:center;
+}
