@@ -103,6 +103,7 @@ public class ItemContentProvider {
                 ItemName itemName = new ItemName();
                 itemName.setId(r.getInt("id"));
                 itemName.setName(r.getString("name"));
+                itemName.setImage(r.getString("image"));
                 itemNameList.add(itemName);
             }
             ItemNames itemNames = new ItemNames(itemNameList);
