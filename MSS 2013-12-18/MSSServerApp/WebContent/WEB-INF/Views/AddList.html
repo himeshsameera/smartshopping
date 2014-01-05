@@ -41,8 +41,9 @@
                 
                 <div data-bind="foreach:availableItems">
                     <div class = "thumbBox">
-                    <img data-bind="attr:{src: PhotoName} , click: $parent.addItem"/>
+                    <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
                     <span data-bind="text: name"></span>
+
 
                     </div>
                 </div>
@@ -180,7 +181,7 @@
                         console.log("length is " + parsed.items.length);
                         for (i = 0; i < parsed.items.length; i++) {
                             console.log(i);
-                            var seg = new Item(parsed.items[i].name, parseInt( parsed.items[i].id));
+                            var seg = new Item(parsed.items[i].name, parseInt( parsed.items[i].id),parsed.items[i].image);
                             modal.availableItems.push(seg);
                         }
                     });

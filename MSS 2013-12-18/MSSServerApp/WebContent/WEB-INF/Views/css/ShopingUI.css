@@ -14,6 +14,12 @@ border:#ddd dotted 1px;
 text-align:center;
 }
 
+.thumbBox img{
+    
+    width: 60px;
+    height:60px;
+}
+
 .removeButton{
 background:url('images/remove.png') 0 0;
 }

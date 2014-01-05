@@ -34,7 +34,7 @@ and open the template in the editor.
             <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
-                    <a href="#">
+                    <a href="popup.html">
                         <img src="1.jpg">
                         <h2 data-bind="text: Title"></h2>
                         <p data-bind="text: Address"></p> 
@@ -43,8 +43,6 @@ and open the template in the editor.
                                 <tr>
                                     <th>Item</th>
                                     <th>Price</th>
-
-
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: Items" >
@@ -59,5 +57,117 @@ and open the template in the editor.
                         <p>-------------------------------------------------------</p>
                         <p data-bind="text:total">Total  Rs.500</p>
                     </a>
-                    <a href="popup.html" data-rel="dialog" data-transition="pop">Download Browser</a>
-                    <a href=#purchase  data-rel="dialog" data-position-to="window" data-transition="pop">Download Browser</a>
+                </li>
+            </ul>
+        </div>
+<!-- <div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+    <h3>Purchase Album?</h3>
+    <p>Your download will begin immediately on your mobile device when you purchase.</p>
+    <a href="ShowResult.html" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: $10.99</a>
+    <a href="ShowResult.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+</div> -->
+		
+        <script type="text/javascript">
+
+            /**
+             *  PART 1 - Create the model
+             **/
+            var editorModel = function() {
+                var self = this;
+                self.Shoplist = ko.observableArray();
+
+
+            }
+
+            function Shop(name, address) {
+                var seg = this;
+                seg.Title = ko.observable(name);
+                seg.Address = ko.observable(address);
+                seg.Items = ko.observableArray();
+    
+                seg.total =  ko.computed(function() {
+                     tot=0;
+                    for(i=0; i<seg.Items().length ; i++){
+                        tot =tot+seg.Items()[i].Price();
+                    }
+                                return tot ;
+                                });
+                return this;
+            }
+            function Item(name, price) {
+                var sel = this;
+                sel.Name = ko.observable(name);
+                sel.Price = ko.observable(price);
+                return this;
+            }
+
+
+
+            /**
+             *  PART 2 - Declare the variables
+             **/
+            var bindings = 0;
+            var modal = new editorModel();
+
+
+            /**
+             *  PART 3 - Declare the functions
+             **/
+
+            function load() {
+                if (bindings < 1) {
+                    bindings++;
+                    ko.applyBindings(modal);
+					readJSON();
+                }
+            }
+
+            function readJSON() {
+               // $.get("http://localhost/motorolatmp/ajx.html", {}, function(data) {
+		// data ='[{"Title":"Shan Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]}   , {"Title":"Malitha Shop","Address":"No 2A, Ratnapura  / Tel -(0777 9745363)","Items":[{"Name":"Rice","Price":458},{"Name":"Rice","Price":48}]} ]';
+                data = localStorage.getItem('result');
+                    //console.log(data);
+                    var parsed = eval("(" + data + ")");
+                    modal.Shoplist([]);
+                    for (var i = 0; i < parsed.length; i++) {
+                        //console.log(i);
+                        var myShop = new Shop();
+						
+                        myShop.Title(parsed[i].shopId);
+                        myShop.Address(parsed[i].shopName);
+                        myShop.Items([]);
+						
+                        for(var  j=0;j<parsed[i].itempriceList.length;j++){
+							
+                            var itm= new Item();
+							
+							
+                            itm.Name(parsed[i].itempriceList[j].itemId);
+							
+                            itm.Price(parsed[i].itempriceList[j].price);
+							
+                            myShop.Items.push(itm);
+							
+							
+                        }
+						
+                        modal.Shoplist.push(myShop);
+						
+                    }
+              // });
+            }
+            ;
+
+
+            /**
+             *  PART 4 - Run the initial functions. With asyncronous jilmart
+             **/
+            var millisecondsToWait = 1000;
+            setTimeout(function() {
+                load();
+            }, millisecondsToWait);
+
+        </script>
+    </body>
+
+</html>

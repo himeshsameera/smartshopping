@@ -3,6 +3,7 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
+<!--
 <html>
     <head>
         <title></title>
@@ -15,17 +16,7 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
     </head>
     <body>
-        
-
-
-
-
-     
-
         <div data-role="content">
-
-            
-           
             <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
@@ -63,9 +54,40 @@ and open the template in the editor.
 
 
         <script type="text/javascript">
-
-    
         </script>
     </body>
 
 </html>
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+        <script type='text/javascript' src='js/knockoutjs.js'></script>
+</head> 
+
+
+<body> 
+
+<div data-role="page" data-theme="b">
+
+        <div data-role="header" data-theme="b" data-icon="home" id = "header">
+                <h1>Home</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
+				
+        </div>
+
+        
+        <div data-role="content" data-theme="b" id="topics">  
+			<a rel="external" href="AddList.html" data-role="button" data-icon="search"  >Search</a>
+			<br/>
+			<a rel="external" href="signUp.html" data-role="button" data-icon="info"  >Sign Up </a>
+			<br/>
+			<a rel="external" href="Editprofile.html" data-role="button" data-icon="arrow-u"  >Edit profile</a>
+			<br/>
+         </div>
+        </body>
+        </html>
