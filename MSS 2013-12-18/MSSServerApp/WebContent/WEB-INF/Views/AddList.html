@@ -41,7 +41,7 @@
                 
                 <div data-bind="foreach:availableItems">
                     <div class = "thumbBox">
-                    <img src="images/carrot.png" data-bind="click: $parent.addItem"/>
+                    <img data-bind="attr:{src: PhotoName} , click: $parent.addItem"/>
                     <span data-bind="text: name"></span>
 
                     </div>
@@ -119,10 +119,11 @@
                 }
     //models            
                 // this is to view item name price etc. taken from server
-                function Item(myName, myID) {
+                function Item(myName, myID,myImage) {
                     var seg = this;
                     seg.name = ko.observable(myName);
                     seg.id = ko.observable(myID);
+                    seg.image=ko.observable(myImage);
                     return this;
                 }
 				
@@ -199,7 +200,7 @@
                         console.log("length is " + parsed.categories.length);
                         for (i = 0; i < parsed.categories.length; i++) {
                             console.log(i);
-                            var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id);
+                            var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id,parsed.categories[i].image);
                             modal.categories.push(seg);
                         }
                     });
