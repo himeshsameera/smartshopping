@@ -1,0 +1,71 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+        <script type='text/javascript' src='js/knockoutjs.js'></script>
+        <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
+    </head>
+    <body>
+        
+
+
+
+
+     
+
+        <div data-role="content">
+
+            
+           
+            <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
+                <li data-role="divider"></li> 
+                <li>
+                    
+                        
+                        <h2 data-bind="text: Title"></h2>
+                        <p data-bind="text: Address"></p> 
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Items" >
+                                <tr>
+                                    <td ><p data-bind="text: Name">Rice</p></td>
+                                    <td ><p data-bind="text: Price">Rs 55</p> </td>
+
+                                </tr>  
+
+                            </tbody>
+                        </table>
+                        <p>-------------------------------------------------------</p>
+                        <p data-bind="text:total">Total  Rs.500</p>
+                    
+                    
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <script type="text/javascript">
+
+    
+        </script>
+    </body>
+
+</html>
