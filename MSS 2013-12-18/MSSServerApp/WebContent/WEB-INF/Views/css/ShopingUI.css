@@ -1,3 +1,8 @@
+
+body{
+    background-color: lightskyblue;
+}
+
 .thumbBox {
 width: 90px;
 float: left;
@@ -11,4 +16,18 @@ text-align:center;
 
 .removeButton{
 background:url('images/remove.png') 0 0;
+}
+
+.resultTable td{
+    padding: 15px;   
+    color:green;
+}
+
+.resultShopName{
+    color:green;
+    margin: 3px;
+}
+
+.resultDisplay{
+    margin: 18px;
 }

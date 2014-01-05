@@ -13,29 +13,24 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
         <script type='text/javascript' src='js/knockoutjs.js'></script>
         <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
-        <link rel="stylesheet" href="css/ShopingUI.css" />
     </head>
     <body>
-        <div data-role="Search" data-theme="b">
-            <div data-role="header" data-theme="b" data-icon="home">
-                <h1>Result</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-            </div>
+        
 
 
 
 
-        </div>
+     
 
         <div data-role="content">
 
             
            
-            <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
+            <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
-                    <a href="#">
-                        <img src="1.jpg">
+                    
+                        
                         <h2 data-bind="text: Title"></h2>
                         <p data-bind="text: Address"></p> 
                         <table>
@@ -58,6 +53,19 @@ and open the template in the editor.
                         </table>
                         <p>-------------------------------------------------------</p>
                         <p data-bind="text:total">Total  Rs.500</p>
-                    </a>
-                    <a href="popup.html" data-rel="dialog" data-transition="pop">Download Browser</a>
-                    <a href=#purchase  data-rel="dialog" data-position-to="window" data-transition="pop">Download Browser</a>
+                    
+                    
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <script type="text/javascript">
+
+    
+        </script>
+    </body>
+
+</html>

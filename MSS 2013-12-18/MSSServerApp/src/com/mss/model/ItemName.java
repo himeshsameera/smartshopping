@@ -10,6 +10,7 @@ package com.mss.model;
  */
 public class ItemName {
     private String name;
+    private String image;
     private int id;
 
     public ItemName() {
@@ -49,6 +50,20 @@ public class ItemName {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }
