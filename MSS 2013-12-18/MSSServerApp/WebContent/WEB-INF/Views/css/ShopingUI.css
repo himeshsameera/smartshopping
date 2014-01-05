@@ -8,3 +8,7 @@ overflow: hidden;
 border:#ddd dotted 1px;
 text-align:center;
 }
+
+.removeButton{
+background:url('images/remove.png') 0 0;
+}
