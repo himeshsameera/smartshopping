@@ -4,11 +4,13 @@
  */
 package com.mss.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Palaa
  */
-public class ItemSearch {
+public class ItemSearch implements Serializable {
     private String itemName;
     private int itemId;
     private int amount;

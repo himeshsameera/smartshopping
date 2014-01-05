@@ -72,7 +72,7 @@ public class DB {
     
     public static ArrayList<ShopForItemList> searchItemList(ArrayList<ItemSearch> itemSearchList) throws Exception{
         String orSql=" OR item_id=";
-        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM shop_item_unit_price WHERE item_id=");
+        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM shop_item_unit_price JOIN shop ON shop.id=shop_id WHERE item_id=");
         //String sqlQuery = "SELECT * FROM shop_item_unit_price WHERE item_id=";
         for(int i=0;i<itemSearchList.size();i++){
             if(i==itemSearchList.size()-1){
@@ -84,30 +84,36 @@ public class DB {
                 //System.out.println("search sql is -->> "+sqlQuery);
             }
         }
-        ArrayList<ShopForItemList> shopForItemList = new ArrayList<ShopForItemList>();
+        ArrayList<ShopForItemList> shopList = new ArrayList<ShopForItemList>();
         ResultSet r1 = DB.getDBResult(sqlQuery.toString());
         
         while(r1.next()){
             int shopId = r1.getInt("shop_id");
             boolean hasShop = false;
-            for(int i=0;i<shopForItemList.size();i++){
-                if(shopId == shopForItemList.get(i).getShopId()){
+            for(int i=0;i<shopList.size();i++){
+                if(shopId == shopList.get(i).getShopId()){
                     ItemPrice itemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
-                    ArrayList<ItemPrice> iPrice = shopForItemList.get(i).getItempriceList();
+                    ArrayList<ItemPrice> iPrice = shopList.get(i).getItempriceList();
                     iPrice.add(itemPrice);
                     hasShop = true;
                 }  
             }
             if(!hasShop){
+                
+                String shopAddress = r1.getString("address");
+                
                 ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
                 ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
                 addItemPriceList.add(addItemPrice);
                 ShopForItemList addNewShop = new ShopForItemList(shopId,addItemPriceList);
-                shopForItemList.add(addNewShop);
+                
+                addNewShop.setShopName(shopAddress);
+                
+                shopList.add(addNewShop);
             }
             //ResultSet r2 = DB.getDBResult("SELECT * FROM shop_item_unit_price WHERE shop_id="+shopId+";");  
         }
-        return shopForItemList;
+        return shopList;
     }
     
       /**
@@ -243,9 +249,7 @@ public class DB {
         
         return  result;
     }
-     
-    
-    
+ 
     
     public static ArrayList<Integer> minimalSearch(int id){
     

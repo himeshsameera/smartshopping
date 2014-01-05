@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
  *
  * @author Himesh_2
  */
+@Deprecated
 public class Updater {
     public static void main(String[] args) {
         try {

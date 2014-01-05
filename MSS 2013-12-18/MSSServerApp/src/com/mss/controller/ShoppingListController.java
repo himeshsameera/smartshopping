@@ -4,6 +4,7 @@
  */
 package com.mss.controller;
 
+import com.mss.DAO.DB;
 import com.mss.model.*;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -102,18 +103,26 @@ public class ShoppingListController {
             String s = req.getParameter("json");
            
             ObjectMapper mapper = new ObjectMapper();
-            ArrayList<ItemBrief> shoppingList = mapper.readValue(s,TypeFactory.collectionType(ArrayList.class, ItemBrief.class.getClass()));
-            
-            
-            ArrayList <ShopResult> results = new ArrayList<ShopResult>();
+            System.out.println(s);
 
+            ArrayList<ItemSearch> shoppingList = mapper.readValue(s,TypeFactory.collectionType(ArrayList.class, ItemSearch.class));
             
-//           // String json = JsonConverter.convertToJson(items);
+            ArrayList<ShopForItemList> list =DB.searchItemList(shoppingList);            
+            
+            
+            
+             String json = JsonConverter.convertToJson(list);
 //            res.setContentType("application/json;");
 //
-//            PrintWriter writer = res.getWriter();
-//           // writer.print(json);
+            
+            PrintWriter writer = res.getWriter();
+
+            
+            writer.print(json);
+            
+
     }
 
     
 }
+
