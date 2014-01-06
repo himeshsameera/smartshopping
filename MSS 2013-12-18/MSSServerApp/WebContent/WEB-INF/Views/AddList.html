@@ -13,9 +13,9 @@
 
         
     </head>
-    <body >
+    <body>
 
-        <div data-role="AddList" data-theme="b">
+        <div data-role="AddList" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';">
             <div data-role="header" data-theme="b" data-icon="home">
                 <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
                 <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
@@ -49,8 +49,8 @@
                 </div>
             </div>
             <h5>Your Shopping List</h5>
-            <table data-bind="foreach:selecteditems">
-                <tr><td><p  data-bind="text:itemName"> </p></td><td> <span data-bind="text:amount"> </span> </td><td>kg</td><td><image src='images/remove.png' /></td></tr>
+            <table data-bind="foreach:selecteditems" class="shopinglist">
+                <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
             </table>
 
             <input  type="button"  value="Search" onclick="modal.save();">

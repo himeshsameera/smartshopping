@@ -72,7 +72,7 @@ public class ShoppingListController {
 		writer.print(json);
     }
 
-    
+    @Deprecated
     @RequestMapping(value = { "generate" }, method = RequestMethod.GET)
     public void handleGetProgramsRequest(HttpServletRequest req,
                     HttpServletResponse res, Model model) throws Exception {

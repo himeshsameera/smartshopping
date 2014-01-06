@@ -16,7 +16,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/ShopingUI.css" />
     </head>
     <body>
-        <div data-role="Search" data-theme="b">
+        <div data-role="page" data-theme="b">
             <div data-role="header" data-theme="b" data-icon="home">
                 <h1>Result</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
                 <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
@@ -25,7 +25,7 @@ and open the template in the editor.
 
 
 
-        </div>
+
 
         <div data-role="content">
 
@@ -43,13 +43,14 @@ and open the template in the editor.
                                 <tr>
                                     <th>Item</th>
                                     <th>Price</th>
+
+
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: Items" >
                                 <tr>
                                     <td ><p data-bind="text: Name">Rice</p></td>
                                     <td ><p data-bind="text: Price">Rs 55</p> </td>
-
                                 </tr>  
 
                             </tbody>
@@ -57,9 +58,20 @@ and open the template in the editor.
                         <p>-------------------------------------------------------</p>
                         <p data-bind="text:total">Total  Rs.500</p>
                     </a>
+
+
+                    <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
+
+
                 </li>
+
             </ul>
+
+            
         </div>
+        
+
+        </div>                       
 <!-- <div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
     <h3>Purchase Album?</h3>
     <p>Your download will begin immediately on your mobile device when you purchase.</p>
@@ -75,7 +87,10 @@ and open the template in the editor.
             var editorModel = function() {
                 var self = this;
                 self.Shoplist = ko.observableArray();
-
+                
+                self.save = function(saveShop){
+                    localStorage.setItem('viewResult', saveShop);
+                } 
 
             }
 
@@ -92,6 +107,7 @@ and open the template in the editor.
                     }
                                 return tot ;
                                 });
+                      
                 return this;
             }
             function Item(name, price) {
@@ -133,8 +149,8 @@ and open the template in the editor.
                         //console.log(i);
                         var myShop = new Shop();
 						
-                        myShop.Title(parsed[i].shopId);
-                        myShop.Address(parsed[i].shopName);
+                        myShop.Title(parsed[i].shopName);
+                        myShop.Address(parsed[i].shopAddress);
                         myShop.Items([]);
 						
                         for(var  j=0;j<parsed[i].itempriceList.length;j++){
@@ -142,7 +158,7 @@ and open the template in the editor.
                             var itm= new Item();
 							
 							
-                            itm.Name(parsed[i].itempriceList[j].itemId);
+                            itm.Name(parsed[i].itempriceList[j].itemName);
 							
                             itm.Price(parsed[i].itempriceList[j].price);
 							
@@ -162,7 +178,7 @@ and open the template in the editor.
             /**
              *  PART 4 - Run the initial functions. With asyncronous jilmart
              **/
-            var millisecondsToWait = 1000;
+            var millisecondsToWait = 500;
             setTimeout(function() {
                 load();
             }, millisecondsToWait);

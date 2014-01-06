@@ -62,32 +62,78 @@ and open the template in the editor.
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
-<head>
+    <head>
         <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
         <script type='text/javascript' src='js/knockoutjs.js'></script>
-</head> 
-
-
-<body> 
-
-<div data-role="page" data-theme="b">
-
-        <div data-role="header" data-theme="b" data-icon="home" id = "header">
-                <h1>Home</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-				
-        </div>
-
         
-        <div data-role="content" data-theme="b" id="topics">  
-			<a rel="external" href="AddList.html" data-role="button" data-icon="search"  >Search</a>
-			<br/>
-			<a rel="external" href="signUp.html" data-role="button" data-icon="info"  >Sign Up </a>
-			<br/>
-			<a rel="external" href="Editprofile.html" data-role="button" data-icon="arrow-u"  >Edit profile</a>
-			<br/>
-         </div>
-        </body>
-        </html>
+    </head> 
+    <body> 
+        
+        
+        <div data-role="page" data-theme="b">
+            <div data-role="header" data-theme="b" data-icon="home" id = "header">
+                    <h1>Price List</h1>
+            </div>
+
+            <div class="resultDisplay">
+            <div data-role="content" data-theme="b" id="topics">
+                <div class="resultShopName">
+                    <h3 data-bind="text: Title">Shan Stores</h3>
+                    <h5 data-bind="text: Address" >Rathnapura</h5>
+                </div>
+
+                
+                <table class="resultTable">
+                    <tbody>
+                        <tr>
+                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
+                        </tr>
+                        <tr>
+                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
+                        </tr>
+                        <tr>
+                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
+                        </tr>
+                        <tr><td class="total">Total</td><td></td><td class="total">Rs 1500 /=</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+            </div>
+        </div>
+        
+        
+        <script type="text/javascript">
+            
+            
+            /**
+             *  PART 2 - Declare the variables
+             **/
+            var bindings = 0;
+            var modal;
+
+            /**
+             *  PART 3 - Declare the functions
+             **/
+            function load(){
+                modal = localStorage.getItem('viewResult');
+                if (bindings < 1) {
+                    bindings++;
+                    ko.applyBindings(modal);
+                }
+           }
+            
+            /**
+             *  PART 4 - Run the initial functions. With asyncronous jilmart
+             **/
+            var millisecondsToWait = 1000;
+            setTimeout(function() {
+                load();
+            }, millisecondsToWait);
+
+        </script>
+    </body>
+</html>

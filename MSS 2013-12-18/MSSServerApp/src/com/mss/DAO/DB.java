@@ -72,7 +72,7 @@ public class DB {
     
     public static ArrayList<ShopForItemList> searchItemList(ArrayList<ItemSearch> itemSearchList) throws Exception{
         String orSql=" OR item_id=";
-        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM shop_item_unit_price JOIN shop ON shop.id=shop_id WHERE item_id=");
+        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM shop_item_unit_price JOIN shop ON shop.id=shop_id JOIN item ON item.id=item_id WHERE item_id=");
         //String sqlQuery = "SELECT * FROM shop_item_unit_price WHERE item_id=";
         for(int i=0;i<itemSearchList.size();i++){
             if(i==itemSearchList.size()-1){
@@ -93,6 +93,7 @@ public class DB {
             for(int i=0;i<shopList.size();i++){
                 if(shopId == shopList.get(i).getShopId()){
                     ItemPrice itemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
+                    itemPrice.setItemName(r1.getString("item.name"));
                     ArrayList<ItemPrice> iPrice = shopList.get(i).getItempriceList();
                     iPrice.add(itemPrice);
                     hasShop = true;
@@ -101,13 +102,16 @@ public class DB {
             if(!hasShop){
                 
                 String shopAddress = r1.getString("address");
+                String shopName = r1.getString("name");
                 
                 ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
                 ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
+                addItemPrice.setItemName(r1.getString("item.name"));
                 addItemPriceList.add(addItemPrice);
                 ShopForItemList addNewShop = new ShopForItemList(shopId,addItemPriceList);
                 
-                addNewShop.setShopName(shopAddress);
+                addNewShop.setShopName(shopName);
+                addNewShop.setShopAddress(shopAddress);
                 
                 shopList.add(addNewShop);
             }

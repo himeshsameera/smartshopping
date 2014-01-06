@@ -1,6 +1,18 @@
 
-body{
-    background-color: lightskyblue;
+body {
+    background: url("../images/background.jpg");
+    background-position:center center;
+    background-attachment:scroll;
+}
+
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+.ui-btn-inner{
+    background-color: lightblue;
 }
 
 .thumbBox {
@@ -8,7 +20,7 @@ width: 90px;
 float: left;
 margin: 5px;
 
-height:95px;
+height:100px;
 overflow: hidden;
 border:#ddd dotted 1px;
 text-align:center;
@@ -16,8 +28,8 @@ text-align:center;
 
 .thumbBox img{
     
-    width: 60px;
-    height:60px;
+    width: 80px;
+    height:80px;
 }
 
 .removeButton{
@@ -25,15 +37,36 @@ background:url('images/remove.png') 0 0;
 }
 
 .resultTable td{
-    padding: 15px;   
-    color:green;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.resultTable td.total{
+    padding: 15px;
 }
 
 .resultShopName{
     color:green;
-    margin: 3px;
+    margin: 15px;
+}
+
+.resultShopName h3{
+        margin: 3px;
+}
+.resultShopName h5{
+        margin: 3px;
 }
 
 .resultDisplay{
     margin: 18px;
+    background-color: lightblue;
+}
+
+.shopinglist{
+    margin-left: 20px; 
+}
+
+.shopinglist td{
+    padding-right: 22px;  
 }
