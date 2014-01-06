@@ -103,6 +103,7 @@ public class DB {
                 
                 String shopAddress = r1.getString("address");
                 String shopName = r1.getString("name");
+                String shopImageUrl = r1.getString("imageUrl");
                 
                 ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
                 ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
@@ -112,6 +113,7 @@ public class DB {
                 
                 addNewShop.setShopName(shopName);
                 addNewShop.setShopAddress(shopAddress);
+                addNewShop.setShopimageUrl(shopImageUrl);
                 
                 shopList.add(addNewShop);
             }
