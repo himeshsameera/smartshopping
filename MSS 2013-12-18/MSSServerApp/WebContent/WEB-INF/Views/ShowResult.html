@@ -34,39 +34,18 @@ and open the template in the editor.
             <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
-                    <a href="popup.html">
+                    <a href="#">
                         <img src="1.jpg">
                         <h2 data-bind="text: Title"></h2>
                         <p data-bind="text: Address"></p> 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Price</th>
+             </a>
 
 
-                                </tr>
-                            </thead>
-                            <tbody data-bind="foreach: Items" >
-                                <tr>
-                                    <td ><p data-bind="text: Name">Rice</p></td>
-                                    <td ><p data-bind="text: Price">Rs 55</p> </td>
-                                </tr>  
-
-                            </tbody>
-                        </table>
-                        <p>-------------------------------------------------------</p>
-                        <p data-bind="text:total">Total  Rs.500</p>
-                    </a>
-
-
-                    <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
-
+                    <a href="popup.html" data-position-to="window" data-transition="pop" data-bind="click: $parent.save" rel="external"></a>                        
 
                 </li>
 
             </ul>
-
             
         </div>
         
@@ -89,7 +68,8 @@ and open the template in the editor.
                 self.Shoplist = ko.observableArray();
                 
                 self.save = function(saveShop){
-                    localStorage.setItem('viewResult', saveShop);
+                    localStorage.setItem('viewResult', ko.toJSON(saveShop));
+                    return true;
                 } 
 
             }

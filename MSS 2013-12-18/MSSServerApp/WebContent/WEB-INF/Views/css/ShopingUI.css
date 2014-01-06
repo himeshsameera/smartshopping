@@ -70,3 +70,7 @@ background:url('images/remove.png') 0 0;
 .shopinglist td{
     padding-right: 22px;  
 }
+
+.total{
+    margin: 15px;
+}
