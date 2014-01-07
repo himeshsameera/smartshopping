@@ -1,69 +1,12 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<!--
-<html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
-    </head>
-    <body>
-        <div data-role="content">
-            <ul data-role="listview" data-inset="true" data-bind="foreach: Shoplist">
-                <li data-role="divider"></li> 
-                <li>
-                    
-                        
-                        <h2 data-bind="text: Title"></h2>
-                        <p data-bind="text: Address"></p> 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Price</th>
-
-
-                                </tr>
-                            </thead>
-                            <tbody data-bind="foreach: Items" >
-                                <tr>
-                                    <td ><p data-bind="text: Name">Rice</p></td>
-                                    <td ><p data-bind="text: Price">Rs 55</p> </td>
-
-                                </tr>  
-
-                            </tbody>
-                        </table>
-                        <p>-------------------------------------------------------</p>
-                        <p data-bind="text:total">Total  Rs.500</p>
-                    
-                    
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <script type="text/javascript">
-        </script>
-    </body>
-
-</html>
--->
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+        <link rel="stylesheet" href="css/ShopingUI.css" />
+        
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
@@ -87,19 +30,17 @@ and open the template in the editor.
 
                 
                 <table class="resultTable">
-                    <tbody>
-                        <tr>
-                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
-                        </tr>
-                        <tr>
-                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
-                        </tr>
-                        <tr>
-                            <td>Carrot</td><td>50 kg</td><td>Rs 500</td>
-                        </tr>
-                        <tr><td class="total">Total</td><td></td><td class="total">Rs 1500 /=</td></tr>
-                    </tbody>
+                            <tbody data-bind="foreach: Items" >
+                             <tr>
+                                <td data-bind="text: Name">Carrot</td><td>50 kg</td><td data-bind="text: Price">Rs 500</td>
+                             </tr>
+                            </tbody>
                 </table>
+                
+                Total <span class="total" data-bind="text:total"></span>
+
+
+       
 
             </div>
             </div>
@@ -119,17 +60,22 @@ and open the template in the editor.
              *  PART 3 - Declare the functions
              **/
             function load(){
-                modal = localStorage.getItem('viewResult');
+                
                 if (bindings < 1) {
+                    // Load and parse the JSON
+                    var someJSON = localStorage.getItem('viewResult');/* Omitted: fetch it from the server however you want */;
+                    var parsed = JSON.parse(someJSON);
+                    
+                    console.log(ko.toJSON(parsed));
                     bindings++;
-                    ko.applyBindings(modal);
+                    ko.applyBindings(parsed);
                 }
            }
             
             /**
              *  PART 4 - Run the initial functions. With asyncronous jilmart
              **/
-            var millisecondsToWait = 1000;
+            var millisecondsToWait = 50;
             setTimeout(function() {
                 load();
             }, millisecondsToWait);

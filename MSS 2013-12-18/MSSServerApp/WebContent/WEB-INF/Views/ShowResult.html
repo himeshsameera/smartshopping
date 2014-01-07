@@ -6,6 +6,8 @@ and open the template in the editor.
 <html>
     <head>
         <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
@@ -29,47 +31,26 @@ and open the template in the editor.
 
             <div data-role="content">
 
+            
+           
+            <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
+                <li data-role="divider"></li> 
+                <li>
+                    <a href="#">
+                        <img src="1.jpg">
+                        <h2 data-bind="text: Title"></h2>
+                        <p data-bind="text: Address"></p> 
+             </a>
 
 
-                <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
-                    <li data-role="divider"></li> 
-                    <li>
-                        <a href="popup.html">
-                            <img src="1.jpg">
-                            <h2 data-bind="text: Title"></h2>
-                            <p data-bind="text: Address"></p> 
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>Price</th>
-
-
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="foreach: Items" >
-                                    <tr>
-                                        <td ><p data-bind="text: Name">Rice</p></td>
-                                        <td ><p data-bind="text: Price">Rs 55</p> </td>
-                                    </tr>  
-
-                                </tbody>
-                            </table>
-                            <p>-------------------------------------------------------</p>
-                            <p data-bind="text:total">Total  Rs.500</p>
-                        </a>
-
+                    <a href="popup.html" data-position-to="window" data-transition="pop" data-bind="click: $parent.save" rel="external"></a>                        
 
                         <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
 
-
-                    </li>
-
-                </ul>
-
-
-            </div>
-
+            </ul>
+            
+        </div>
+        
 
         </div>                       
         <!-- <div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
@@ -87,17 +68,19 @@ and open the template in the editor.
             var editorModel = function() {
                 var self = this;
                 self.Shoplist = ko.observableArray();
-
-                self.save = function(saveShop) {
-                    localStorage.setItem('viewResult', saveShop);
-                }
+                
+                self.save = function(saveShop){
+                    localStorage.setItem('viewResult', ko.toJSON(saveShop));
+                    return true;
+                } 
 
             }
 
-            function Shop(name, address) {
+            function Shop(name, address,image) {
                 var seg = this;
                 seg.Title = ko.observable(name);
                 seg.Address = ko.observable(address);
+                seg.Image=ko.observable(image);
                 seg.Items = ko.observableArray();
 
                 seg.total = ko.computed(function() {
@@ -151,6 +134,7 @@ and open the template in the editor.
 
                     myShop.Title(parsed[i].shopName);
                     myShop.Address(parsed[i].shopAddress);
+                    myShop.Image(parsed[i].shopimageurl);
                     myShop.Items([]);
 
                     for (var j = 0; j < parsed[i].itempriceList.length; j++) {
