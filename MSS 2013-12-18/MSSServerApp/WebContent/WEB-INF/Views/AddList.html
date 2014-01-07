@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        
-      <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-      <link rel="stylesheet" href="css/ShopingUI.css" />
-       
-       <script type='text/javascript' src='js/knockoutjs.js'></script>
-       <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-       <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
 
-        
+        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+        <link rel="stylesheet" href="css/ShopingUI.css" />
+
+        <script type='text/javascript' src='js/knockoutjs.js'></script>
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+
+
     </head>
     <body>
 
@@ -24,25 +24,27 @@
 
             <div data-role="content" style="background-image : 'abc.jpg';">
                 <form>
-                    <div data-role="fieldcontain">
-                        <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
-                            <option data-bind="value:id , text:name"></option>
-                        </select>
+                    <div  class = "thumbBox">
+                        <div  data-bind="foreach:categories" onchange="loadItems()">
+                            
+                            <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
+                            <span data-bind="text: name"></span>
+                        </div>
                     </div>
-<!--
-                    <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
-                        <option data-bind="value:id , text:name"></option>
-                    </select>
-
+                    <!--
+                                        <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
+                                            <option data-bind="value:id , text:name"></option>
+                                        </select>
                     
-                    <input type="button" value="Add item" data-bind="click:$root.addItem">
--->
-</form>
-                
+                                        
+                                        <input type="button" value="Add item" data-bind="click:$root.addItem">
+                    -->
+                </form>
+
                 <div data-bind="foreach:availableItems">
                     <div class = "thumbBox">
-                    <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
-                    <span data-bind="text: name"></span>
+                        <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
+                        <span data-bind="text: name"></span>
 
 
                     </div>
@@ -59,168 +61,167 @@
 
         <script type="text/javascript">
 
-            /**
-            * Written by Himesh Karunaratne
-            *
-            * This code is to implement a simple knockoutjs structure inside a web page
-            * Mainly there are 4 parts
-            *  1) Create the model
-            *  2) Declare the gobal variables.
-            *  3) Declare the other javascript functions to be used indide
-            *  4) Run the initial code at startup. ie - apply bindings
-            **/
+                            /**
+                             * Written by Himesh Karunaratne
+                             *
+                             * This code is to implement a simple knockoutjs structure inside a web page
+                             * Mainly there are 4 parts
+                             *  1) Create the model
+                             *  2) Declare the gobal variables.
+                             *  3) Declare the other javascript functions to be used indide
+                             *  4) Run the initial code at startup. ie - apply bindings
+                             **/
 
 
-            /**
-            *  PART 1 - Create the model
-            **/
-                var editorModel = function() {
+                            /**
+                             *  PART 1 - Create the model
+                             **/
+                            var editorModel = function() {
 
-                    var self = this;
-                    self.selecteditems = ko.observableArray([]);
-                    self.availableItems = ko.observableArray([]);
+                                var self = this;
+                                self.selecteditems = ko.observableArray([]);
+                                self.availableItems = ko.observableArray([]);
 
-                    self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+                                self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
 
-                    self.addItem = function(displayItem) {
-                    //    console.log(ko.toJSON(displayItem));
-                    //    console.log(displayItem.name());
-                    //    console.log(displayItem.id());
-                        self.selecteditems.push(new ListItem(displayItem.name(),displayItem.id() , 10));
-                    }
+                                self.addItem = function(displayItem) {
+                                    //    console.log(ko.toJSON(displayItem));
+                                    //    console.log(displayItem.name());
+                                    //    console.log(displayItem.id());
+                                    self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(), 10));
+                                }
 
-                    self.removeItem = function(seg) {
-                        self.selecteditems.remove(seg);
-                    }
+                                self.removeItem = function(seg) {
+                                    self.selecteditems.remove(seg);
+                                }
 
-                    self.save = function() {
-                        console.log(ko.toJSON(self.selecteditems));
-                        
-                        $.ajax({
+                                self.save = function() {
+                                    console.log(ko.toJSON(self.selecteditems));
 
-                            type: "GET", //Personally i prefer using post, you can swap this to get if you want.
-                            url: "../list/processList",
-                            dataType: "html", //Note the dataType has been changed from default here.
-                                data: { 
-                                    'json': ko.toJSON(self.selecteditems)
-                                },
-                            error: function() {
-                            //You can do a fallback here
-                            console.log("error in server");
-                            },
-                            success: function(data) { //Note the data variable here. This is your returned data
-                                //I also swapped .attr to .val below
-                                console.log(data);
-                                localStorage.setItem('result', data+" ");
-                                document.location ="ShowResult.html" ;
+                                    $.ajax({
+                                        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
+                                        url: "../list/processList",
+                                        dataType: "html", //Note the dataType has been changed from default here.
+                                        data: {
+                                            'json': ko.toJSON(self.selecteditems)
+                                        },
+                                        error: function() {
+                                            //You can do a fallback here
+                                        },
+                                        success: function(data) { //Note the data variable here. This is your returned data
+                                            //I also swapped .attr to .val below
+                                            console.log(data);
+                                            localStorage.setItem('result', data + " ");
+                                            document.location = "ShowResult.html";
+                                        }
+
+                                    });
+                                };
+
+                            }
+                            //models            
+                            // this is to view item name price etc. taken from server
+                            function Item(myName, myID, myImage) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myImage);
+                                return this;
                             }
 
-                        });          
-                    };
+                            // this is to view catagories
+                            function Catagory(myName, myID , myimage) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myimage)
+                                return this;
+                            }
 
-                }
-    //models            
-                // this is to view item name price etc. taken from server
-                function Item(myName, myID,myImage) {
-                    var seg = this;
-                    seg.name = ko.observable(myName);
-                    seg.id = ko.observable(myID);
-                    seg.image=ko.observable(myImage);
-                    return this;
-                }
-				
-                // this is to view catagories
-                function Catagory(myName, myID) {
-                    var seg = this;
-                    seg.name = ko.observable(myName);
-                    seg.id = ko.observable(myID);
-                    return this;
-                }
-
-                // This is to add items to the shopping list   
-                function ListItem(myName, myID, myAmount) {
-                    var seg = this;
-                    seg.itemName = ko.observable(myName);
-                    seg.itemId = ko.observable(myID);
-                    seg.amount = ko.observable(myAmount);
-                    return this;
-                }
+                            // This is to add items to the shopping list   
+                            function ListItem(myName, myID, myAmount) {
+                                var seg = this;
+                                seg.itemName = ko.observable(myName);
+                                seg.itemId = ko.observable(myID);
+                                seg.amount = ko.observable(myAmount);
+                                return this;
+                            }
 //----------------------------------------------------------------------------------
 
-            /**
-            *  PART 2 - Declare the variables
-            **/
-                var bindings = 0;
-                var modal = new editorModel();    
+                            /**
+                             *  PART 2 - Declare the variables
+                             **/
+                            var bindings = 0;
+                            var modal = new editorModel();
 
-            /**
-            *  PART 3 - Declare the functions
-            **/
-                function load() {
-                    if (bindings < 1) {
-                        bindings++;
-                        console.log("Applying bindings");
-                    ko.applyBindings(modal);
-                    }
+                            /**
+                             *  PART 3 - Declare the functions
+                             **/
+                            function load() {
+                                if (bindings < 1) {
+                                    bindings++;
+                                    console.log("Applying bindings");
+                                    ko.applyBindings(modal);
+                                }
 
-                    console.log("Ready to load categories");
-                    loadCategories();
-                }
-              
-                
-                function loadItems() {
-                    console.log("loading items");
-                    $.get("../item/itemNames", {
-                        categoryId: $('#select-native-1').val()
-                    }, function(data) {
-
-                        console.log(data);
-
-                        var parsed = eval("(" + data + ")");
-
-                        modal.availableItems([]);
-                        console.log("length is " + parsed.items.length);
-                        for (i = 0; i < parsed.items.length; i++) {
-                            console.log(i);
-                            var seg = new Item(parsed.items[i].name, parseInt( parsed.items[i].id),parsed.items[i].image);
-                            modal.availableItems.push(seg);
-                        }
-                    });
-                }
-                ;
+                                console.log("Ready to load categories");
+                                loadCategories();
+                            }
 
 
-                function loadCategories() {
-                    console.log("loading categories...");
-                    $.get("../item/categories", function(data) {
+                            function loadItems() {
+                                console.log("loading items");
+                                $.get("../item/itemNames", {
+                                    categoryId: $('#select-native-1').val()
+                                }, function(data) {
 
-                        console.log(data);
+                                    console.log(data);
 
-                        var parsed = eval("(" + data + ")");
+                                    var parsed = eval("(" + data + ")");
 
-                        modal.categories([]);
-                        console.log("length is " + parsed.categories.length);
-                        for (i = 0; i < parsed.categories.length; i++) {
-                            console.log(i);
-                            var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id,parsed.categories[i].image);
-                            modal.categories.push(seg);
-                        }
-                    });
-                }
-                ;
+                                    modal.availableItems([]);
+                                    console.log("length is " + parsed.items.length);
+                                    for (i = 0; i < parsed.items.length; i++) {
+                                        console.log(i);
+                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
+                                        modal.availableItems.push(seg);
+                                    }
+                                });
+                            }
+                            ;
 
-                function clearList() {
-                    modal.selecteditems([]);
-                }
-                
-                
-            /**
-            *  PART 4 - Run the initial functions. With asyncronous jilmart
-            **/                
-                var millisecondsToWait = 1000;
-                setTimeout(function() {
-                    load();
-                }, millisecondsToWait);
+
+                            function loadCategories() {
+                                console.log("loading categories...");
+                                $.get("../item/categories", function(data) {
+
+                                    console.log(data);
+
+                                    var parsed = eval("(" + data + ")");
+
+                                    modal.categories([]);
+                                    console.log("length is " + parsed.categories.length);
+                                    for (i = 0; i < parsed.categories.length; i++) {
+                                        console.log(i);
+                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].image);
+                                        modal.categories.push(seg);
+                                    }
+                                });
+                            }
+                            ;
+
+                            function clearList() {
+                                modal.selecteditems([]);
+                            }
+
+
+                            /**
+                             *  PART 4 - Run the initial functions. With asyncronous jilmart
+                             **/
+                            var millisecondsToWait = 1000;
+                            setTimeout(function() {
+                                load();
+                            }, millisecondsToWait);
 
         </script>    
     </body>
