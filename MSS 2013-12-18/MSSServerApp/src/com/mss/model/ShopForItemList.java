@@ -16,6 +16,7 @@ public class ShopForItemList implements Serializable{
     private ArrayList<ItemPrice> itempriceList;
     private String shopName;
     private String shopAddress;
+    private String shopimageUrl;
     
     public ShopForItemList(){
     
@@ -80,5 +81,19 @@ public class ShopForItemList implements Serializable{
      */
     public void setShopAddress(String shopAddress) {
         this.shopAddress = shopAddress;
+    }
+
+    /**
+     * @return the shopimageUrl
+     */
+    public String getShopimageUrl() {
+        return shopimageUrl;
+    }
+
+    /**
+     * @param shopimageUrl the shopimageUrl to set
+     */
+    public void setShopimageUrl(String shopimageUrl) {
+        this.shopimageUrl = shopimageUrl;
     }
 }
