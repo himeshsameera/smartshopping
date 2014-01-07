@@ -24,10 +24,10 @@
 
             <div data-role="content" style="background-image : 'abc.jpg';">
                 <form>
-                    <div  class = "thumbBox">
-                        <div  data-bind="foreach:categories" onchange="loadItems()">
-                            
-                            <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
+                    
+                    <div  data-bind="foreach:categories" onchange="loadItems()">
+                        <div  class = "thumbBox">    
+                            <img data-bind=" attr:{src: image} , click: loadItems"/>
                             <span data-bind="text: name"></span>
                         </div>
                     </div>
@@ -169,10 +169,10 @@
                             }
 
 
-                            function loadItems() {
+                            function loadItems(selectedCatagory) {
                                 console.log("loading items");
                                 $.get("../item/itemNames", {
-                                    categoryId: $('#select-native-1').val()
+                                    categoryId: selectedCatagory.id()
                                 }, function(data) {
 
                                     console.log(data);
