@@ -74,3 +74,8 @@ background:url('images/remove.png') 0 0;
 .total{
     margin: 15px;
 }
+.fixedHeader{
+    width:100%;
+    position:"fixed !important";
+    top:0px;
+}
