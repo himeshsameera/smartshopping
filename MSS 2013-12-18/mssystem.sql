@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2014 at 10:34 AM
+-- Generation Time: Jan 07, 2014 at 03:26 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -37,9 +37,9 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Bakery'),
+(1, 'Fruits\n '),
 (2, 'vegitable'),
-(3, 'Furniture');
+(3, 'Leaves');
 
 -- --------------------------------------------------------
 
@@ -49,29 +49,40 @@ INSERT INTO `category` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `item` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
   `category_id` int(10) unsigned NOT NULL,
   `unit_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`category_id`) USING BTREE,
   KEY `FK_item_1` (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`id`, `name`, `category_id`, `unit_id`) VALUES
-(1, 'cake', 1, 1),
-(2, 'pastry', 1, 3),
-(3, 'Table', 3, 3),
-(4, 'Bed', 3, 3),
-(5, 'tomato', 2, 1),
-(6, 'carrot', 2, 1),
-(7, 'ala', 1, 1),
-(8, 'boonchi', 1, 1),
-(9, 'maakaral', 1, 1),
-(10, 'parippu', 1, 1),
-(11, 'seeni', 1, 1);
+INSERT INTO `item` (`id`, `image`, `name`, `category_id`, `unit_id`) VALUES
+(1, 'images/items/apple.png', 'apple', 1, 1),
+(2, 'images/items/carrot.png', 'carrot', 2, 3),
+(3, 'images/items/banana.png', 'banana', 1, 3),
+(4, 'images/items/beet.png', 'Beet', 2, 3),
+(5, 'images/items/BellPepper.png', 'BellPepper', 2, 1),
+(6, 'images/items/Garlic.png', 'Garlic', 2, 1),
+(7, 'images/items/Coconut.png', 'Coconut', 2, 1),
+(8, 'images/items/Chilli.png', 'Chilli', 2, 1),
+(9, 'images/items/Lettuce.png', 'Lettuce ', 2, 1),
+(10, 'images/items/Spinach.png', 'Spinach', 3, 1),
+(11, 'images/items/Cauliflower.png', 'Cauliflower', 2, 1),
+(12, 'images/items/Watermelon.png', 'Watermelon', 1, 1),
+(13, 'images/items/Lime.png', 'Lime', 2, 1),
+(14, 'images/items/Avocado.png', 'Avocado', 1, 2),
+(15, 'images/items/BasilFresh.png', 'BasilFresh', 3, 4),
+(16, 'images/items/bellred.png', 'bellred', 2, 1),
+(17, 'images/items/BitterGourd.png', 'BitterGourd', 2, 1),
+(18, 'images/items/leeks.png', 'leeks', 2, 1),
+(19, 'images/items/papaya.png', 'papaya', 1, 1),
+(20, 'images/items/Parsley.png', 'Parsley', 3, 4),
+(21, 'images/items/Strawberry.png', 'Strawberry', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -100,6 +111,8 @@ INSERT INTO `scraped_name_item_unit` (`id`, `scraped_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `shop` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `imageUrl` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `address` varchar(1000) NOT NULL,
   `longitude` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
@@ -111,11 +124,11 @@ CREATE TABLE IF NOT EXISTS `shop` (
 -- Dumping data for table `shop`
 --
 
-INSERT INTO `shop` (`id`, `address`, `longitude`, `latitude`, `nearest_town`) VALUES
-(1, 'no 32,Colombo', '2', '3', 'Colombo'),
-(2, 'no 54, kandy', '3', '3', 'kandy'),
-(3, 'de mal road, kandy', '2', '5', 'kandy'),
-(4, 'raja mawatha, matale', '6', '8', 'matale');
+INSERT INTO `shop` (`id`, `imageUrl`, `name`, `address`, `longitude`, `latitude`, `nearest_town`) VALUES
+(1, 'images/shops/keelsSuper.jpg', 'Keels Super', 'no 32,Colombo', '2', '3', 'Colombo'),
+(2, 'images/shops/cargills.jpg', 'Cargills Food City', 'no 54, kandy', '3', '3', 'kandy'),
+(3, 'images/shops/arpico.gif', 'Arpico Super Center', 'de mal road, kandy', '2', '5', 'kandy'),
+(4, 'images/shops/walmart.jpg', 'Wal Mart', 'raja mawatha, matale', '6', '8', 'matale');
 
 -- --------------------------------------------------------
 
@@ -182,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `shop_item_unit_price` (
   PRIMARY KEY (`id`),
   KEY `FK_shop_item_unit_price_1` (`shop_id`),
   KEY `FK_shop_item_unit_price_2` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `shop_item_unit_price`
@@ -193,7 +206,44 @@ INSERT INTO `shop_item_unit_price` (`id`, `shop_id`, `item_id`, `price`) VALUES
 (2, 2, 3, 225),
 (3, 2, 4, 500),
 (4, 1, 2, 430),
-(5, 1, 1, 300);
+(5, 1, 1, 300),
+(6, 1, 4, 300),
+(7, 3, 5, 60),
+(8, 3, 7, 65),
+(9, 3, 2, 35),
+(10, 4, 8, 45),
+(11, 4, 5, 46),
+(12, 4, 12, 56),
+(13, 1, 3, 45),
+(14, 1, 5, 30),
+(15, 2, 2, 60),
+(16, 2, 5, 20),
+(17, 3, 1, 30),
+(18, 3, 3, 50),
+(19, 3, 4, 70),
+(20, 4, 1, 30),
+(21, 4, 2, 40),
+(22, 4, 3, 50),
+(23, 4, 4, 40),
+(24, 1, 6, 50),
+(25, 2, 6, 60),
+(26, 3, 6, 50),
+(27, 4, 6, 40),
+(28, 1, 7, 40),
+(29, 2, 7, 90),
+(30, 4, 7, 30),
+(31, 3, 8, 40),
+(32, 2, 8, 70),
+(33, 1, 8, 50),
+(34, 1, 9, 50),
+(35, 1, 10, 40),
+(36, 2, 9, 20),
+(37, 2, 10, 40),
+(38, 3, 9, 30),
+(39, 3, 10, 30),
+(40, 4, 9, 30),
+(41, 4, 10, 45),
+(42, 4, 11, 35);
 
 -- --------------------------------------------------------
 
@@ -205,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `unit` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `unit`
@@ -213,8 +263,9 @@ CREATE TABLE IF NOT EXISTS `unit` (
 
 INSERT INTO `unit` (`id`, `name`) VALUES
 (1, 'kg'),
-(2, 'pkt'),
-(3, 'piece');
+(2, 'nos'),
+(3, 'piece'),
+(4, 'bunches');
 
 -- --------------------------------------------------------
 

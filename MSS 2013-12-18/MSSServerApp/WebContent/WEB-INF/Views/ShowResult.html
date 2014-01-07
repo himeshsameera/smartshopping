@@ -76,10 +76,11 @@ and open the template in the editor.
 
             }
 
-            function Shop(name, address) {
+            function Shop(name, address,image) {
                 var seg = this;
                 seg.Title = ko.observable(name);
                 seg.Address = ko.observable(address);
+                seg.Image=ko.observable(image);
                 seg.Items = ko.observableArray();
 
                 seg.total = ko.computed(function() {
@@ -133,6 +134,7 @@ and open the template in the editor.
 
                     myShop.Title(parsed[i].shopName);
                     myShop.Address(parsed[i].shopAddress);
+                    myShop.Image(parsed[i].shopimageurl);
                     myShop.Items([]);
 
                     for (var j = 0; j < parsed[i].itempriceList.length; j++) {
