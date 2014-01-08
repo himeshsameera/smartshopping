@@ -32,8 +32,16 @@
 							<th>Quantity</th>
 							</tr>
                              <tr>
-                                <td data-bind="text: Name">Carrot</td>
+								<td>
+									<div  class = "thumbBox">    
+										<img data-bind=" attr:{src: image} , click: loadItems"/>
+									    <span data-bind="text: Name">Carrot</span>
+								    </div>
+								</td>
+                                <!-- <td data-bind="text: Name">Carrot</td> -->
 								<td data-bind="text: Quantitiy">50 kg</td>
+								
+								<td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
 								
                              </tr>
                             </tbody>
