@@ -287,6 +287,10 @@ public class DB {
         
         return result;
     }
-    
+
+    public static void addUser(String username, String password, String email) throws Exception {
+        String sql = "INSERT INTO users (user,email,pass) VALUES ("+username+","+email+","+password+");";
+        executeQuery(sql);
+    }
     
 }
