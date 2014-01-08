@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1"> 
+                <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+                <link rel="stylesheet" href="css/ShopingUI.css" />
+
+                <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+                <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+                <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+                <script type='text/javascript' src='js/knockoutjs.js'></script>
+
+                </head> 
+                <body> 
+
+
+                    <div data-role="page" data-theme="b">
+                        <div data-role="header" data-theme="b" data-icon="home" id = "header">
+                            <h1>Iteam</h1>
+                        </div>
+
+                        <div class="resultDisplay">
+                            <div data-role="content" data-theme="b" id="topics">
+                                
+
+
+
+                                <label data-bind="text: Name">Carrot</label>
+                                <p>
+                                    <form>
+                                        <fieldset data-role="controlgroup" data-type="horizontal">
+                                            <select name="select-native-1" id="select-native-1" onchange="loadItems()">
+                                                <option data-bind="value: id ,text: name">
+
+                                                </option>
+                                            </select>
+                                        </fieldset>
+                                    </form>
+
+
+                                </p>
+                                
+
+
+
+                                <!-- Total <span class="total" data-bind="text:total"></span> -->
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <script type="text/javascript">
+
+
+                                                    /**
+                                                     *  PART 2 - Declare the variables
+                                                     **/
+                                                    var bindings = 0;
+                                                    var modal;
+
+                                                    /**
+                                                     *  PART 3 - Declare the functions
+                                                     **/
+                                                    function load() {
+
+                                                        if (bindings < 1) {
+                                                            // Load and parse the JSON
+                                                            var someJSON = localStorage.getItem('viewResult');/* Omitted: fetch it from the server however you want */
+                                                            ;
+                                                            var parsed = JSON.parse(someJSON);
+
+                                                            console.log(ko.toJSON(parsed));
+                                                            bindings++;
+                                                            ko.applyBindings(parsed);
+                                                        }
+                                                    }
+
+                                                    /**
+                                                     *  PART 4 - Run the initial functions. With asyncronous jilmart
+                                                     **/
+                                                    var millisecondsToWait = 50;
+                                                    setTimeout(function() {
+                                                        load();
+                                                    }, millisecondsToWait);
+
+                    </script>
+                </body>
+                </html>
