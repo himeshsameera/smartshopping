@@ -18,28 +18,28 @@
         
         <div data-role="page" data-theme="b">
             <div data-role="header" data-theme="b" data-icon="home" id = "header">
-                    <h1>Price List</h1>
+                    <h1>Shopping List</h1>
             </div>
 
             <div class="resultDisplay">
             <div data-role="content" data-theme="b" id="topics">
-                <div class="resultShopName">
-                    <h3 data-bind="text: Title">Shan Stores</h3>
-                    <h5 data-bind="text: Address" >Rathnapura</h5>
-                </div>
-
+                
                 
                 <table class="resultTable">
                             <tbody data-bind="foreach: Items" >
+							<tr>
+							<th>Item</th>
+							<th>Quantity</th>
+							</tr>
                              <tr>
                                 <td data-bind="text: Name">Carrot</td>
-								<td>50 kg</td>
-								<td data-bind="text: Price">Rs 500</td>
+								<td data-bind="text: Quantitiy">50 kg</td>
+								
                              </tr>
                             </tbody>
                 </table>
                 
-                Total <span class="total" data-bind="text:total"></span>
+                
 
 
        
