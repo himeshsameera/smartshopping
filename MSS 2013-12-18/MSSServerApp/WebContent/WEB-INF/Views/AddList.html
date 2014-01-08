@@ -32,7 +32,7 @@
                     <div  data-bind="foreach:categories" onchange="loadItems()">
                         <div  class = "thumbBox">    
                             <img data-bind=" attr:{src: image} , click: loadItems"/>
-                            <span data-bind="text: name"></span>
+                            <span class="boxtext" data-bind="text: name"></span>
                         </div>
                     </div>
                 
@@ -95,9 +95,14 @@
                                     //    console.log(ko.toJSON(displayItem));
                                     //    console.log(displayItem.name());
                                     //    console.log(displayItem.id());
-                                    window.prompt("sometext","defaultText");
-                                    self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(), 10));
-                                }
+                                    var amount = window.prompt("Amount (kg)","1");
+                                    var amountFloat =  parseFloat(amount);
+                                    if(!isNaN(amountFloat)){
+                                        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
+                                    } else{
+                                        alert("error");
+                                    }   
+                            }
 
                                 self.removeItem = function(seg) {
                                     self.selecteditems.remove(seg);
