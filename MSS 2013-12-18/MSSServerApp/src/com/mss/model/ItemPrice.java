@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class ItemPrice implements Serializable{
     private int itemId;
     private double price;
+    private String itemName;
     
     public ItemPrice(){
     
@@ -49,5 +50,19 @@ public class ItemPrice implements Serializable{
      */
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    /**
+     * @return the itemName
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    /**
+     * @param itemName the itemName to set
+     */
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 }
