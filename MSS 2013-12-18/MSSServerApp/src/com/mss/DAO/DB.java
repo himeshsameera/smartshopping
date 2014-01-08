@@ -195,7 +195,7 @@ public class DB {
         ResultSet r= DB.getDBResult("SELECT * FROM category;");
         ArrayList<Category> categoryList=new ArrayList<Category>(); 
         while(r.next()){ 
-            Category category = new Category(r.getInt("id"),r.getString("name"));
+            Category category = new Category(r.getInt("id"),r.getString("name"),r.getString("imageUrl"));
             categoryList.add(category);
         } 
         

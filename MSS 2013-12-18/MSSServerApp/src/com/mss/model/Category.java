@@ -11,15 +11,15 @@ package com.mss.model;
 public class Category {
     private int id;
     private String name;
-    private String image;
+    private String imageUrl;
     
     public Category() {
     }
 
-    public Category(int id, String name) {
+    public Category(int id, String name,String imageUrl) {
         this.id = id;
         this.name = name;
-        this.image="images/carrot.png";
+        this.imageUrl=imageUrl;
     }
 
     /**
@@ -51,17 +51,21 @@ public class Category {
     }
 
     /**
-     * @return the image
+     * @return the imageUrl
      */
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     /**
-     * @param image the image to set
+     * @param imageUrl the imageUrl to set
      */
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
+
+    /**
+     * @return the image
+     */
     
 }
