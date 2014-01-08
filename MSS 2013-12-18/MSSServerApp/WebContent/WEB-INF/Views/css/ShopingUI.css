@@ -18,7 +18,7 @@ body {
 .thumbBox {
 width: 90px;
 float: left;
-margin: 5px;
+margin: 2px;
 
 height:100px;
 overflow: hidden;
@@ -30,6 +30,18 @@ text-align:center;
     
     width: 80px;
     height:80px;
+}
+
+.categoryBox {
+width: 90px;
+float: left;
+margin: 5px;
+
+height:100px;
+overflow: hidden;
+border:#ddd dotted 1px;
+text-align:center;
+text-decoration: "underline";
 }
 
 .removeButton{
