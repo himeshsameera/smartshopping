@@ -36,17 +36,17 @@ and open the template in the editor.
             <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
-                    <a href="#">
-                        <img src="1.jpg">
+                    <a href="#" data-bind=" attr:{src: Image}" >
+                        
                         <h2 data-bind="text: Title"></h2>
                         <p data-bind="text: Address"></p> 
              </a>
 
 
-                    <a href="popup.html" data-position-to="window" data-transition="pop" data-bind="click: $parent.save" rel="external"></a>                        
+                    <a href="popup.html"  data-bind="click: $parent.save" rel="external"></a>                        
 
-                        <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
-
+                 <!--       <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
+-->
             </ul>
             
         </div>
@@ -128,6 +128,8 @@ and open the template in the editor.
                 //console.log(data);
                 var parsed = eval("(" + data + ")");
                 modal.Shoplist([]);
+                
+                
                 for (var i = 0; i < parsed.length; i++) {
                     //console.log(i);
                     var myShop = new Shop();

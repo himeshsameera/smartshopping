@@ -10,67 +10,36 @@
        <script type='text/javascript' src='js/knockoutjs.js'></script>
        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-       <style type="text/css">
-           .fixedHeader{
-                width:100%;
-                position:fixed;
-                top:0px;
-           }
-       </style>
 
-        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-        <link rel="stylesheet" href="css/ShopingUI.css" />
 
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
     </head>
     <body>
 
         <div data-role="AddList" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';">
-            <div data-role="header" data-theme="b" data-icon="home" class="fixedHeader">
+            <div data-role="header" data-theme="b"  class="fixedHeader">
                 <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
                 <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-                <form>
-                    <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
-                                <option data-bind="value:id , text:name"></option>
-                    </select>
-                </form>
-                <h5>Your Shopping List</h5>
+
+
                 <table data-bind="foreach:selecteditems" class="shopinglist">
                     <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
                 </table>
 
                 <input  type="button"  value="Search" onclick="modal.save();">
                 <input type="button" value="Clear" onclick="clearList();">
-            </div><!-- /header -->
 
-
-            <div data-role="content" style="background-image : 'abc.jpg';">
-<!--                <form>
-                    <div data-role="fieldcontain">
-                        <select name="select-native-1" id="select-native-1" data-bind="foreach:categories" onchange="loadItems()">
-                            <option data-bind="value:id , text:name"></option>
-                        </select>
-                    </div>
-
-                    <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
-                        <option data-bind="value:id , text:name"></option>
-                    </select>
-
-                    
-                    <input type="button" value="Add item" data-bind="click:$root.addItem">
-
-</form>-->
-                
-                <form>
-                    
+          
                     <div  data-bind="foreach:categories" onchange="loadItems()">
                         <div  class = "thumbBox">    
                             <img data-bind=" attr:{src: image} , click: loadItems"/>
                             <span data-bind="text: name"></span>
                         </div>
                     </div>
+                
+              </div><!-- /header -->
+                                <br />
+                                
+                                            <div data-role="content" style="background-image : 'abc.jpg';">
                     <!--
                                         <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
                                             <option data-bind="value:id , text:name"></option>
@@ -79,7 +48,7 @@
                                         
                                         <input type="button" value="Add item" data-bind="click:$root.addItem">
                     -->
-                </form>
+                
                 <div data-bind="foreach:availableItems">
                     <div class = "thumbBox">
                         <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
