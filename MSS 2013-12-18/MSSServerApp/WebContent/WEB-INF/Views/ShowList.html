@@ -18,28 +18,36 @@
         
         <div data-role="page" data-theme="b">
             <div data-role="header" data-theme="b" data-icon="home" id = "header">
-                    <h1>Price List</h1>
+                    <h1>Shopping List</h1>
             </div>
 
             <div class="resultDisplay">
             <div data-role="content" data-theme="b" id="topics">
-                <div class="resultShopName">
-                    
-                    <img data-bind=" attr:{src: shopimageUrl}" /> 
-                    <h3 data-bind="text: shopName">Shan Stores</h3>
-                    <h5 data-bind="text: shopAddress" >Rathnapura</h5>
-                </div>
-
+                
                 
                 <table class="resultTable">
-                            <tbody data-bind="foreach: itempriceList" >
+                            <tbody data-bind="foreach: Items" >
+							<tr>
+							<th>Item</th>
+							<th>Quantity</th>
+							</tr>
                              <tr>
-                                <td data-bind="text: itemName">Carrot</td><td>50 kg</td><td data-bind="text: price">Rs 500</td>
+								<td>
+									<div  class = "thumbBox">    
+										<img data-bind=" attr:{src: image} , click: loadItems"/>
+									    <span data-bind="text: Name">Carrot</span>
+								    </div>
+								</td>
+                                <!-- <td data-bind="text: Name">Carrot</td> -->
+								<td data-bind="text: Quantitiy">50 kg</td>
+								
+								<td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
+								
                              </tr>
                             </tbody>
                 </table>
                 
-                Total <span class="total" data-bind="text:total"></span>
+                
 
 
        

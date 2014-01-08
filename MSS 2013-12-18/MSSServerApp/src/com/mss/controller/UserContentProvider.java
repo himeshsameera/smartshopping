@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.mss.model.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 @Controller
 @RequestMapping("/user/*")
@@ -28,6 +30,30 @@ public class UserContentProvider {
             if(com.mss.DAO.DB.verifyLogin(user, pass)){
                 req.getSession().setAttribute("UserId", 1);
                 return "true";
+            }
+            return "false";
+	}
+        
+        @RequestMapping(value = "signup", method = RequestMethod.GET)
+	public @ResponseBody String processSignup(HttpServletRequest req,HttpServletResponse res) throws Exception{
+
+            
+            res.setContentType("plain/text");
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            String email = req.getParameter("email");
+            ArrayList<UserProfile> results = com.mss.DAO.DB.searchUserByName(username);
+            Iterator itr = results.iterator();
+            String returnTxt="true";
+            while(itr.hasNext()){
+                UserProfile user = (UserProfile)itr.next();
+                if(user.getUserName().equals(username)){
+                    returnTxt = "false";
+                    break;
+                }
+            }
+            if (returnTxt.equals("true")){
+                com.mss.DAO.DB.addUser(username,password,email);
             }
             return "false";
 	}
