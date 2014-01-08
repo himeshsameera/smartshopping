@@ -143,6 +143,18 @@ public class DB {
         String sql = "INSERT INTO shop_item_unit_price (shop_id,item_id,price) VALUES ("+shopId+","+itemId+","+price+");";
         executeQuery(sql);
     }
+    
+    public static ArrayList<UserProfile> searchUserByName(String username)throws Exception{
+        String sql="SELECT usr FROM user WHERE usr.username='"+username+"';";
+        ResultSet r=getDBResult(sql);
+        ArrayList<UserProfile> userList= new ArrayList<UserProfile>();
+        while(r.next()){
+            
+            UserProfile user=new UserProfile(r.getString("username"), r.getString("email"), r.getString("password"), r.getString("cotactnumber"));
+            userList.add(user);
+        }
+        return userList;    
+    }
 
     
     
@@ -275,6 +287,10 @@ public class DB {
         
         return result;
     }
-    
+
+    public static void addUser(String username, String password, String email) throws Exception {
+        String sql = "INSERT INTO users (user,email,pass) VALUES ("+username+","+email+","+password+");";
+        executeQuery(sql);
+    }
     
 }
