@@ -36,10 +36,10 @@ and open the template in the editor.
             <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
                 <li data-role="divider"></li> 
                 <li>
-                    <a href="#" data-bind=" attr:{src: Image}" >
-                        
-                        <h2 data-bind="text: Title"></h2>
-                        <p data-bind="text: Address"></p> 
+                    <a href="#"  >
+                        <img data-bind=" attr:{src: shopimageUrl}" />
+                        <h2 data-bind="text: shopName"></h2>
+                        <p data-bind="text: shopAddress"></p> 
              </a>
 
 
@@ -127,9 +127,9 @@ and open the template in the editor.
                 data = localStorage.getItem('result');
                 //console.log(data);
                 var parsed = eval("(" + data + ")");
-                modal.Shoplist([]);
+                modal.Shoplist(parsed);
                 
-                
+                /*
                 for (var i = 0; i < parsed.length; i++) {
                     //console.log(i);
                     var myShop = new Shop();
@@ -155,7 +155,8 @@ and open the template in the editor.
 
                     modal.Shoplist.push(myShop);
 
-                }
+                } */
+        
                 // });
             }
             ;

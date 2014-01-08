@@ -24,15 +24,17 @@
             <div class="resultDisplay">
             <div data-role="content" data-theme="b" id="topics">
                 <div class="resultShopName">
-                    <h3 data-bind="text: Title">Shan Stores</h3>
-                    <h5 data-bind="text: Address" >Rathnapura</h5>
+                    
+                    <img data-bind=" attr:{src: shopimageUrl}" /> 
+                    <h3 data-bind="text: shopName">Shan Stores</h3>
+                    <h5 data-bind="text: shopAddress" >Rathnapura</h5>
                 </div>
 
                 
                 <table class="resultTable">
-                            <tbody data-bind="foreach: Items" >
+                            <tbody data-bind="foreach: itempriceList" >
                              <tr>
-                                <td data-bind="text: Name">Carrot</td><td>50 kg</td><td data-bind="text: Price">Rs 500</td>
+                                <td data-bind="text: itemName">Carrot</td><td>50 kg</td><td data-bind="text: price">Rs 500</td>
                              </tr>
                             </tbody>
                 </table>
