@@ -9,33 +9,16 @@ package com.mss.model;
  * @author ctharinda_ce
  */
 public class UserProfile {
-    private int Id;
     private String userName;
     private String e_mail;
     private String password;
     private String contactNum;
 
-    public UserProfile(int Id, String userName, String e_mail, String password, String contactNum) {
-        this.Id = Id;
+    public UserProfile(String userName, String e_mail, String password, String contactNum) {
         this.userName = userName;
         this.e_mail = e_mail;
         this.password = password;
         this.contactNum = contactNum;
-    }
-    
-    
-    /**
-     * @return the Id
-     */
-    public int getId() {
-        return Id;
-    }
-
-    /**
-     * @param Id the Id to set
-     */
-    public void setId(int Id) {
-        this.Id = Id;
     }
 
     /**

@@ -18,6 +18,8 @@
         <div data-role="AddList" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';">
             <div data-role="header" data-theme="b"  class="fixedHeader">
                 <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
+                
+                <a href="ShowList.html" data-role="button" class="ui-btn-right" >List</a>
                 <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
 
 
@@ -125,6 +127,10 @@
 
                                     });
                                 };
+								self.save = function(saveShop){
+									localStorage.setItem('viewResult', ko.toJSON(saveShop));
+									return true;
+								} 
 
                             }
                             //models            
