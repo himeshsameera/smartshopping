@@ -29,8 +29,8 @@
                 <input type="button" value="Clear" onclick="clearList();">
 
           
-                    <div  data-bind="foreach:categories" onchange="loadItems()">
-                        <div  class = "thumbBox">    
+                    <div style="overflow-x: scroll; overflow-y: hidden; height: 130px; white-space:nowrap;" data-bind="foreach:categories" onchange="loadItems()">
+                        <div class = "categoryBox">    
                             <img data-bind=" attr:{src: image} , click: loadItems"/>
                             <span data-bind="text: name"></span>
                         </div>

@@ -34,11 +34,11 @@ text-align:center;
 
 .categoryBox {
 width: 90px;
-float: left;
+display: inline-block;
+vertical-align:top;
 margin: 5px;
 
 height:100px;
-overflow: hidden;
 border:#ddd dotted 1px;
 text-align:center;
 text-decoration: "underline";
