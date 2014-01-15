@@ -8,6 +8,7 @@ import com.mss.DAO.DB;
 import com.mss.model.*;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -96,6 +97,11 @@ public class ShoppingListController {
             writer.print(json);
     }
     
+    
+    
+    
+    // This is the method that we currently use
+    
     @RequestMapping(value = { "processList" }, method = RequestMethod.GET)
     public void searchListProcess(HttpServletRequest req,
                     HttpServletResponse res, Model model) throws Exception {
@@ -107,14 +113,13 @@ public class ShoppingListController {
 
             ArrayList<ItemSearch> shoppingList = mapper.readValue(s,TypeFactory.collectionType(ArrayList.class, ItemSearch.class));
             
-            ArrayList<ShopForItemList> list =DB.searchItemList(shoppingList);            
+            ArrayList<ShopForItemList> list =DB.searchItemList(shoppingList);   
+            sortShops(list);
             
+            String json = JsonConverter.convertToJson(list);
             
-            
-             String json = JsonConverter.convertToJson(list);
 //            res.setContentType("application/json;");
-//
-            
+//            
             PrintWriter writer = res.getWriter();
 
             
@@ -124,5 +129,8 @@ public class ShoppingListController {
     }
 
     
+    private static void sortShops(ArrayList<ShopForItemList> list){
+        Collections.sort(list, new ShopComparator());
+    }
 }
 

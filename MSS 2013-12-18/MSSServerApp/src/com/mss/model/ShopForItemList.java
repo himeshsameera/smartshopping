@@ -17,6 +17,8 @@ public class ShopForItemList implements Serializable{
     private String shopName;
     private String shopAddress;
     private String shopimageUrl;
+    private int distance = 0;
+    private int totalPrice =0;
     
     public ShopForItemList(){
     
@@ -95,5 +97,33 @@ public class ShopForItemList implements Serializable{
      */
     public void setShopimageUrl(String shopimageUrl) {
         this.shopimageUrl = shopimageUrl;
+    }
+
+    /**
+     * @return the distance
+     */
+    public int getDistance() {
+        return distance;
+    }
+
+    /**
+     * @param distance the distance to set
+     */
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    /**
+     * @return the totalPrice
+     */
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    /**
+     * @param totalPrice the totalPrice to set
+     */
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

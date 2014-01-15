@@ -1,0 +1,1 @@
+var MSSServerPath ="localhost:8080/MSSServerApp/";

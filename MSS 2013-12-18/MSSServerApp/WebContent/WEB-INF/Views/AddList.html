@@ -1,74 +1,254 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<head>
+<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+      
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
+
+
+<link rel="stylesheet" href="css/ShopingUI.css" />
+<script type='text/javascript' src='js/knockoutjs.js'></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+</head>
+<body>
+    
+    <div data-role="page"  class="pagecontent" id="main">    
+        <div data-role="header">
+            <h1>Current List</h1>
+        </div>
         
-      <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-      <link rel="stylesheet" href="css/ShopingUI.css" />
-       
-       <script type='text/javascript' src='js/knockoutjs.js'></script>
-       <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-       <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-
-
-    </head>
-    <body>
-
-        <div data-role="AddList" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';">
-            <div data-role="header" data-theme="b"  class="fixedHeader">
-                <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-                
-                <a href="ShowList.html" data-role="button" class="ui-btn-right" >List</a>
-                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-
-
-                <table data-bind="foreach:selecteditems" class="shopinglist">
-                    <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
-                </table>
-
-                <input  type="button"  value="Search" onclick="modal.save();">
-                <input type="button" value="Clear" onclick="clearList();">
-
-          
-                    <div  data-bind="foreach:categories" onchange="loadItems()">
-                        <div  class = "thumbBox">    
-                            <img data-bind=" attr:{src: image} , click: loadItems"/>
-                            <span class="boxtext" data-bind="text: name"></span>
+        <div data-role="content">
+            <div class="header" >
+		 <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                                <ul>
+                                        <li><a href="home.html" rel="external">Home</a></li>
+                                        <li><a href="signup.html" rel="external">Register</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                </ul>
                         </div>
+                        <div class="clear"></div>
                     </div>
-                
-              </div><!-- /header -->
-                                <br />
-                                            <div data-role="content" style="background-image : 'abc.jpg';">
-                    <!--
-                                        <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
-                                            <option data-bind="value:id , text:name"></option>
-                                        </select>
-                    
-                                        
-                                        <input type="button" value="Add item" data-bind="click:$root.addItem">
-                    -->
-                
-                <div data-bind="foreach:availableItems">
-                    <div class = "thumbBox">
-                        <img data-bind=" attr:{src: image} , click: $parent.addItem"/>
-                        <span data-bind="text: name"></span>
+                </div>
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3">
+                                    <a href="#showlist">
+                                    <img src="images/cart.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>		
+                            
+                            <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
+                            <div class="clear"></div>
+                        </div>
 
+                        <div class="clear"></div>
+                    </div>     
+                <div class="header_bottom">
+                    <div class="header_bottom_left">				
+                        <div class="categories">
+                            <div class="menu_container">
+                                <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                <div class="menu_body">
+                                    <div class="list">
+                                        <ul>
+                                            <li><a href="#">All</a></li>
+                                            <li><a href="#">Vegitable</a></li>
+                                            <li><a href="#">Fruit</a></li>
+                                            <li><a href="#">English</a></li>
+
+                                        </ul>
+                                    </div>	
+                                </div>								
+                            </div>
+                        </div>					
+                    </div>
+                    
+                    <div class="header_bottom_right">					 
+                            <!------ Slider ------------>
+                        <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
+                            <div  class = "categoryBox">    
+                                <img data-bind=" attr:{src: image} , click: loadItems"/>
+                                <span class="boxtext" data-bind="text: name"></span>
+                            </div>
+                        </div>
+                                <!------End Slider ------------>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    <!-- Category slideer-->
+                <div class="clear"></div>
+            </div>
+        </div>
+
+   <!------------End Header ------------>
+            <div class="main">
+                <div class="wrap">
+                    <div class="content">
+                        <div class="content_top">
+                                <div class="heading">
+                                <h3>Items</h3>
+                                </div>
+                        </div>
+
+                        <div data-bind="foreach:availableItems">
+                            <div class = "thumbBox">
+                                <img data-bind=" attr:{src: image} , click: $parent.viewItemDetails"/>
+                                <span data-bind="text: name"></span>
+                            </div>
+                        </div>                   
 
                     </div>
                 </div>
             </div>
-<!--            <h5>Your Shopping List</h5>
+        </div>
+    </div>
+
+     <div data-role="page"  class="pagecontent" id="showlist">    
+            <div data-role="header">
+                <h1>Current List</h1>
+            </div>
+
+            <div data-role="content">
+                <div class="resultDisplay">
+                    <div data-role="content" data-theme="b" id="topics">
+
             <table data-bind="foreach:selecteditems" class="shopinglist">
                 <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
             </table>
+                        
+                    </div>
+                </div>
+                <a href="#main" data-transition="slide" data-role="button">Back</a>
+                <input  type="button"  value="Search" onclick="modal.save();">
+                <input type="button" value="Clear" onclick="clearList();">
+            </div>
+        </div>
 
-            <input  type="button"  value="Search" onclick="modal.save();">
-            <input type="button" value="Clear" onclick="clearList();">-->
-        </div> 
+        <div data-role="page"  class="pagecontent" id="viewItem">    
+            <div data-role="header">
+                <h1 >Item Details</h1>
+            </div>
 
-        <script type="text/javascript">
+            <div data-role="content">
+                <img data-bind=" attr:{src: currentItemImage}"/>
+                <div style="display: inline-block;">
+                    <h4 data-bind="text:currentItemName"></h4>
+                    <span data-bind="text:currentItemDescription"></span>
+                </div>
+                
+                <div>
+                    Amount : <input type="text" id="value" />
+                </div>
+                <input  type="button"  value="Add" onclick="addItem()">
+                <a href="#main" data-transition="slide" data-role="button">Back</a>
+            </div>
+        </div>
+   
+   
+   <!-- Scripts -->
+    <script type="text/javascript">
+                        function DropDown(el) {
+                                this.dd = el;
+                                this.initEvents();
+                        }
+                        DropDown.prototype = {
+                                initEvents : function() {
+                                        var obj = this;
+
+                                        obj.dd.on('click', function(event){
+                                                $(this).toggleClass('active');
+                                                event.stopPropagation();
+                                        });	
+                                }
+                        }
+
+                        $(function() {
+
+                                var dd = new DropDown( $('#dd') );
+
+                                $(document).click(function() {
+                                        // all dropdowns
+                                        $('.wrapper-dropdown-3').removeClass('active');
+                                });
+
+                        });
+</script>
+   <script type="text/javascript">
+        var $ = jQuery.noConflict();
+                $(function() {
+                        $('#activator').click(function(){
+                                        $('#box').animate({'top':'65px'},500);
+                        });
+                        $('#boxclose').click(function(){
+                                        $('#box').animate({'top':'-400px'},500);
+                        });
+                        $('#activator_share').click(function(){
+                                        $('#box_share').animate({'top':'65px'},500);
+                        });
+                        $('#boxclose_share').click(function(){
+                                        $('#box_share').animate({'top':'-400px'},500);
+                        });
+
+                });
+                $(document).ready(function(){
+
+                //Hide (Collapse) the toggle containers on load
+                $(".toggle_container").hide(); 
+
+                //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+                $(".trigger").click(function(){
+                        $(this).toggleClass("active").next().slideToggle("slow");
+                        return false; //Prevent the browser jump to the link anchor
+                });
+
+                });
+        </script>
+                                                                
+                                                                
+                                                                
+            <script type="text/javascript">
+                    $(document).ready(function(){
+                            $(".menu_body").hide();
+                            //toggle the componenet with class menu_body
+                            $(".menu_head").click(function(){
+                                    $(this).next(".menu_body").slideToggle(600); 
+                                    var plusmin;
+                                    plusmin = $(this).children(".plusminus").text();
+
+                                    if( plusmin == '+')
+                                    $(this).children(".plusminus").text('-');
+                                    else
+                                    $(this).children(".plusminus").text('+');
+                            });
+                    });
+            </script>
+            
+          <script type="text/javascript">
 
                             /**
                              * Written by Himesh Karunaratne
@@ -90,9 +270,13 @@
                                 var self = this;
                                 self.selecteditems = ko.observableArray([]);
                                 self.availableItems = ko.observableArray([]);
-
                                 self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+                                self.currentItemId =-1;
+                                self.currentItemName =ko.observable();
+                                self.currentItemImage =ko.observable();
 
+                                self.currentItemDescription =ko.observable("This is a good fruit");
+           /*                                            
                                 self.addItem = function(displayItem) {
                                     //    console.log(ko.toJSON(displayItem));
                                     //    console.log(displayItem.name());
@@ -104,7 +288,14 @@
                                     } else{
                                         alert("error");
                                     }   
-                            }
+                                }
+             */                   
+                                self.viewItemDetails=function(displayItem){
+                                     self.currentItemName(displayItem.name());
+                                     self.currentItemImage(displayItem.image());
+                                     self.currentItemId = displayItem.id();
+                                     document.location="#viewItem";
+                                }
 
                                 self.removeItem = function(seg) {
                                     self.selecteditems.remove(seg);
@@ -132,10 +323,8 @@
 
                                     });
                                 };
-								self.save = function(saveShop){
-									localStorage.setItem('viewResult', ko.toJSON(saveShop));
-									return true;
-								} 
+
+                                 
 
                             }
                             //models            
@@ -232,8 +421,22 @@
                             function clearList() {
                                 modal.selecteditems([]);
                             }
+                                
+                            //@depricated
+                            function showList(){
+                                localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
+                                document.location="ShowList.html";
+                            }
 
-
+                            function addItem(){
+                                var amountFloat =  parseFloat(document.getElementById("value").value);
+                                if(!isNaN(amountFloat)){
+                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
+                                    document.location='#main';
+                                } else{
+                                    alert("Please enter a correct value");
+                                }
+                            }
                             /**
                              *  PART 4 - Run the initial functions. With asyncronous jilmart
                              **/
@@ -243,5 +446,6 @@
                             }, millisecondsToWait);
 
         </script>    
-    </body>
+	</body>
 </html>
+

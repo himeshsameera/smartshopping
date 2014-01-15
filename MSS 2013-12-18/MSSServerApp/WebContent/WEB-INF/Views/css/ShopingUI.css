@@ -1,6 +1,5 @@
 
 body {
-    background: url("../images/background.jpg");
     background-position:center center;
     background-attachment:scroll;
 }
@@ -32,19 +31,31 @@ font-size:80%;
     height:auto;
 }
 
+.categoryBlock{
+    
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 130px; 
+    white-space: nowrap;
+    
+}
 
 .categoryBox {
-width: 90px;
-float: left;
+width: 80px;
 margin: 5px;
-
-height:100px;
+display: inline-block;
+height:90px;
 overflow: hidden;
 border:#ddd dotted 1px;
 text-align:center;
-text-decoration: "underline";
+vertical-align: top;
+white-space: normal;
 }
 
+.categoryBox img{
+    width: 65px;
+    height:auto;
+}
 
 .removeButton{
 background:url('images/remove.png') 0 0;

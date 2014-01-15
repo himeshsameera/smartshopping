@@ -1,120 +1,324 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<html>
+    <head>
+ <!--
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        
+      <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+      <link rel="stylesheet" href="css/ShopingUI.css" />
+       
+       <script type='text/javascript' src='js/knockoutjs.js'></script>
+       <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+       <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+-->
+       <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+
 <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-          <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-      <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+<link rel="stylesheet" href="css/ShopingUI.css" />
 
-</head>
-<body>
+<script type='text/javascript' src='js/knockoutjs.js'></script>
+       <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 
-<div data-role="Search">
-   <div data-role="header" data-theme="b" data-icon="home">
-                <h1>Search</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-				<a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+<script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
+
+    </head>
+    <body>
+
+        <div data-role="page" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';" id="addlist">
+            <div data-role="header" data-theme="b"  class="fixedHeader" data-position="fixed">
+                <h1>Search List</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
+                
+                <a href="ShowList.html" data-role="button" class="ui-btn-right" >List</a>
+                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
+
+<!--
+                <table data-bind="foreach:selecteditems" class="shopinglist">
+                    <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
+                </table>
+-->
+                <input  type="button"  value="Search" onclick="modal.save();">
+                <input type="button" value="Clear" onclick="clearList();">
+                
+                    <a href="#showlist" data-transition="slide" data-role="button">View List</a>
+                
+                <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
+                        <div  class = "categoryBox">    
+                            <img data-bind=" attr:{src: image} , click: loadItems"/>
+                            <span class="boxtext" data-bind="text: name"></span>
+                        </div>
+                    </div>
+                
+                
+              </div><!-- /header -->
+
+             <div data-role="content" style="background-image : 'abc.jpg';">
+                    <!--
+                                        <select name="select-native-1" id="select-native-2" data-bind="foreach:availableItems">
+                                            <option data-bind="value:id , text:name"></option>
+                                        </select>
+                    
+                                        
+                                        <input type="button" value="Add item" data-bind="click:$root.addItem">
+                    -->
+                
+                <div data-bind="foreach:availableItems">
+                    <div class = "thumbBox">
+                        <img data-bind=" attr:{src: image} , click: $parent.viewItemDetails"/>
+                        <span data-bind="text: name"></span>
+
+
+                    </div>
+                </div>
+            </div>
+<!--            <h5>Your Shopping List</h5>
+            <table data-bind="foreach:selecteditems" class="shopinglist">
+                <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
+            </table>
+
+            <input  type="button"  value="Search" onclick="modal.save();">
+            <input type="button" value="Clear" onclick="clearList();">-->
+        </div> 
+
+        <div data-role="page" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';" id="showlist">    
+            <div data-role="header">
+                <h1>Current List</h1>
+            </div>
+
+            <div data-role="content">
+                <div class="resultDisplay">
+                    <div data-role="content" data-theme="b" id="topics">
+
+            <table data-bind="foreach:selecteditems" class="shopinglist">
+                <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
+            </table>
+                        
+                    </div>
+                </div>
+                <a href="#addlist" data-transition="slide" data-role="button">Back</a>
+                <input  type="button"  value="Search" onclick="modal.save();">
+                <input type="button" value="Clear" onclick="clearList();">
+            </div>
         </div>
 
-<form>
-<fieldset data-role="controlgroup" data-type="horizontal">
-    
-    <select name="select-native-1" id="select-native-1">
-        <option value="1">Categories</option>
-        <option value="2">Car</option>
-        <option value="3">Phone</option>
-        <option value="4">Food</option>
-    </select>
-	 <select name="select-native-1" id="select-native-1">
-        <option value="1">Districs</option>
-        <option value="2">Ratnapura</option>
-        <option value="3">Colombo</option>
-        <option value="4">Kandy</option>
-    </select>
-	<a href="AddList.html" data-role="button" data-icon="plus">Add List</a>
-</fieldset>
+        <div data-role="page" data-theme="b" class="pagecontent" style="background-color: 'lightgreen';" id="viewItem">    
+            <div data-role="header">
+                <h1 >Item Details</h1>
+            </div>
 
-
- <input type="search" data-mini="true" name="search-4" id="search-4" value="">
- <a onclick="readJSON()" data-role="button" data-icon="search">Search</a>
-</form>
- 
- <div data-role="listview" data-inset="true" id ="display" >
-<table data-bind="foreach : items"> <tr><td><a href="#"><img src="1.jpg"></a></td><td><h3 data-bind="text:itemName"></h3><h6 data-bind="text:itemPrice"></h6></td></tr></table>
- </div>
-</div> 
-
- 
-
-<script type="text/javascript">    
-
-            /**
-            *  PART 1 - Create the model
-            **/	
-            var editorModel=function(){ 
-                var self =this;
-                self.items = ko.observableArray([]);
-
-                self.save = function() {
-                    document.getElementById("data").value=ko.toJSON(self);
-                    document.forms["sender"].submit();
-                };
-            }
-
-            function item(){
-                var seg = this;
-                seg.itemName= ko.observable("test name");		 
-                seg.itemPrice= ko.observable("Rshhhhh 5/=");
-                return this;
-            }
+            <div data-role="content">
+                <img data-bind=" attr:{src: currentItemImage}"/>
+                <div style="display: inline-block;">
+                    <h4 data-bind="text:currentItemName"></h4>
+                    <span data-bind="text:currentItemDescription"></span>
+                </div>
+                
+                <div>
+                    Amount : <input type="text" id="value" />
+                </div>
+                <input  type="button"  value="Add" onclick="addItem()">
+                <a href="#addlist" data-transition="slide" data-role="button">Back</a>
+            </div>
+        </div>
         
+        <script type="text/javascript">
 
-            /**
-            *  PART 2 - Declare the variables
-            **/
-            var bindings = 0;
-            var modal = new editorModel();
-   
-   
-            /**
-            *  PART 3 - Declare the functions
-            **/
+                            /**
+                             * Written by Himesh Karunaratne
+                             *
+                             * This code is to implement a simple knockoutjs structure inside a web page
+                             * Mainly there are 4 parts
+                             *  1) Create the model
+                             *  2) Declare the gobal variables.
+                             *  3) Declare the other javascript functions to be used indide
+                             *  4) Run the initial code at startup. ie - apply bindings
+                             **/
 
-            function load(){
-                if(bindings <  1){
-                    bindings++;
-                    ko.applyBindings(modal);
-                    readJSON();
-                }
-            }
 
-            function readJSON(){
-                $.get("http://localhost/motorolatmp/ajx.html", {},function(data){
-                    console.log(data);
-                    var parsed = eval("("+data+")");
-                    modal.items([]);
-                    for(i=0;i<parsed.items.length;i++){
-                            console.log(i);
-                            var seg = new item();
-                            seg.itemName(parsed.items[i].itemName);
-                            seg.itemPrice(parsed.items[i].itemPrice);
-                            modal.items.push(seg);
-                    }  
-                });
-            };
-           
+                            /**
+                             *  PART 1 - Create the model
+                             **/
+                            var editorModel = function() {
 
-            /**
-            *  PART 4 - Run the initial functions. With asyncronous jilmart
-            **/                
-                var millisecondsToWait = 1000;
-                setTimeout(function() {
-                    load();
-                }, millisecondsToWait);
-	
-</script>
+                                var self = this;
+                                self.selecteditems = ko.observableArray([]);
+                                self.availableItems = ko.observableArray([]);
+                                self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+                                self.currentItemId =-1;
+                                self.currentItemName =ko.observable();
+                                self.currentItemImage =ko.observable();
 
-</body>
+                                self.currentItemDescription =ko.observable("This is a good fruit");
+           /*                                            
+                                self.addItem = function(displayItem) {
+                                    //    console.log(ko.toJSON(displayItem));
+                                    //    console.log(displayItem.name());
+                                    //    console.log(displayItem.id());
+                                    var amount = window.prompt("Amount (kg)","1");
+                                    var amountFloat =  parseFloat(amount);
+                                    if(!isNaN(amountFloat)){
+                                        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
+                                    } else{
+                                        alert("error");
+                                    }   
+                                }
+             */                   
+                                self.viewItemDetails=function(displayItem){
+                                     self.currentItemName(displayItem.name());
+                                     self.currentItemImage(displayItem.image());
+                                     self.currentItemId = displayItem.id();
+                                     document.location="#viewItem";
+                                }
+
+                                self.removeItem = function(seg) {
+                                    self.selecteditems.remove(seg);
+                                }
+
+                                self.save = function() {
+                                    console.log(ko.toJSON(self.selecteditems));
+
+                                    $.ajax({
+                                        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
+                                        url: "../list/processList",
+                                        dataType: "html", //Note the dataType has been changed from default here.
+                                        data: {
+                                            'json': ko.toJSON(self.selecteditems)
+                                        },
+                                        error: function() {
+                                            //You can do a fallback here
+                                        },
+                                        success: function(data) { //Note the data variable here. This is your returned data
+                                            //I also swapped .attr to .val below
+                                            console.log(data);
+                                            localStorage.setItem('result', data + " ");
+                                            document.location = "ShowResult.html";
+                                        }
+
+                                    });
+                                };
+
+                                 
+
+                            }
+                            //models            
+                            // this is to view item name price etc. taken from server
+                            function Item(myName, myID, myImage) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myImage);
+                                return this;
+                            }
+
+                            // this is to view catagories
+                            function Catagory(myName, myID , myimage) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myimage)
+                                return this;
+                            }
+
+                            // This is to add items to the shopping list   
+                            function ListItem(myName, myID, myAmount) {
+                                var seg = this;
+                                seg.itemName = ko.observable(myName);
+                                seg.itemId = ko.observable(myID);
+                                seg.amount = ko.observable(myAmount);
+                                return this;
+                            }
+//----------------------------------------------------------------------------------
+
+                            /**
+                             *  PART 2 - Declare the variables
+                             **/
+                            var bindings = 0;
+                            var modal = new editorModel();
+
+                            /**
+                             *  PART 3 - Declare the functions
+                             **/
+                            function load() {
+                                if (bindings < 1) {
+                                    bindings++;
+                                    console.log("Applying bindings");
+                                    ko.applyBindings(modal);
+                                }
+
+                                console.log("Ready to load categories");
+                                loadCategories();
+                            }
+
+
+                            function loadItems(selectedCatagory) {
+                                console.log("loading items");
+                                $.get("../item/itemNames", {
+                                    categoryId: selectedCatagory.id()
+                                }, function(data) {
+
+                                    console.log(data);
+
+                                    var parsed = eval("(" + data + ")");
+
+                                    modal.availableItems([]);
+                                    console.log("length is " + parsed.items.length);
+                                    for (i = 0; i < parsed.items.length; i++) {
+                                        console.log(i);
+                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
+                                        modal.availableItems.push(seg);
+                                    }
+                                });
+                            }
+                            ;
+
+
+                            function loadCategories() {
+                                console.log("loading categories...");
+                                $.get("../item/categories", function(data) {
+
+                                    console.log(data);
+
+                                    var parsed = eval("(" + data + ")");
+
+                                    modal.categories([]);
+                                    console.log("length is " + parsed.categories.length);
+                                    for (i = 0; i < parsed.categories.length; i++) {
+                                        console.log(i);
+                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].imageUrl);
+                                        modal.categories.push(seg);
+                                    }
+                                });
+                            }
+                            ;
+
+                            function clearList() {
+                                modal.selecteditems([]);
+                            }
+                                
+                            //@depricated
+                            function showList(){
+                                localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
+                                document.location="ShowList.html";
+                            }
+
+                            function addItem(){
+                                var amountFloat =  parseFloat(document.getElementById("value").value);
+                                if(!isNaN(amountFloat)){
+                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
+                                    document.location='#addlist';
+                                } else{
+                                    alert("Please enter a correct value");
+                                }
+                            }
+                            /**
+                             *  PART 4 - Run the initial functions. With asyncronous jilmart
+                             **/
+                            var millisecondsToWait = 1000;
+                            setTimeout(function() {
+                                load();
+                            }, millisecondsToWait);
+
+        </script>    
+    </body>
 </html>

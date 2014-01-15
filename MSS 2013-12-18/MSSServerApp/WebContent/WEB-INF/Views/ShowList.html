@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
         <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
         <link rel="stylesheet" href="css/ShopingUI.css" />
         
@@ -23,34 +23,17 @@
 
             <div class="resultDisplay">
             <div data-role="content" data-theme="b" id="topics">
-                
-                
-                <table class="resultTable">
-                            <tbody data-bind="foreach: Items" >
-							<tr>
-							<th>Item</th>
-							<th>Quantity</th>
-							</tr>
-                             <tr>
-								<td>
-									<div  class = "thumbBox">    
-										<img data-bind=" attr:{src: image} , click: loadItems"/>
-									    <span data-bind="text: Name">Carrot</span>
-								    </div>
-								</td>
-                                <!-- <td data-bind="text: Name">Carrot</td> -->
-								<td data-bind="text: Quantitiy">50 kg</td>
-								
-								<td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
-								
-                             </tr>
-                            </tbody>
-                </table>
-                
-                
 
+                    <div data-bind="foreach: selecteditems" >
 
-       
+  
+                                    <span data-bind="text: itemName">Carrot</span>
+
+                    <!-- <td data-bind="text: Name">Carrot</td> -->
+                            <span data-bind="text: amount">50 </span>kg
+                            <img src='images/remove.png' />
+                        <br/>
+                    </div>
 
             </div>
             </div>
@@ -59,12 +42,32 @@
         
         <script type="text/javascript">
             
+                            /**
+                             * Written by Himesh Karunaratne
+                             *
+                             * This code is to implement a simple knockoutjs structure inside a web page
+                             * Mainly there are 4 parts
+                             *  1) Create the model
+                             *  2) Declare the gobal variables.
+                             *  3) Declare the other javascript functions to be used indide
+                             *  4) Run the initial code at startup. ie - apply bindings
+                             **/
+
+
+                            /**
+                             *  PART 1 - Create the model
+                             **/
+                            var editorModel = function() {
+                                var self = this;
+                                self.selecteditems = ko.observableArray([]);
+                              
+                            }
             
             /**
              *  PART 2 - Declare the variables
              **/
             var bindings = 0;
-            var modal;
+            var modal = new editorModel();
 
             /**
              *  PART 3 - Declare the functions
@@ -73,12 +76,13 @@
                 
                 if (bindings < 1) {
                     // Load and parse the JSON
-                    var someJSON = localStorage.getItem('viewResult');/* Omitted: fetch it from the server however you want */;
+                    var someJSON = localStorage.getItem('shopinglist');/* Omitted: fetch it from the server however you want */;
                     var parsed = JSON.parse(someJSON);
-                    
-                    console.log(ko.toJSON(parsed));
+                    modal.selecteditems(parsed)
+                    console.log(ko.toJSON(modal));
                     bindings++;
-                    ko.applyBindings(parsed);
+                    ko.applyBindings(modal);
+                    console.log("aaaaaa");
                 }
            }
             
