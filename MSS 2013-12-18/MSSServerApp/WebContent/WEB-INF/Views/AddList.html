@@ -24,6 +24,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script src="js/init.js"></script>
+
 </head>
 <body>
     
@@ -306,7 +308,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                     $.ajax({
                                         type: "GET", //Personally i prefer using post, you can swap this to get if you want.
-                                        url: "../list/processList",
+                                        url: MSSServerPath+"list/processList",
                                         dataType: "html", //Note the dataType has been changed from default here.
                                         data: {
                                             'json': ko.toJSON(self.selecteditems)
@@ -379,7 +381,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             function loadItems(selectedCatagory) {
                                 console.log("loading items");
-                                $.get("../item/itemNames", {
+                                $.get(MSSServerPath+"item/itemNames", {
                                     categoryId: selectedCatagory.id()
                                 }, function(data) {
 
@@ -401,7 +403,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             function loadCategories() {
                                 console.log("loading categories...");
-                                $.get("../item/categories", function(data) {
+                                console.log(MSSServerPath+"item/categories");
+                                $.get(MSSServerPath+"item/categories", function(data) {
 
                                     console.log(data);
 
