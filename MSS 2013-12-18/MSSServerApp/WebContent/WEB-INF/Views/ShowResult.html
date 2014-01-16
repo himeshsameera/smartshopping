@@ -3,62 +3,214 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0b2.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
-        <script type='text/javascript' src='js/knockoutjs.js'></script>
-        <script type="text/javascript" charset="utf-8" src="js/msslogin.js"></script> 
-        <link rel="stylesheet" href="css/ShopingUI.css" />
-    </head>
-    <body>
-        <div data-role="page" data-theme="b">
-            <div data-role="header" data-theme="b" data-icon="home">
-                <h1>Result</h1><a data-theme="b" href="home.html" data-icon="home" data-role="button" rel="internal" data-iconpos="notext"></a>
-                <a href="login.html" data-role="button" class="ui-btn-right" >Login</a>
-            </div>
+<head>
+<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
+      
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
 
 
-            <div data-role="content">
+<link rel="stylesheet" href="css/ShopingUI.css" />
+<script type='text/javascript' src='js/knockoutjs.js'></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script src="js/init.js"></script>
 
-            
-           
-            <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
-                <li data-role="divider"></li> 
-                <li>
-                    <a href="#"  >
-                        <img data-bind=" attr:{src: shopimageUrl}" />
-                        <h2 data-bind="text: shopName"></h2>
-                        <p data-bind="text: shopAddress"></p> 
-             </a>
-
-
-                    <a href="popup.html"  data-bind="click: $parent.save" rel="external"></a>                        
-
-                 <!--       <a href="popup.html"  data-rel="dialog" data-position-to="window" data-transition="pop" data-bind="click: $parent.save"></a>                        
--->
-            </ul>
-            
-        </div>
+</head>
+<body>
+    
+    <div data-role="page"  class="pagecontent" id="main">    
         
+        <div data-role="content">
+            <div class="header" >
+		 <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                                <ul>
+                                        <li><a href="home.html" rel="external">Home</a></li>
+                                        <li><a href="signup.html" rel="external">Register</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3">
+                                    <a href="#showlist">
+                                    <img src="images/cart.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>		
+                            
+                            <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
+                            <div class="clear"></div>
+                        </div>
 
-        </div>                       
-        <!-- <div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-            <h3>Purchase Album?</h3>
-            <p>Your download will begin immediately on your mobile device when you purchase.</p>
-            <a href="ShowResult.html" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: $10.99</a>
-            <a href="ShowResult.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
-        </div> -->
+                        <div class="clear"></div>
+                    </div>     
+                <div class="header_bottom">
+                    <div class="header_bottom_left">				
+                        <div class="categories">
+                            <div class="menu_container">
+                                <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                <div class="menu_body">
+                                    <div class="list">
+                                        <ul>
+                                            <li><a href="#">All</a></li>
+                                            <li><a href="#">Vegitable</a></li>
+                                            <li><a href="#">Fruit</a></li>
+                                            <li><a href="#">English</a></li>
+
+                                        </ul>
+                                    </div>	
+                                </div>								
+                            </div>
+                        </div>					
+                    </div>
+                    
+                    <div class="header_bottom_right">					 
+                            <!------ Slider ------------>
+                                <!------End Slider ------------>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    <!-- Category slideer-->
+                <div class="clear"></div>
+            </div>
+        </div>
+
+   <!------------End Header ------------>
+            <div class="main">
+                <div class="wrap">
+                    <div class="content">
+                        <div class="content_top">
+                                <div class="heading">
+                                <h3>Items</h3>
+                                </div>
+                        </div>
+
+                        <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
+                            <li data-role="divider"></li> 
+                            <li>
+                                <a href="#"  >
+                                    <img data-bind=" attr:{src: shopimageUrl}" />
+                                    <h2 data-bind="text: shopName"></h2>
+                                    <p data-bind="text: shopAddress"></p> 
+                                </a>
+                                <a href="popup.html"  data-bind="click: $parent.save" rel="external"></a>
+                            </li>
+                        </ul>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   <!-- Scripts -->
+    <script type="text/javascript">
+                        function DropDown(el) {
+                                this.dd = el;
+                                this.initEvents();
+                        }
+                        DropDown.prototype = {
+                                initEvents : function() {
+                                        var obj = this;
+
+                                        obj.dd.on('click', function(event){
+                                                $(this).toggleClass('active');
+                                                event.stopPropagation();
+                                        });	
+                                }
+                        }
+
+                        $(function() {
+
+                                var dd = new DropDown( $('#dd') );
+
+                                $(document).click(function() {
+                                        // all dropdowns
+                                        $('.wrapper-dropdown-3').removeClass('active');
+                                });
+
+                        });
+</script>
+   <script type="text/javascript">
+        var $ = jQuery.noConflict();
+                $(function() {
+                        $('#activator').click(function(){
+                                        $('#box').animate({'top':'65px'},500);
+                        });
+                        $('#boxclose').click(function(){
+                                        $('#box').animate({'top':'-400px'},500);
+                        });
+                        $('#activator_share').click(function(){
+                                        $('#box_share').animate({'top':'65px'},500);
+                        });
+                        $('#boxclose_share').click(function(){
+                                        $('#box_share').animate({'top':'-400px'},500);
+                        });
+
+                });
+                $(document).ready(function(){
+
+                //Hide (Collapse) the toggle containers on load
+                $(".toggle_container").hide(); 
+
+                //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+                $(".trigger").click(function(){
+                        $(this).toggleClass("active").next().slideToggle("slow");
+                        return false; //Prevent the browser jump to the link anchor
+                });
+
+                });
+        </script>
+                                                                
+                                                                
+                                                                
+            <script type="text/javascript">
+                    $(document).ready(function(){
+                            $(".menu_body").hide();
+                            //toggle the componenet with class menu_body
+                            $(".menu_head").click(function(){
+                                    $(this).next(".menu_body").slideToggle(600); 
+                                    var plusmin;
+                                    plusmin = $(this).children(".plusminus").text();
+
+                                    if( plusmin == '+')
+                                    $(this).children(".plusminus").text('-');
+                                    else
+                                    $(this).children(".plusminus").text('+');
+                            });
+                    });
+            </script>
+    
+    
 
         <script type="text/javascript">
 

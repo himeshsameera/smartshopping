@@ -1,1 +1,1 @@
-var MSSServerPath ="localhost:8084/MSSServerApp/";
+var MSSServerPath ="../";
