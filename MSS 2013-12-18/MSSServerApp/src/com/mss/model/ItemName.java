@@ -12,6 +12,7 @@ public class ItemName {
     private String name;
     private String image;
     private int id;
+    private String unit;
 
     public ItemName() {
         
@@ -64,6 +65,20 @@ public class ItemName {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    /**
+     * @return the unit
+     */
+    public String getUnit() {
+        return unit;
+    }
+
+    /**
+     * @param unit the unit to set
+     */
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
     
 }

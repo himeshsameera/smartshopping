@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ItemContentProvider {
     final static Logger logger = LoggerFactory.getLogger(ContentProvider.class);
 
+    @Deprecated
     @RequestMapping(value = { "search" }, method = RequestMethod.GET)
     public void processSearch(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
 
@@ -53,7 +54,7 @@ public class ItemContentProvider {
             PrintWriter writer = res.getWriter();
             writer.print(json);
     }
-
+@Deprecated
     @RequestMapping(value = { "processList" }, method = RequestMethod.GET)
     public void processList(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
 		logger.debug("Processing list - Not implemented yet");
@@ -98,12 +99,13 @@ public class ItemContentProvider {
             res.setContentType("text/html");
             int categoryId = Integer.parseInt(req.getParameter("categoryId"));
             ArrayList<ItemName> itemNameList = new ArrayList<ItemName>();
-            ResultSet r = DB.getDBResult("SELECT * FROM item WHERE category_id="+categoryId+";");
+            ResultSet r = DB.getDBResult("SELECT * FROM item INNER JOIN unit ON item.unit_id=unit.id WHERE category_id="+categoryId+";");
             while(r.next()){
                 ItemName itemName = new ItemName();
                 itemName.setId(r.getInt("id"));
                 itemName.setName(r.getString("name"));
                 itemName.setImage(r.getString("image"));
+                itemName.setUnit(r.getString("unitname"));
                 itemNameList.add(itemName);
             }
             ItemNames itemNames = new ItemNames(itemNameList);
