@@ -82,7 +82,7 @@ public class ItemContentProvider {
     @RequestMapping(value = { "categories" }, method = RequestMethod.GET)
     public void getCategories(HttpServletRequest req,HttpServletResponse res, Model model) throws Exception {
 		logger.debug("Processing categories");
-                
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		res.setContentType("text/HTML;");	
                 
                 Categories c = DB.getCategories();
