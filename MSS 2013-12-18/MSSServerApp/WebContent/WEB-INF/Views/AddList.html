@@ -256,7 +256,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </div>											
                                     </div>
                                     <div>
-                                        Amount : <input type="text" id="value" />
+                                        Amount : <input type="text" id="value" /><p data-bind="text:currentItemUnit"></p>
                                     </div>
                                     <div class="share-desc">
                                             
@@ -378,9 +378,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 self.selecteditems = ko.observableArray([]);
                                 self.availableItems = ko.observableArray([]);
                                 self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
-                                self.currentItemId =-1;
+                                self.currentItemId =ko.observable();
                                 self.currentItemName =ko.observable();
                                 self.currentItemImage =ko.observable();
+                                self.currentItemUnit = ko.observable();
 
                                 self.currentItemDescription =ko.observable("This is a good fruit");
            /*                                            
@@ -400,7 +401,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 self.viewItemDetails=function(displayItem){
                                      self.currentItemName(displayItem.name());
                                      self.currentItemImage(displayItem.image());
-                                     self.currentItemId = displayItem.id();
+                                     self.currentItemId(displayItem.id());
+                                     self.currentItemUnit(displayItem.unit());
                                      document.location="#viewItem";
                                 }
 
@@ -439,11 +441,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             }
                             //models            
                             // this is to view item name price etc. taken from server
-                            function Item(myName, myID, myImage) {
+                            function Item(myName, myID, myImage, myUnit) {
                                 var seg = this;
                                 seg.name = ko.observable(myName);
                                 seg.id = ko.observable(myID);
                                 seg.image = ko.observable(myImage);
+                                seg.unit = ko.observable(myUnit);
                                 return this;
                             }
 
@@ -457,11 +460,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             }
 
                             // This is to add items to the shopping list   
-                            function ListItem(myName, myID, myAmount) {
+                            function ListItem(myName, myID, myAmount, myUnit) {
                                 var seg = this;
                                 seg.itemName = ko.observable(myName);
                                 seg.itemId = ko.observable(myID);
                                 seg.amount = ko.observable(myAmount);
+                                seg.unit = ko.observable(myUnit);
                                 return this;
                             }
 //----------------------------------------------------------------------------------
@@ -500,8 +504,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     modal.availableItems([]);
                                     console.log("length is " + parsed.items.length);
                                     for (i = 0; i < parsed.items.length; i++) {
-                                        console.log(i);
-                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
+                                        console.log(i+" sdsd");
+                                        console.log("parse "+parsed.items[i].unit);
+                                        
+                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image, parsed.items[i].unit);
+                                        console.log(i+" ikik");
                                         modal.availableItems.push(seg);
                                     }
                                 });
@@ -543,7 +550,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             function addItem(){
                                 var amountFloat =  parseFloat(document.getElementById("value").value);
                                 if(!isNaN(amountFloat)){
-                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
+                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId, amountFloat, modal.cu));
                                     document.location='#main';
                                     
                                     var cookieCount = parseInt(getCookie('cItemList'), 10);

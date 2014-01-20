@@ -7,15 +7,23 @@ public class Item  implements java.io.Serializable {
     private String itemName;
     private Double itemPrice;
     private String image;
+    private String itemUnit;
     
     public Item(){
         
     }
     
-     public Item(String name, Double price, String image){
+    public Item(String name, Double price, String image){
     	this.itemPrice = price;
     	this.itemName = name;
-        this.image=image;
+        this.image = image;
+    }
+    
+     public Item(String name, Double price, String image, String itemUnit){
+    	this.itemPrice = price;
+    	this.itemName = name;
+        this.image = image;
+        this.itemUnit = itemUnit;
     }
        
 	public int getId() {
@@ -57,6 +65,20 @@ public class Item  implements java.io.Serializable {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    /**
+     * @return the itemUnit
+     */
+    public String getItemUnit() {
+        return itemUnit;
+    }
+
+    /**
+     * @param itemUnit the itemUnit to set
+     */
+    public void setItemUnit(String itemUnit) {
+        this.itemUnit = itemUnit;
     }
 
     /**

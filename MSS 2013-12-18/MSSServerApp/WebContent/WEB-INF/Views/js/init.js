@@ -1,1 +1,1 @@
-var MSSServerPath ="http://192.168.173.1:8080/handymart/";
+var MSSServerPath ="http://localhost:8085/MSSServerApp/";
