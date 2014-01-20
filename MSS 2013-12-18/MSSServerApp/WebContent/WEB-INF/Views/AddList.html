@@ -26,6 +26,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 <script src="js/init.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        var count = getCookie('cItemList');
+        console.log(count);
+        $(".item_list_counter").text(count);
+        
+        function getCookie(cItemList){
+            var cookieName = cItemList+"=";
+            var cArray = document.cookie.split(';');
+            for(var c=0;c<cArray.length;c++){
+                var c = cArray[c].trim();
+                if (c.indexOf(cookieName)==0){
+                    return c.substring(cookieName.length,c.length);
+                } 
+            }
+            return "";
+        }
+        //$(".item_list_counter").text($(".cart_item_list li").size());
+    });
+</script>
 </head>
 <body>
     
@@ -60,6 +81,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div id="dd" class="wrapper-dropdown-3">
                                     <a href="#showlist">
                                     <img src="images/cart.png" alt="" />
+                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
                                     </a>
                                 </div>
                             </div>		
@@ -189,11 +211,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 						<div class="header_top_right">
 							<div class="cart">
-			  	 				<div id="dd" class="wrapper-dropdown-3"><img src="images/cart.png" alt="" />
-								  <ul class="dropdown">
-						            <li>you have no items in your Shopping cart</li>
-						        </ul>
-							</div>
+			  	 				<div id="dd" class="wrapper-dropdown-3">
+                                                                    <img src="images/cart.png" alt="" />
+                                                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
+                                                                </div>
 						</div>											
 					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
 					     	    <div class="box" id="box">
@@ -385,6 +406,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 self.removeItem = function(seg) {
                                     self.selecteditems.remove(seg);
+                                    var cookieCount = getCookie('cItemList');
+                                    cookieCount = cookieCount - 1;
+                                    setCookie('cItemList',cookieCount);
                                 }
 
                                 self.save = function() {
@@ -507,6 +531,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             function clearList() {
                                 modal.selecteditems([]);
+                                setCookie('cItemList',0);
                             }
                                 
                             //@depricated
@@ -520,9 +545,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 if(!isNaN(amountFloat)){
                                     modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
                                     document.location='#main';
+                                    
+                                    var cookieCount = parseInt(getCookie('cItemList'), 10);
+                                    console.log("oop");
+                                    cookieCount = cookieCount + 1;
+                                    setCookie('cItemList',cookieCount);
                                 } else{
                                     alert("Please enter a correct value");
                                 }
+                            }
+                            
+                            function setCookie(cname,cvalue){
+                                document.cookie = cname + "=" + cvalue;
+                            }
+
+                            function getCookie(cname){
+                                var cookieName = cname + "=";
+                                var cArray = document.cookie.split(';');
+                                for(var c=0; c<cArray.length; c++) {
+                                  var c = cArray[c].trim();
+                                  if (c.indexOf(cookieName)==0){
+                                      return c.substring(cookieName.length,c.length);
+                                  } 
+                                }
+                                return "";
                             }
                             /**
                              *  PART 4 - Run the initial functions. With asyncronous jilmart
