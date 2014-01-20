@@ -19,15 +19,20 @@ and open the template in the editor.
 
 <link rel="stylesheet" href="css/ShopingUI.css" />
 <script type='text/javascript' src='js/knockoutjs.js'></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+  <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> 
+<script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script> 
 <script src="js/init.js"></script>
+
+<script src="js/thameScripts.js"></script>
 
 </head>
 <body>
     
     <div data-role="page"  class="pagecontent" id="main">    
+        
+        
+<!-- DRY principal is :o -->        
         
         <div data-role="content">
             <div class="header" >
@@ -109,7 +114,7 @@ and open the template in the editor.
                         <ul data-role="listview" data-inset="true" data-split-theme="d" data-bind="foreach: Shoplist">
                             <li data-role="divider"></li> 
                             <li>
-                                <a href="#"  >
+                                <a href="#popup" data-bind="click: $parent.viewShopDetails" >
                                     <img data-bind=" attr:{src: shopimageUrl}" />
                                     <h2 data-bind="text: shopName"></h2>
                                     <p data-bind="text: shopAddress"></p> 
@@ -126,89 +131,101 @@ and open the template in the editor.
     
     
     
+    <!-- view results shop popup -->
     
-    
-    
-    
+      <div data-role="page"  class="pagecontent" id="popup">    
+        
+        
+<!-- DRY principal is :o -->        
+        
+        <div data-role="content">
+            <div class="header" >
+		 <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                                <ul>
+                                        <li><a href="home.html" rel="external">Home</a></li>
+                                        <li><a href="signup.html" rel="external">Register</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3">
+                                    <a href="#showlist">
+                                    <img src="images/cart.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>		
+                            
+                            <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>     
+                    <!-- Category slideer-->
+                <div class="clear"></div>
+            </div>
+        </div>
+
+   <!-- End Header -->
+
+                <!-- starting to add thame -->
+                
+                
+   	 <div class="wrap">
+            <div class="section group">
+                <div class="cont-desc span_1_of_2">
+                    <div class="product-details">				
+                        <div class="grid images_3_of_2">
+                            <img data-bind=" attr:{src: selectedShop.Image}" alt="" />
+                        </div>
+                    <div class="desc span_3_of_2">
+                        <h2 data-bind="text: selectedShop.Title"> </h2>
+                    <div class="available">
+                        <div class="price">
+                            <p data-bind="text: selectedShop.Address" ></p>
+                        </div>					
+                    </div>
+
+                            <table class="resultTable">
+                            <tbody data-bind="foreach: selectedShop.Items" >
+                             <tr>
+                                 <td data-bind="text: Name">Carrot</td><td><span data-bind="text:amount"></span> kg</td><td>Rs <span data-bind="text: Price"></span> / kg</td>
+                             </tr>
+                            </tbody>
+                            </table>    
+                            <div class="price">
+                                <p> Total: <span data-bind="text: selectedShop.total"></span> </p>
+                            </div>    
+                        <div class="button"><span><a href="#main">Back</a></span></div>					
+					
+                    </div>
+                    <div class="clear"></div>
+                    </div>
+                </div>								 
+            </div>
+        </div>
+                <!-- End added part of thame-->
+                
+            </div>
+   
+        </div>
+
     
     
    <!-- Scripts -->
-    <script type="text/javascript">
-                        function DropDown(el) {
-                                this.dd = el;
-                                this.initEvents();
-                        }
-                        DropDown.prototype = {
-                                initEvents : function() {
-                                        var obj = this;
-
-                                        obj.dd.on('click', function(event){
-                                                $(this).toggleClass('active');
-                                                event.stopPropagation();
-                                        });	
-                                }
-                        }
-
-                        $(function() {
-
-                                var dd = new DropDown( $('#dd') );
-
-                                $(document).click(function() {
-                                        // all dropdowns
-                                        $('.wrapper-dropdown-3').removeClass('active');
-                                });
-
-                        });
-</script>
-   <script type="text/javascript">
-        var $ = jQuery.noConflict();
-                $(function() {
-                        $('#activator').click(function(){
-                                        $('#box').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose').click(function(){
-                                        $('#box').animate({'top':'-400px'},500);
-                        });
-                        $('#activator_share').click(function(){
-                                        $('#box_share').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose_share').click(function(){
-                                        $('#box_share').animate({'top':'-400px'},500);
-                        });
-
-                });
-                $(document).ready(function(){
-
-                //Hide (Collapse) the toggle containers on load
-                $(".toggle_container").hide(); 
-
-                //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-                $(".trigger").click(function(){
-                        $(this).toggleClass("active").next().slideToggle("slow");
-                        return false; //Prevent the browser jump to the link anchor
-                });
-
-                });
-        </script>
-                                                                
-                                                                
-                                                                
-            <script type="text/javascript">
-                    $(document).ready(function(){
-                            $(".menu_body").hide();
-                            //toggle the componenet with class menu_body
-                            $(".menu_head").click(function(){
-                                    $(this).next(".menu_body").slideToggle(600); 
-                                    var plusmin;
-                                    plusmin = $(this).children(".plusminus").text();
-
-                                    if( plusmin == '+')
-                                    $(this).children(".plusminus").text('-');
-                                    else
-                                    $(this).children(".plusminus").text('+');
-                            });
-                    });
-            </script>
     
     
 
@@ -220,9 +237,25 @@ and open the template in the editor.
             var editorModel = function() {
                 var self = this;
                 self.Shoplist = ko.observableArray();
+                self.selectedShop=new Shop('abc','def','ghi');
                 
-                self.save = function(saveShop){
-                    localStorage.setItem('viewResult', ko.toJSON(saveShop));
+                
+                self.viewShopDetails = function(saveShop){
+              //      localStorage.setItem('viewResult', ko.toJSON(saveShop));
+                    alert(ko.toJSON(saveShop));
+                    self.selectedShop.Title(saveShop.shopName);
+                    self.selectedShop.Address(saveShop.shopAddress);
+                    self.selectedShop.Image(saveShop.shopimageUrl);
+                    self.selectedShop.Items([]);
+
+                    var index=0;
+
+                    for (index = 0; index < saveShop.itempriceList.length; ++index) {
+                       var myItem = new Item(saveShop.itempriceList[index].itemName,saveShop.itempriceList[index].price);
+                       myItem.amount =saveShop.itempriceList[index].amount;
+                       self.selectedShop.Items.push(myItem);
+                    }
+                    
                     return true;
                 } 
 
@@ -238,8 +271,9 @@ and open the template in the editor.
                 seg.total = ko.computed(function() {
                     tot = 0;
                     for (i = 0; i < seg.Items().length; i++) {
-                        tot = tot + seg.Items()[i].Price();
+                        tot = tot + seg.Items()[i].Price* seg.Items()[i].amount;
                     }
+                    tot= "Rs "+ tot+"/="
                     return tot;
                 });
 
@@ -247,8 +281,9 @@ and open the template in the editor.
             }
             function Item(name, price) {
                 var sel = this;
-                sel.Name = ko.observable(name);
-                sel.Price = ko.observable(price);
+                sel.Name = name;
+                sel.Price = price;
+                sel.amount = 1;
                 return this;
             }
 
@@ -259,6 +294,7 @@ and open the template in the editor.
              **/
             var bindings = 0;
             var modal = new editorModel();
+
 
 
             /**
@@ -280,6 +316,7 @@ and open the template in the editor.
                 //console.log(data);
                 var parsed = eval("(" + data + ")");
                 modal.Shoplist(parsed);
+                
                 
                 /*
                 for (var i = 0; i < parsed.length; i++) {

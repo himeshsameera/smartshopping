@@ -14,6 +14,9 @@ public class ItemPrice implements Serializable{
     private int itemId;
     private double price;
     private String itemName;
+    private int amount = 0;
+    private int subtotal = 0;
+    
     
     public ItemPrice(){
     
@@ -64,5 +67,33 @@ public class ItemPrice implements Serializable{
      */
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    /**
+     * @return the amount
+     */
+    public int getAmount() {
+        return amount;
+    }
+
+    /**
+     * @param amount the amount to set
+     */
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * @return the subtotal
+     */
+    public int getSubtotal() {
+        return subtotal;
+    }
+
+    /**
+     * @param subtotal the subtotal to set
+     */
+    public void setSubtotal(int subtotal) {
+        this.subtotal = subtotal;
     }
 }

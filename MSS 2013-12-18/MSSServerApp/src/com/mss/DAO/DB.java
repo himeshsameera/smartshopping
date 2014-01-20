@@ -94,6 +94,8 @@ public class DB {
                 if(shopId == shopList.get(i).getShopId()){
                     ItemPrice itemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
                     itemPrice.setItemName(r1.getString("item.name"));
+                    itemPrice.setAmount(getRequiredAmount(r1.getInt("item_id"), itemSearchList));
+                    
                     ArrayList<ItemPrice> iPrice = shopList.get(i).getItempriceList();
                     iPrice.add(itemPrice);
                     hasShop = true;
@@ -108,6 +110,8 @@ public class DB {
                 ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
                 ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
                 addItemPrice.setItemName(r1.getString("item.name"));
+               addItemPrice.setAmount(getRequiredAmount(r1.getInt("item_id"), itemSearchList));
+
                 addItemPriceList.add(addItemPrice);
                 ShopForItemList addNewShop = new ShopForItemList(shopId,addItemPriceList);
                 
@@ -122,6 +126,17 @@ public class DB {
         return shopList;
     }
     
+    
+    // A real perfomance eater
+    public static int getRequiredAmount(int id,ArrayList<ItemSearch> itemSearchList){
+    
+         for(int i=0;i<itemSearchList.size();i++){
+             if(itemSearchList.get(i).getItemId()==id){
+                 return itemSearchList.get(i).getAmount();
+             }
+        }
+        return 0;
+    }
       /**
      * Search the database for a given item.
      **/
