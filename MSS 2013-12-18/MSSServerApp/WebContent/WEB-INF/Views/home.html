@@ -17,9 +17,56 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
 
 <script type="text/javascript">
-    $(window).load(function() {
+    $(document).ready(function(){
         $('#slider').nivoSlider();
+        //item list notify counter
+        if(hasCookie('cItemList')){
+            var count = getCookie('cItemList');
+            $("#item_list_counter").text(count);
+        }else{
+            console.log("kks");
+            initializeCookie();
+        }
+        
+        
+        function initializeCookie(){
+            var count= 0;
+            document.cookie = "cItemList=" + count;
+        }
+//        
+        function hasCookie(cItemList){
+            var name = cItemList + "=";
+            var cArray = document.cookie.split(';');
+            for(var c=0;c<cArray.length;c++){
+                var c = cArray[c].trim();
+                if (c.indexOf(name)==0){
+                    return true;
+                } 
+            }
+            return false;
+        }
+        
+        function getCookie(cItemList){
+            var cookieName = cItemList+"=";
+            var cArray = document.cookie.split(';');
+            for(var c=0;c<cArray.length;c++){
+                var c = cArray[c].trim();
+                if (c.indexOf(cookieName)==0){
+                    return c.substring(cookieName.length,c.length);
+                } 
+            }
+            return "";
+        }
+        
+        
+//        function setCookie(cname,cvalue){
+//            document.cookie = cname + "=" + cvalue;
+//        }
+        
     });
+    
+    
+    
     </script>
 </head>
 <body>
@@ -45,11 +92,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 						<div class="header_top_right">
 							<div class="cart">
-			  	 				<div id="dd" class="wrapper-dropdown-3"><img src="images/cart.png" alt="" />
-								  <ul class="dropdown">
-						            <li>you have no items in your Shopping cart</li>
-						        </ul>
-							</div>
+			  	 				<div id="dd" class="wrapper-dropdown-3">
+                                                                    <img src="images/cart.png" alt="" />
+                                                                    <div class="noti_bubble"><span id="item_list_counter"></span></div>
+                                                                </div>
 						</div>											
 					     	 <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
 					     	    <div class="box" id="box">

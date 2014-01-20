@@ -171,6 +171,20 @@ a.boxclose{
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+
+.wrapper-dropdown-3 .noti_bubble {
+    position:absolute;
+    top: -6px;
+    right:-6px;
+    padding:1px 2px 1px 2px;
+    background-color:red;
+    color:white;
+    font-weight:bold;
+    font-size:0.55em;
+    
+    border-radius:30px;
+    box-shadow:1px 1px 1px gray;
+}
 .wrapper-dropdown-3 .dropdown {
     /* Size & position */
     position: absolute;
@@ -817,4 +831,17 @@ a.boxclose{
 .available{
 text: 
 
+}
+/**rate ster css*/
+.demos {
+	padding: 1em;
+}
+
+.demo {
+	padding: 0.5em;	
+}
+
+.demos h3 {
+	color: #a11;
+	border-bottom: 1px solid #aaa;
 }

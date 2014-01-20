@@ -15,11 +15,16 @@ body {
 }
 
 .thumbBox {
-width: 76px;
+width: 70px;
 float: left;
-margin: 2px;
 
-height:80px;
+margin: 1% 0 1% 1.6%;
+	box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-webkit-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-moz-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-o-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+
+height:70px;
 overflow: hidden;
 border:#ddd dotted 1px;
 text-align:center;
@@ -41,8 +46,13 @@ font-size:80%;
 }
 
 .categoryBox {
-width: 80px;
-margin: 5px;
+width: 90px;
+margin: 1% 0 1% 1.6%;
+	box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-webkit-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-moz-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	-o-box-shadow: 0px 0px 2px rgb(150, 150, 150);
+	
 display: inline-block;
 height:90px;
 overflow: hidden;
