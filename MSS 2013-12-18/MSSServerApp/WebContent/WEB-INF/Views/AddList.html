@@ -25,35 +25,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 <script src="js/init.js"></script>
+<script src="js/thameScripts.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        
-        var count = getCookie('cItemList');
-        console.log(count);
-        $(".item_list_counter").text(count);
-        
-        function getCookie(cItemList){
-            var cookieName = cItemList+"=";
-            var cArray = document.cookie.split(';');
-            for(var c=0;c<cArray.length;c++){
-                var c = cArray[c].trim();
-                if (c.indexOf(cookieName)==0){
-                    return c.substring(cookieName.length,c.length);
-                } 
-            }
-            return "";
-        }
-        //$(".item_list_counter").text($(".cart_item_list li").size());
-    });
-</script>
+
 </head>
 <body>
     
     <div data-role="page"  class="pagecontent" id="main">    
-        <div data-role="header">
-            <h1>Current List</h1>
-        </div>
+
         
         <div data-role="content">
             <div class="header" >
@@ -270,90 +249,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>								 
             </div>
         </div>
+    </div> 
     </div>
-
-                
-            </div>
-        </div>
+</div>
    
    
    <!-- Scripts -->
-    <script type="text/javascript">
-                        function DropDown(el) {
-                                this.dd = el;
-                                this.initEvents();
-                        }
-                        DropDown.prototype = {
-                                initEvents : function() {
-                                        var obj = this;
 
-                                        obj.dd.on('click', function(event){
-                                                $(this).toggleClass('active');
-                                                event.stopPropagation();
-                                        });	
-                                }
-                        }
+        <script type="text/javascript">
+            function updateCount(){
 
-                        $(function() {
+                var count = getCookie('cItemList');
+                console.log(count);
+                $(".item_list_counter").text(count);
 
-                                var dd = new DropDown( $('#dd') );
-
-                                $(document).click(function() {
-                                        // all dropdowns
-                                        $('.wrapper-dropdown-3').removeClass('active');
-                                });
-
-                        });
-</script>
-   <script type="text/javascript">
-        var $ = jQuery.noConflict();
-                $(function() {
-                        $('#activator').click(function(){
-                                        $('#box').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose').click(function(){
-                                        $('#box').animate({'top':'-400px'},500);
-                        });
-                        $('#activator_share').click(function(){
-                                        $('#box_share').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose_share').click(function(){
-                                        $('#box_share').animate({'top':'-400px'},500);
-                        });
-
-                });
-                $(document).ready(function(){
-
-                //Hide (Collapse) the toggle containers on load
-                $(".toggle_container").hide(); 
-
-                //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-                $(".trigger").click(function(){
-                        $(this).toggleClass("active").next().slideToggle("slow");
-                        return false; //Prevent the browser jump to the link anchor
-                });
-
-                });
+                function getCookie(cItemList){
+                    var cookieName = cItemList+"=";
+                    var cArray = document.cookie.split(';');
+                    for(var c=0;c<cArray.length;c++){
+                        var c = cArray[c].trim();
+                        if (c.indexOf(cookieName)==0){
+                            return c.substring(cookieName.length,c.length);
+                        } 
+                    }
+                    return "";
+                }
+                //$(".item_list_counter").text($(".cart_item_list li").size());
+            };
         </script>
-                                                                
-                                                                
-                                                                
-            <script type="text/javascript">
-                    $(document).ready(function(){
-                            $(".menu_body").hide();
-                            //toggle the componenet with class menu_body
-                            $(".menu_head").click(function(){
-                                    $(this).next(".menu_body").slideToggle(600); 
-                                    var plusmin;
-                                    plusmin = $(this).children(".plusminus").text();
-
-                                    if( plusmin == '+')
-                                    $(this).children(".plusminus").text('-');
-                                    else
-                                    $(this).children(".plusminus").text('+');
-                            });
-                    });
-            </script>
             
           <script type="text/javascript">
 
@@ -409,6 +332,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     var cookieCount = getCookie('cItemList');
                                     cookieCount = cookieCount - 1;
                                     setCookie('cItemList',cookieCount);
+                                    updateCount();
                                 }
 
                                 self.save = function() {
@@ -532,6 +456,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             function clearList() {
                                 modal.selecteditems([]);
                                 setCookie('cItemList',0);
+                                updateCount();
                             }
                                 
                             //@depricated
@@ -546,10 +471,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
                                     document.location='#main';
                                     
-                                    var cookieCount = parseInt(getCookie('cItemList'), 10);
-                                    console.log("oop");
-                                    cookieCount = cookieCount + 1;
+                                    var cookieCount = modal.selecteditems().length;  //modal.selecteditems.length;
                                     setCookie('cItemList',cookieCount);
+                                    updateCount();
                                 } else{
                                     alert("Please enter a correct value");
                                 }
