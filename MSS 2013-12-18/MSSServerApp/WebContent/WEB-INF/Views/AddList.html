@@ -6,46 +6,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
 <head>
-<title>Home</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-      
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
 
 
-<link rel="stylesheet" href="css/ShopingUI.css" />
-<script type='text/javascript' src='js/knockoutjs.js'></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-<script src="js/init.js"></script>
+    <link rel="stylesheet" href="css/ShopingUI.css" />
+    <script type='text/javascript' src='js/knockoutjs.js'></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+    <script src="js/init.js"></script>
 
 </head>
 <body>
-    
+
     <div data-role="page"  class="pagecontent" id="main">    
-        <div data-role="header">
-            <h1>Current List</h1>
-        </div>
-        
+
+
         <div data-role="content">
             <div class="header" >
-		 <div class="headertop_desc">
+                <div class="headertop_desc">
                     <div class="wrap">
                         <div class="account_desc">
-                                <ul>
-                                        <li><a href="home.html" rel="external">Home</a></li>
-                                        <li><a href="signup.html" rel="external">Register</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                </ul>
+                            <ul>
+                                <li><a href="home.html" rel="external">Home</a></li>
+                                <li><a href="signup.html" rel="external">Register</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -59,62 +57,62 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="cart">
                                 <div id="dd" class="wrapper-dropdown-3">
                                     <a href="#showlist">
-                                    <img src="images/cart.png" alt="" />
+                                        <img src="images/cart.png" alt="" />
                                     </a>
                                 </div>
                             </div>		
-                            
+
                             <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
                             <div class="clear"></div>
                         </div>
 
                         <div class="clear"></div>
                     </div>     
-                <div class="header_bottom">
-                    <div class="header_bottom_left">				
-                        <div class="categories">
-                            <div class="menu_container">
-                                <p class="menu_head">categories<span class="plusminus">+</span></p>
-                                <div class="menu_body">
-                                    <div class="list">
-                                        <ul>
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Vegitable</a></li>
-                                            <li><a href="#">Fruit</a></li>
-                                            <li><a href="#">English</a></li>
+                    <div class="header_bottom">
+                        <div class="header_bottom_left">				
+                            <div class="categories">
+                                <div class="menu_container">
+                                    <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                    <div class="menu_body">
+                                        <div class="list">
+                                            <ul>
+                                                <li><a href="#">All</a></li>
+                                                <li><a href="#">Vegitable</a></li>
+                                                <li><a href="#">Fruit</a></li>
+                                                <li><a href="#">English</a></li>
 
-                                        </ul>
-                                    </div>	
-                                </div>								
-                            </div>
-                        </div>					
-                    </div>
-                    
-                    <div class="header_bottom_right">					 
-                            <!------ Slider ------------>
-                        <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
-                            <div  class = "categoryBox">    
-                                <img data-bind=" attr:{src: image} , click: loadItems"/>
-                                <span class="boxtext" data-bind="text: name"></span>
-                            </div>
+                                            </ul>
+                                        </div>	
+                                    </div>								
+                                </div>
+                            </div>					
                         </div>
-                                <!------End Slider ------------>
+
+                        <div class="header_bottom_right">					 
+                            <!------ Slider ------------>
+                            <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
+                                <div  class = "categoryBox">    
+                                    <img data-bind=" attr:{src: image} , click: loadItems"/>
+                                    <span class="boxtext" data-bind="text: name"></span>
+                                </div>
+                            </div>
+                            <!------End Slider ------------>
+                        </div>
+                        <div class="clear"></div>
                     </div>
+                    <!-- Category slideer-->
                     <div class="clear"></div>
                 </div>
-                    <!-- Category slideer-->
-                <div class="clear"></div>
             </div>
-        </div>
 
-   <!------------End Header ------------>
+            <!------------End Header ------------>
             <div class="main">
                 <div class="wrap">
                     <div class="content">
                         <div class="content_top">
-                                <div class="heading">
+                            <div class="heading">
                                 <h3>Items</h3>
-                                </div>
+                            </div>
                         </div>
 
                         <div data-bind="foreach:availableItems">
@@ -130,409 +128,417 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 
-     <div data-role="page"  class="pagecontent" id="showlist">    
+    <div data-role="page"  class="pagecontent" id="showlist">    
 
-    
-         
-         
-         
-            <div data-role="content">
-                
+
+
+
+
+        <div data-role="content">
+
             <table data-bind="foreach:selecteditems" class="shopinglist">
-                <tr><td data-bind="text:itemName"> </td><td> <span data-bind="text:amount"> </span> kg</td><td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td></tr>
+                <tr>
+                    <td data-bind="text:itemName"> </td>
+                    <td> <span data-bind="text:amount"> </span> kg</td>
+                    <td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
+                </tr>
             </table>
-                        
-                <a href="#main" data-transition="slide" data-role="button">Back</a>
-                <input  type="button"  value="Search" onclick="modal.save();">
-                <input type="button" value="Clear" onclick="clearList();">
-            </div>
-        </div>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <div data-role="page"  class="pagecontent" id="viewItem">    
-  
-            <div data-role="content">
-                
-                <div class="header">
-                    <div class="headertop_desc">
-			<div class="wrap">
-                            <div class="account_desc">
-                                <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="contact.html">Register</a></li>
-                                        <li><a href="contact.html">Login</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="clear"></div>
-			</div>
-                    </div>
-                    
-  	  		<div class="wrap">
-				<div class="header_top">
-					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt="" /></a>
-					</div>
-						<div class="header_top_right">
-							<div class="cart">
-			  	 				<div id="dd" class="wrapper-dropdown-3"><img src="images/cart.png" alt="" />
-								  <ul class="dropdown">
-						            <li>you have no items in your Shopping cart</li>
-						        </ul>
-							</div>
-						</div>											
-					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
-					     	    <div class="box" id="box">
-                                                        <div class="box_content">        					                         
-					                <div class="box_content_center">
-					                   <div class="form_content">
-						                 <div class="search_box">
-								     		<form>
-								     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-								     		</form>
-								     	</div>
-						                   <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
-					                   </div>                
-					                   <div class="clear"></div>
-					                </div> 
-					           </div>
-					        </div>
-						 <div class="clear"></div>
-					</div>
-		
-			 <div class="clear"></div>
-  		</div>      				
-   	</div>
-   </div>
-   <div class="main">
-   	 <div class="wrap">
-   	 	
-   	 	<div class="section group">
-				<div class="cont-desc span_1_of_2">
-                                    <div class="product-details">				
-					<div class="grid images_3_of_2">
-						<img data-bind=" attr:{src: currentItemImage}" alt="" />
-                                        </div>
-                           <div class="desc span_3_of_2">					
-				<h2 data-bind="text:currentItemName"> </h2>					
-                                    <div class="available">
-                                        <div class="price">
-                                             <p data-bind="text:currentItemDescription"></p>
-                                        </div>											
-                                    </div>
-                                    <div>
-                                        Amount : <input type="text" id="value" />
-                                    </div>
-                                    <div class="share-desc">
-                                            
-                                            <div class="button"><a href="#main" onclick="addItem()">Add to Cart</a></div>					                                            
-                                            <div class="button"><span><a href="#main">Back</a></span></div>					
-                                            <div class="clear"></div>
-                                    </div>
-                                </div>
-                            <div class="clear"></div>
-                    </div>		
-                    </div>								 
-            </div>
+            <a href="#main" data-transition="slide" data-role="button">Back</a>
+            <input  type="button"  value="Search" onclick="modal.save();">
+            <input type="button" value="Clear" onclick="clearList();">
         </div>
     </div>
 
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div data-role="page"  class="pagecontent" id="viewItem">    
+
+        <div data-role="content">
+
+            <div class="header">
+                <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="contact.html">Register</a></li>
+                                <li><a href="contact.html">Login</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3"><img src="images/cart.png" alt="" />
+                                    <ul class="dropdown">
+                                        <li>you have no items in your Shopping cart</li>
+                                    </ul>
+                                </div>
+                            </div>											
+                            <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
+                            <div class="box" id="box">
+                                <div class="box_content">        					                         
+                                    <div class="box_content_center">
+                                        <div class="form_content">
+                                            <div class="search_box">
+                                                <form>
+                                                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'Search';
+                                    }"><input type="submit" value="">
+                                                </form>
+                                            </div>
+                                            <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
+                                        </div>                
+                                        <div class="clear"></div>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+							<div class="clear"></div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>      				
+                </div>
             </div>
+            <div class="main">
+                <div class="wrap">
+
+                    <div class="section group">
+                        <div class="cont-desc span_1_of_2">
+                            <div class="product-details">				
+                                <div class="grid images_3_of_2">
+                                    <img data-bind=" attr:{src: currentItemImage}" alt="" />
+                                </div>
+                                <div class="desc span_3_of_2">
+
+                                    <h2 data-bind="text:currentItemName"> </h2>					
+                                    <div class="available">
+                                        <div class="price">
+                                            <p data-bind="text:currentItemDescription"></p>
+                                        </div>											
+                                    </div>
+                                    <div class="share-desc">
+                                        <div class="share">
+                                            Amount : <input class="text_box" type="text" id="value" />
+                                        </div>
+
+                                        <div class="button"><a href="#main" onclick="addItem()">Add to List</a></div>					                                            
+
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>		
+                        </div>								 
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-   
-   
-   <!-- Scripts -->
+    </div>
+
+
+    <!-- Scripts -->
     <script type="text/javascript">
-                        function DropDown(el) {
-                                this.dd = el;
-                                this.initEvents();
-                        }
-                        DropDown.prototype = {
-                                initEvents : function() {
-                                        var obj = this;
+        function DropDown(el) {
+        this.dd = el;
+        this.initEvents();
+        }
+        DropDown.prototype = {
+        initEvents : function() {
+        var obj = this;
 
-                                        obj.dd.on('click', function(event){
-                                                $(this).toggleClass('active');
-                                                event.stopPropagation();
-                                        });	
-                                }
-                        }
+        obj.dd.on('click', function(event){
+        $(this).toggleClass('active');
+        event.stopPropagation();
+        });	
+        }
+        }
 
-                        $(function() {
+        $(function() {
 
-                                var dd = new DropDown( $('#dd') );
+        var dd = new DropDown( $('#dd') );
 
-                                $(document).click(function() {
-                                        // all dropdowns
-                                        $('.wrapper-dropdown-3').removeClass('active');
-                                });
+        $(document).click(function() {
+        // all dropdowns
+        $('.wrapper-dropdown-3').removeClass('active');
+        });
 
-                        });
-</script>
-   <script type="text/javascript">
+        });
+    </script>
+    <script type="text/javascript">
         var $ = jQuery.noConflict();
-                $(function() {
-                        $('#activator').click(function(){
-                                        $('#box').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose').click(function(){
-                                        $('#box').animate({'top':'-400px'},500);
-                        });
-                        $('#activator_share').click(function(){
-                                        $('#box_share').animate({'top':'65px'},500);
-                        });
-                        $('#boxclose_share').click(function(){
-                                        $('#box_share').animate({'top':'-400px'},500);
-                        });
+        $(function() {
+        $('#activator').click(function(){
+        $('#box').animate({'top':'65px'},500);
+        });
+        $('#boxclose').click(function(){
+        $('#box').animate({'top':'-400px'},500);
+        });
+        $('#activator_share').click(function(){
+        $('#box_share').animate({'top':'65px'},500);
+        });
+        $('#boxclose_share').click(function(){
+        $('#box_share').animate({'top':'-400px'},500);
+        });
 
-                });
-                $(document).ready(function(){
+        });
+        $(document).ready(function(){
 
-                //Hide (Collapse) the toggle containers on load
-                $(".toggle_container").hide(); 
+        //Hide (Collapse) the toggle containers on load
+        $(".toggle_container").hide(); 
 
-                //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-                $(".trigger").click(function(){
-                        $(this).toggleClass("active").next().slideToggle("slow");
-                        return false; //Prevent the browser jump to the link anchor
-                });
+        //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+        $(".trigger").click(function(){
+        $(this).toggleClass("active").next().slideToggle("slow");
+        return false; //Prevent the browser jump to the link anchor
+        });
 
-                });
-        </script>
-                                                                
-                                                                
-                                                                
-            <script type="text/javascript">
-                    $(document).ready(function(){
-                            $(".menu_body").hide();
-                            //toggle the componenet with class menu_body
-                            $(".menu_head").click(function(){
-                                    $(this).next(".menu_body").slideToggle(600); 
-                                    var plusmin;
-                                    plusmin = $(this).children(".plusminus").text();
-
-                                    if( plusmin == '+')
-                                    $(this).children(".plusminus").text('-');
-                                    else
-                                    $(this).children(".plusminus").text('+');
-                            });
-                    });
-            </script>
-            
-          <script type="text/javascript">
-
-                            /**
-                             * Written by Himesh Karunaratne
-                             *
-                             * This code is to implement a simple knockoutjs structure inside a web page
-                             * Mainly there are 4 parts
-                             *  1) Create the model
-                             *  2) Declare the gobal variables.
-                             *  3) Declare the other javascript functions to be used indide
-                             *  4) Run the initial code at startup. ie - apply bindings
-                             **/
+        });
+    </script>
 
 
-                            /**
-                             *  PART 1 - Create the model
-                             **/
-                            var editorModel = function() {
 
-                                var self = this;
-                                self.selecteditems = ko.observableArray([]);
-                                self.availableItems = ko.observableArray([]);
-                                self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
-                                self.currentItemId =-1;
-                                self.currentItemName =ko.observable();
-                                self.currentItemImage =ko.observable();
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $(".menu_body").hide();
+        //toggle the componenet with class menu_body
+        $(".menu_head").click(function(){
+        $(this).next(".menu_body").slideToggle(600); 
+        var plusmin;
+        plusmin = $(this).children(".plusminus").text();
 
-                                self.currentItemDescription =ko.observable("This is a good fruit");
-           /*                                            
-                                self.addItem = function(displayItem) {
-                                    //    console.log(ko.toJSON(displayItem));
-                                    //    console.log(displayItem.name());
-                                    //    console.log(displayItem.id());
-                                    var amount = window.prompt("Amount (kg)","1");
-                                    var amountFloat =  parseFloat(amount);
-                                    if(!isNaN(amountFloat)){
-                                        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
-                                    } else{
-                                        alert("error");
-                                    }   
-                                }
-             */                   
-                                self.viewItemDetails=function(displayItem){
-                                     self.currentItemName(displayItem.name());
-                                     self.currentItemImage(displayItem.image());
-                                     self.currentItemId = displayItem.id();
-                                     document.location="#viewItem";
-                                }
+        if( plusmin == '+')
+        $(this).children(".plusminus").text('-');
+        else
+        $(this).children(".plusminus").text('+');
+        });
+        });
+    </script>
 
-                                self.removeItem = function(seg) {
-                                    self.selecteditems.remove(seg);
-                                }
+    <script type="text/javascript">
 
-                                self.save = function() {
-                                    console.log(ko.toJSON(self.selecteditems));
-
-                                    $.ajax({
-                                        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
-                                        url: MSSServerPath+"list/processList",
-                                        dataType: "html", //Note the dataType has been changed from default here.
-                                        data: {
-                                            'json': ko.toJSON(self.selecteditems)
-                                        },
-                                        error: function() {
-                                            //You can do a fallback here
-                                        },
-                                        success: function(data) { //Note the data variable here. This is your returned data
-                                            //I also swapped .attr to .val below
-                                            console.log(data);
-                                            localStorage.setItem('result', data + " ");
-                                            document.location = "ShowResult.html";
-                                        }
-
-                                    });
-                                };
-
-                                 
-
-                            }
-                            //models            
-                            // this is to view item name price etc. taken from server
-                            function Item(myName, myID, myImage) {
-                                var seg = this;
-                                seg.name = ko.observable(myName);
-                                seg.id = ko.observable(myID);
-                                seg.image = ko.observable(myImage);
-                                return this;
-                            }
-
-                            // this is to view catagories
-                            function Catagory(myName, myID , myimage) {
-                                var seg = this;
-                                seg.name = ko.observable(myName);
-                                seg.id = ko.observable(myID);
-                                seg.image = ko.observable(myimage)
-                                return this;
-                            }
-
-                            // This is to add items to the shopping list   
-                            function ListItem(myName, myID, myAmount) {
-                                var seg = this;
-                                seg.itemName = ko.observable(myName);
-                                seg.itemId = ko.observable(myID);
-                                seg.amount = ko.observable(myAmount);
-                                return this;
-                            }
-//----------------------------------------------------------------------------------
-
-                            /**
-                             *  PART 2 - Declare the variables
-                             **/
-                            var bindings = 0;
-                            var modal = new editorModel();
-
-                            /**
-                             *  PART 3 - Declare the functions
-                             **/
-                            function load() {
-                                if (bindings < 1) {
-                                    bindings++;
-                                    console.log("Applying bindings");
-                                    ko.applyBindings(modal);
-                                }
-
-                                console.log("Ready to load categories");
-                                loadCategories();
-                            }
+        /**
+        * Written by Himesh Karunaratne
+        *
+        * This code is to implement a simple knockoutjs structure inside a web page
+        * Mainly there are 4 parts
+        *  1) Create the model
+        *  2) Declare the gobal variables.
+        *  3) Declare the other javascript functions to be used indide
+        *  4) Run the initial code at startup. ie - apply bindings
+        **/
 
 
-                            function loadItems(selectedCatagory) {
-                                console.log("loading items");
-                                $.get(MSSServerPath+"item/itemNames", {
-                                    categoryId: selectedCatagory.id()
-                                }, function(data) {
+        /**
+        *  PART 1 - Create the model
+        **/
+        var editorModel = function() {
 
-                                    console.log(data);
+        var self = this;
+        self.selecteditems = ko.observableArray([]);
+        self.availableItems = ko.observableArray([]);
+        self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+        self.currentItemId =-1;
+        self.currentItemName =ko.observable();
+        self.currentItemImage =ko.observable();
 
-                                    var parsed = eval("(" + data + ")");
+        self.currentItemDescription =ko.observable("This is a good fruit");
+        /*                                            
+        self.addItem = function(displayItem) {
+        //    console.log(ko.toJSON(displayItem));
+        //    console.log(displayItem.name());
+        //    console.log(displayItem.id());
+        var amount = window.prompt("Amount (kg)","1");
+        var amountFloat =  parseFloat(amount);
+        if(!isNaN(amountFloat)){
+        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
+        } else{
+        alert("error");
+        }   
+        }
+        */                   
+        self.viewItemDetails=function(displayItem){
+        self.currentItemName(displayItem.name());
+        self.currentItemImage(displayItem.image());
+        self.currentItemId = displayItem.id();
+        document.location="#viewItem";
+        }
 
-                                    modal.availableItems([]);
-                                    console.log("length is " + parsed.items.length);
-                                    for (i = 0; i < parsed.items.length; i++) {
-                                        console.log(i);
-                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
-                                        modal.availableItems.push(seg);
-                                    }
-                                });
-                            }
-                            ;
+        self.removeItem = function(seg) {
+        self.selecteditems.remove(seg);
+        }
+
+        self.save = function() {
+        console.log(ko.toJSON(self.selecteditems));
+
+        $.ajax({
+        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
+        url: MSSServerPath+"list/processList",
+        dataType: "html", //Note the dataType has been changed from default here.
+        data: {
+        'json': ko.toJSON(self.selecteditems)
+        },
+        error: function() {
+        //You can do a fallback here
+        },
+        success: function(data) { //Note the data variable here. This is your returned data
+        //I also swapped .attr to .val below
+        console.log(data);
+        localStorage.setItem('result', data + " ");
+        document.location = "ShowResult.html";
+        }
+
+        });
+        };
 
 
-                            function loadCategories() {
-                                console.log("loading categories...");
-                                console.log(MSSServerPath+"item/categories");
-                                $.get(MSSServerPath+"item/categories", function(data) {
 
-                                    console.log(data);
+        }
+        //models            
+        // this is to view item name price etc. taken from server
+        function Item(myName, myID, myImage) {
+        var seg = this;
+        seg.name = ko.observable(myName);
+        seg.id = ko.observable(myID);
+        seg.image = ko.observable(myImage);
+        return this;
+        }
 
-                                    var parsed = eval("(" + data + ")");
+        // this is to view catagories
+        function Catagory(myName, myID , myimage) {
+        var seg = this;
+        seg.name = ko.observable(myName);
+        seg.id = ko.observable(myID);
+        seg.image = ko.observable(myimage)
+        return this;
+        }
 
-                                    modal.categories([]);
-                                    console.log("length is " + parsed.categories.length);
-                                    for (i = 0; i < parsed.categories.length; i++) {
-                                        console.log(i);
-                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].imageUrl);
-                                        modal.categories.push(seg);
-                                    }
-                                });
-                            }
-                            ;
+        // This is to add items to the shopping list   
+        function ListItem(myName, myID, myAmount) {
+        var seg = this;
+        seg.itemName = ko.observable(myName);
+        seg.itemId = ko.observable(myID);
+        seg.amount = ko.observable(myAmount);
+        return this;
+        }
+        //----------------------------------------------------------------------------------
 
-                            function clearList() {
-                                modal.selecteditems([]);
-                            }
-                                
-                            //@depricated
-                            function showList(){
-                                localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
-                                document.location="ShowList.html";
-                            }
+        /**
+        *  PART 2 - Declare the variables
+        **/
+        var bindings = 0;
+        var modal = new editorModel();
 
-                            function addItem(){
-                                var amountFloat =  parseFloat(document.getElementById("value").value);
-                                if(!isNaN(amountFloat)){
-                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
-                                    document.location='#main';
-                                } else{
-                                    alert("Please enter a correct value");
-                                }
-                            }
-                            /**
-                             *  PART 4 - Run the initial functions. With asyncronous jilmart
-                             **/
-                            var millisecondsToWait = 1000;
-                            setTimeout(function() {
-                                load();
-                            }, millisecondsToWait);
+        /**
+        *  PART 3 - Declare the functions
+        **/
+        function load() {
+        if (bindings < 1) {
+        bindings++;
+        console.log("Applying bindings");
+        ko.applyBindings(modal);
+        }
 
-        </script>    
-	</body>
+        console.log("Ready to load categories");
+        loadCategories();
+        }
+
+
+        function loadItems(selectedCatagory) {
+        console.log("loading items");
+        $.get(MSSServerPath+"item/itemNames", {
+        categoryId: selectedCatagory.id()
+        }, function(data) {
+
+        console.log(data);
+
+        var parsed = eval("(" + data + ")");
+
+        modal.availableItems([]);
+        console.log("length is " + parsed.items.length);
+        for (i = 0; i < parsed.items.length; i++) {
+        console.log(i);
+        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
+        modal.availableItems.push(seg);
+        }
+        });
+        }
+        ;
+
+
+        function loadCategories() {
+        console.log("loading categories...");
+        console.log(MSSServerPath+"item/categories");
+        $.get(MSSServerPath+"item/categories", function(data) {
+
+        console.log(data);
+
+        var parsed = eval("(" + data + ")");
+
+        modal.categories([]);
+        console.log("length is " + parsed.categories.length);
+        for (i = 0; i < parsed.categories.length; i++) {
+        console.log(i);
+        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].imageUrl);
+        modal.categories.push(seg);
+        }
+        });
+        }
+        ;
+
+        function clearList() {
+        modal.selecteditems([]);
+        }
+
+        //@depricated
+        function showList(){
+        localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
+        document.location="ShowList.html";
+        }
+
+        function addItem(){
+        var amountFloat =  parseFloat(document.getElementById("value").value);
+        if(!isNaN(amountFloat)){
+        modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
+        document.location='#main';
+        } else{
+        alert("Please enter a correct value");
+        }
+        }
+        /**
+        *  PART 4 - Run the initial functions. With asyncronous jilmart
+        **/
+        var millisecondsToWait = 1000;
+        setTimeout(function() {
+        load();
+        }, millisecondsToWait);
+
+    </script>    
+</body>
 </html>
 
