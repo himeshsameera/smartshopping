@@ -12,6 +12,9 @@ import java.io.Serializable;
  */
 public class ListItem implements Serializable{
     private int id;
+    private String name;
+    private int amount;
+    private String unit;
 
     public ListItem() {
     }
@@ -19,6 +22,13 @@ public class ListItem implements Serializable{
     
     public ListItem(int id) {
         this.id = id;
+    }
+    
+    public ListItem(String name, int id,int amount,String unit) {
+        this.name = name;
+        this.id = id;
+        this.amount = amount;
+        this.unit = unit;
     }
     
     

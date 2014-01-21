@@ -202,11 +202,11 @@ public class DB {
      **/ 
     public static Item getItem(int id){
          try {
-            String sql ="SELECT * FROM WHERE itemid='"+id+"';";
+            String sql ="SELECT * FROM item INNER JOIN unit ON item.id="+id+" && item.unit_id=unit.id;";
             System.out.println("SQL is : "+sql);
             ResultSet r = getDBResult(sql);
             if(r.next()){
-                return new Item(r.getString("index"), r.getDouble("price"), r.getString("image"));
+                return new Item(r.getString("id"), r.getDouble("price"), r.getString("image"), r.getString("unit_id"));
             }
           //  throw new UnsupportedOperationException("Not yet implemented");
         } catch (Exception ex) {

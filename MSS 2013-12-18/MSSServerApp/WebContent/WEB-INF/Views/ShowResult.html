@@ -198,17 +198,32 @@ and open the template in the editor.
                             <p data-bind="text: selectedShop.Address" ></p>
                         </div>					
                     </div>
-
+                        <div class="availableItems">
                             <table class="resultTable">
                             <tbody data-bind="foreach: selectedShop.Items" >
                              <tr>
                                  <td data-bind="text: Name">Carrot</td><td><span data-bind="text:amount"></span> kg</td><td>Rs <span data-bind="text: Price"></span> / kg</td>
                              </tr>
                             </tbody>
-                            </table>    
+                            </table>
+                        </div>
+                        
+                        <div class="notavailable">
+                            <table class="resultTable">
+                            <tbody>
+                             <tr>
+                                 <td>Carrot</td><td>not available</td>
+                             </tr>
+                             <tr>
+                                 <td>Carrot</td><td>not available</td>
+                             </tr>
+                            </tbody>
+                            </table>                            
+                        </div>
+                        <br />
                             <div class="price">
                                 <p> Total: <span data-bind="text: selectedShop.total"></span> </p>
-                            </div>    
+                            </div> 
                         <div class="button"><span><a href="#main">Back</a></span></div>					
 					
                     </div>
@@ -318,37 +333,7 @@ and open the template in the editor.
                 modal.Shoplist(parsed);
                 
                 
-                /*
-                for (var i = 0; i < parsed.length; i++) {
-                    //console.log(i);
-                    var myShop = new Shop();
-
-                    myShop.Title(parsed[i].shopName);
-                    myShop.Address(parsed[i].shopAddress);
-                    myShop.Image(parsed[i].shopimageurl);
-                    myShop.Items([]);
-
-                    for (var j = 0; j < parsed[i].itempriceList.length; j++) {
-
-                        var itm = new Item();
-
-
-                        itm.Name(parsed[i].itempriceList[j].itemName);
-
-                        itm.Price(parsed[i].itempriceList[j].price);
-
-                        myShop.Items.push(itm);
-
-
-                    }
-
-                    modal.Shoplist.push(myShop);
-
-                } */
-        
-                // });
-            }
-            ;
+            };
 
 
             /**

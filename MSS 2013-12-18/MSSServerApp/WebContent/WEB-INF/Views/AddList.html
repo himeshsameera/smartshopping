@@ -18,20 +18,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
 
+<link rel="stylesheet" href="css/ShopingUI.css" />
+<script type='text/javascript' src='js/knockoutjs.js'></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script src="js/init.js"></script>
+<script src="js/thameScripts.js"></script>
 
-    <link rel="stylesheet" href="css/ShopingUI.css" />
-    <script type='text/javascript' src='js/knockoutjs.js'></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-    <script src="js/init.js"></script>
 
 </head>
 <body>
 
     <div data-role="page"  class="pagecontent" id="main">    
 
-
+        
         <div data-role="content">
             <div class="header" >
                 <div class="headertop_desc">
@@ -57,7 +58,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="cart">
                                 <div id="dd" class="wrapper-dropdown-3">
                                     <a href="#showlist">
-                                        <img src="images/cart.png" alt="" />
+                                    <img src="images/cart.png" alt="" />
+                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
                                     </a>
                                 </div>
                             </div>		
@@ -182,63 +184,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="clear"></div>
                     </div>
-                </div>
-
-                <div class="wrap">
-                    <div class="header_top">
-                        <div class="logo">
-                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
-                        </div>
-                        <div class="header_top_right">
-                            <div class="cart">
-                                <div id="dd" class="wrapper-dropdown-3"><img src="images/cart.png" alt="" />
-                                    <ul class="dropdown">
-                                        <li>you have no items in your Shopping cart</li>
-                                    </ul>
-                                </div>
-                            </div>											
-                            <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
-                            <div class="box" id="box">
-                                <div class="box_content">        					                         
-                                    <div class="box_content_center">
-                                        <div class="form_content">
-                                            <div class="search_box">
-                                                <form>
-                                                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Search';
-                                    }"><input type="submit" value="">
-                                                </form>
-                                            </div>
-                                            <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
-                                        </div>                
-                                        <div class="clear"></div>
-                                    </div> 
-                                </div>
-                            </div>
-                            
-							<div class="clear"></div>
-                        </div>
-
-                        <div class="clear"></div>
-                    </div>      				
-                </div>
-            </div>
-            <div class="main">
-                <div class="wrap">
-
-                    <div class="section group">
-                        <div class="cont-desc span_1_of_2">
-                            <div class="product-details">				
-                                <div class="grid images_3_of_2">
-                                    <img data-bind=" attr:{src: currentItemImage}" alt="" />
-                                </div>
-                                <div class="desc span_3_of_2">
-
-                                    <h2 data-bind="text:currentItemName"> </h2>					
+                    
+  	  		<div class="wrap">
+				<div class="header_top">
+					<div class="logo">
+						<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					</div>
+						<div class="header_top_right">
+							<div class="cart">
+			  	 				<div id="dd" class="wrapper-dropdown-3">
+                                                                    <img src="images/cart.png" alt="" />
+                                                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
+                                                                </div>
+						</div>											
+					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
+					     	    <div class="box" id="box">
+                                                        <div class="box_content">        					                         
+					                <div class="box_content_center">
+					                   <div class="form_content">
+						                 <div class="search_box">
+								     		<form>
+								     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+								     		</form>
+								     	</div>
+						                   <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
+					                   </div>                
+					                   <div class="clear"></div>
+					                </div> 
+					           </div>
+					        </div>
+						 <div class="clear"></div>
+					</div>
+		
+			 <div class="clear"></div>
+  		</div>      				
+   	</div>
+   </div>
+   <div class="main">
+   	 <div class="wrap">
+   	 	
+   	 	<div class="section group">
+				<div class="cont-desc span_1_of_2">
+                                    <div class="product-details">				
+					<div class="grid images_3_of_2">
+						<img data-bind=" attr:{src: currentItemImage}" alt="" />
+                                        </div>
+                           <div class="desc span_3_of_2">					
+				<h2 data-bind="text:currentItemName"> </h2>					
                                     <div class="available">
                                         <div class="price">
                                             <p data-bind="text:currentItemDescription"></p>
                                         </div>											
+                                    </div>
+                                    <div>
+                                        Amount : <input type="text" id="value" /><p data-bind="text:currentItemUnit"></p>
                                     </div>
                                     <div class="share-desc">
                                         <div class="share">
@@ -259,286 +258,267 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
         </div>
+    </div> 
     </div>
+</div>
+   
+   
+   <!-- Scripts -->
+
+        <script type="text/javascript">
+            function updateCount(){
+
+                var count = getCookie('cItemList');
+                console.log(count);
+                $(".item_list_counter").text(count);
+
+                function getCookie(cItemList){
+                    var cookieName = cItemList+"=";
+                    var cArray = document.cookie.split(';');
+                    for(var c=0;c<cArray.length;c++){
+                        var c = cArray[c].trim();
+                        if (c.indexOf(cookieName)==0){
+                            return c.substring(cookieName.length,c.length);
+                        } 
+                    }
+                    return "";
+                }
+                //$(".item_list_counter").text($(".cart_item_list li").size());
+            };
+        </script>
+            
+          <script type="text/javascript">
+
+                            /**
+                             * Written by Himesh Karunaratne
+                             *
+                             * This code is to implement a simple knockoutjs structure inside a web page
+                             * Mainly there are 4 parts
+                             *  1) Create the model
+                             *  2) Declare the gobal variables.
+                             *  3) Declare the other javascript functions to be used indide
+                             *  4) Run the initial code at startup. ie - apply bindings
+                             **/
 
 
-    <!-- Scripts -->
-    <script type="text/javascript">
-        function DropDown(el) {
-        this.dd = el;
-        this.initEvents();
-        }
-        DropDown.prototype = {
-        initEvents : function() {
-        var obj = this;
+                            /**
+                             *  PART 1 - Create the model
+                             **/
+                            var editorModel = function() {
 
-        obj.dd.on('click', function(event){
-        $(this).toggleClass('active');
-        event.stopPropagation();
-        });	
-        }
-        }
+                                var self = this;
+                                self.selecteditems = ko.observableArray([]);
+                                self.availableItems = ko.observableArray([]);
+                                self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+                                self.currentItemId =ko.observable();
+                                self.currentItemName =ko.observable();
+                                self.currentItemImage =ko.observable();
+                                self.currentItemUnit = ko.observable();
 
-        $(function() {
+                                self.currentItemDescription =ko.observable("This is a good fruit");
+           /*                                            
+                                self.addItem = function(displayItem) {
+                                    //    console.log(ko.toJSON(displayItem));
+                                    //    console.log(displayItem.name());
+                                    //    console.log(displayItem.id());
+                                    var amount = window.prompt("Amount (kg)","1");
+                                    var amountFloat =  parseFloat(amount);
+                                    if(!isNaN(amountFloat)){
+                                        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
+                                    } else{
+                                        alert("error");
+                                    }   
+                                }
+             */                   
+                                self.viewItemDetails=function(displayItem){
+                                     self.currentItemName(displayItem.name());
+                                     self.currentItemImage(displayItem.image());
+                                     self.currentItemId(displayItem.id());
+                                     self.currentItemUnit(displayItem.unit());
+                                     document.location="#viewItem";
+                                }
 
-        var dd = new DropDown( $('#dd') );
+                                self.removeItem = function(seg) {
+                                    self.selecteditems.remove(seg);
+                                    var cookieCount = getCookie('cItemList');
+                                    cookieCount = cookieCount - 1;
+                                    setCookie('cItemList',cookieCount);
+                                    updateCount();
+                                }
 
-        $(document).click(function() {
-        // all dropdowns
-        $('.wrapper-dropdown-3').removeClass('active');
-        });
+                                self.save = function() {
+                                    console.log(ko.toJSON(self.selecteditems));
 
-        });
-    </script>
-    <script type="text/javascript">
-        var $ = jQuery.noConflict();
-        $(function() {
-        $('#activator').click(function(){
-        $('#box').animate({'top':'65px'},500);
-        });
-        $('#boxclose').click(function(){
-        $('#box').animate({'top':'-400px'},500);
-        });
-        $('#activator_share').click(function(){
-        $('#box_share').animate({'top':'65px'},500);
-        });
-        $('#boxclose_share').click(function(){
-        $('#box_share').animate({'top':'-400px'},500);
-        });
+                                    $.ajax({
+                                        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
+                                        url: MSSServerPath+"list/processList",
+                                        dataType: "html", //Note the dataType has been changed from default here.
+                                        data: {
+                                            'json': ko.toJSON(self.selecteditems)
+                                        },
+                                        error: function() {
+                                            //You can do a fallback here
+                                        },
+                                        success: function(data) { //Note the data variable here. This is your returned data
+                                            //I also swapped .attr to .val below
+                                            console.log(data);
+                                            localStorage.setItem('result', data + " ");
+                                            document.location = "ShowResult.html";
+                                        }
 
-        });
-        $(document).ready(function(){
+                                    });
+                                };
 
-        //Hide (Collapse) the toggle containers on load
-        $(".toggle_container").hide(); 
+                                 
 
-        //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-        $(".trigger").click(function(){
-        $(this).toggleClass("active").next().slideToggle("slow");
-        return false; //Prevent the browser jump to the link anchor
-        });
+                            }
+                            //models            
+                            // this is to view item name price etc. taken from server
+                            function Item(myName, myID, myImage, myUnit) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myImage);
+                                seg.unit = ko.observable(myUnit);
+                                return this;
+                            }
 
-        });
-    </script>
+                            // this is to view catagories
+                            function Catagory(myName, myID , myimage) {
+                                var seg = this;
+                                seg.name = ko.observable(myName);
+                                seg.id = ko.observable(myID);
+                                seg.image = ko.observable(myimage)
+                                return this;
+                            }
 
+                            // This is to add items to the shopping list   
+                            function ListItem(myName, myID, myAmount, myUnit) {
+                                var seg = this;
+                                seg.itemName = ko.observable(myName);
+                                seg.itemId = ko.observable(myID);
+                                seg.amount = ko.observable(myAmount);
+                                seg.unit = ko.observable(myUnit);
+                                return this;
+                            }
+//----------------------------------------------------------------------------------
 
+                            /**
+                             *  PART 2 - Declare the variables
+                             **/
+                            var bindings = 0;
+                            var modal = new editorModel();
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-        $(".menu_body").hide();
-        //toggle the componenet with class menu_body
-        $(".menu_head").click(function(){
-        $(this).next(".menu_body").slideToggle(600); 
-        var plusmin;
-        plusmin = $(this).children(".plusminus").text();
+                            /**
+                             *  PART 3 - Declare the functions
+                             **/
+                            function load() {
+                                if (bindings < 1) {
+                                    bindings++;
+                                    console.log("Applying bindings");
+                                    ko.applyBindings(modal);
+                                }
 
-        if( plusmin == '+')
-        $(this).children(".plusminus").text('-');
-        else
-        $(this).children(".plusminus").text('+');
-        });
-        });
-    </script>
-
-    <script type="text/javascript">
-
-        /**
-        * Written by Himesh Karunaratne
-        *
-        * This code is to implement a simple knockoutjs structure inside a web page
-        * Mainly there are 4 parts
-        *  1) Create the model
-        *  2) Declare the gobal variables.
-        *  3) Declare the other javascript functions to be used indide
-        *  4) Run the initial code at startup. ie - apply bindings
-        **/
-
-
-        /**
-        *  PART 1 - Create the model
-        **/
-        var editorModel = function() {
-
-        var self = this;
-        self.selecteditems = ko.observableArray([]);
-        self.availableItems = ko.observableArray([]);
-        self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
-        self.currentItemId =-1;
-        self.currentItemName =ko.observable();
-        self.currentItemImage =ko.observable();
-
-        self.currentItemDescription =ko.observable("This is a good fruit");
-        /*                                            
-        self.addItem = function(displayItem) {
-        //    console.log(ko.toJSON(displayItem));
-        //    console.log(displayItem.name());
-        //    console.log(displayItem.id());
-        var amount = window.prompt("Amount (kg)","1");
-        var amountFloat =  parseFloat(amount);
-        if(!isNaN(amountFloat)){
-        self.selecteditems.push(new ListItem(displayItem.name(), displayItem.id(),amountFloat));
-        } else{
-        alert("error");
-        }   
-        }
-        */                   
-        self.viewItemDetails=function(displayItem){
-        self.currentItemName(displayItem.name());
-        self.currentItemImage(displayItem.image());
-        self.currentItemId = displayItem.id();
-        document.location="#viewItem";
-        }
-
-        self.removeItem = function(seg) {
-        self.selecteditems.remove(seg);
-        }
-
-        self.save = function() {
-        console.log(ko.toJSON(self.selecteditems));
-
-        $.ajax({
-        type: "GET", //Personally i prefer using post, you can swap this to get if you want.
-        url: MSSServerPath+"list/processList",
-        dataType: "html", //Note the dataType has been changed from default here.
-        data: {
-        'json': ko.toJSON(self.selecteditems)
-        },
-        error: function() {
-        //You can do a fallback here
-        },
-        success: function(data) { //Note the data variable here. This is your returned data
-        //I also swapped .attr to .val below
-        console.log(data);
-        localStorage.setItem('result', data + " ");
-        document.location = "ShowResult.html";
-        }
-
-        });
-        };
+                                console.log("Ready to load categories");
+                                loadCategories();
+                            }
 
 
+                            function loadItems(selectedCatagory) {
+                                console.log("loading items");
+                                $.get(MSSServerPath+"item/itemNames", {
+                                    categoryId: selectedCatagory.id()
+                                }, function(data) {
 
-        }
-        //models            
-        // this is to view item name price etc. taken from server
-        function Item(myName, myID, myImage) {
-        var seg = this;
-        seg.name = ko.observable(myName);
-        seg.id = ko.observable(myID);
-        seg.image = ko.observable(myImage);
-        return this;
-        }
+                                    console.log(data);
 
-        // this is to view catagories
-        function Catagory(myName, myID , myimage) {
-        var seg = this;
-        seg.name = ko.observable(myName);
-        seg.id = ko.observable(myID);
-        seg.image = ko.observable(myimage)
-        return this;
-        }
+                                    var parsed = eval("(" + data + ")");
 
-        // This is to add items to the shopping list   
-        function ListItem(myName, myID, myAmount) {
-        var seg = this;
-        seg.itemName = ko.observable(myName);
-        seg.itemId = ko.observable(myID);
-        seg.amount = ko.observable(myAmount);
-        return this;
-        }
-        //----------------------------------------------------------------------------------
-
-        /**
-        *  PART 2 - Declare the variables
-        **/
-        var bindings = 0;
-        var modal = new editorModel();
-
-        /**
-        *  PART 3 - Declare the functions
-        **/
-        function load() {
-        if (bindings < 1) {
-        bindings++;
-        console.log("Applying bindings");
-        ko.applyBindings(modal);
-        }
-
-        console.log("Ready to load categories");
-        loadCategories();
-        }
+                                    modal.availableItems([]);
+                                    console.log("length is " + parsed.items.length);
+                                    for (i = 0; i < parsed.items.length; i++) {
+                                        console.log(i+" sdsd");
+                                        console.log("parse "+parsed.items[i].unit);
+                                        
+                                        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image, parsed.items[i].unit);
+                                        console.log(i+" ikik");
+                                        modal.availableItems.push(seg);
+                                    }
+                                });
+                            }
+                            ;
 
 
-        function loadItems(selectedCatagory) {
-        console.log("loading items");
-        $.get(MSSServerPath+"item/itemNames", {
-        categoryId: selectedCatagory.id()
-        }, function(data) {
+                            function loadCategories() {
+                                console.log("loading categories...");
+                                console.log(MSSServerPath+"item/categories");
+                                $.get(MSSServerPath+"item/categories", function(data) {
 
-        console.log(data);
+                                    console.log(data);
 
-        var parsed = eval("(" + data + ")");
+                                    var parsed = eval("(" + data + ")");
 
-        modal.availableItems([]);
-        console.log("length is " + parsed.items.length);
-        for (i = 0; i < parsed.items.length; i++) {
-        console.log(i);
-        var seg = new Item(parsed.items[i].name, parseInt(parsed.items[i].id), parsed.items[i].image);
-        modal.availableItems.push(seg);
-        }
-        });
-        }
-        ;
+                                    modal.categories([]);
+                                    console.log("length is " + parsed.categories.length);
+                                    for (i = 0; i < parsed.categories.length; i++) {
+                                        console.log(i);
+                                        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].imageUrl);
+                                        modal.categories.push(seg);
+                                    }
+                                });
+                            }
+                            ;
 
+                            function clearList() {
+                                modal.selecteditems([]);
+                                setCookie('cItemList',0);
+                                updateCount();
+                            }
+                                
+                            //@depricated
+                            function showList(){
+                                localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
+                                document.location="ShowList.html";
+                            }
 
-        function loadCategories() {
-        console.log("loading categories...");
-        console.log(MSSServerPath+"item/categories");
-        $.get(MSSServerPath+"item/categories", function(data) {
+                            function addItem(){
+                                var amountFloat =  parseFloat(document.getElementById("value").value);
+                                if(!isNaN(amountFloat)){
+                                    modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId, amountFloat, modal.cu));
+                                    document.location='#main';
+                                    
+                                    var cookieCount = modal.selecteditems().length;  //modal.selecteditems.length;
+                                    setCookie('cItemList',cookieCount);
+                                    updateCount();
+                                } else{
+                                    alert("Please enter a correct value");
+                                }
+                            }
+                            
+                            function setCookie(cname,cvalue){
+                                document.cookie = cname + "=" + cvalue;
+                            }
 
-        console.log(data);
+                            function getCookie(cname){
+                                var cookieName = cname + "=";
+                                var cArray = document.cookie.split(';');
+                                for(var c=0; c<cArray.length; c++) {
+                                  var c = cArray[c].trim();
+                                  if (c.indexOf(cookieName)==0){
+                                      return c.substring(cookieName.length,c.length);
+                                  } 
+                                }
+                                return "";
+                            }
+                            /**
+                             *  PART 4 - Run the initial functions. With asyncronous jilmart
+                             **/
+                            var millisecondsToWait = 1000;
+                            setTimeout(function() {
+                                load();
+                            }, millisecondsToWait);
 
-        var parsed = eval("(" + data + ")");
-
-        modal.categories([]);
-        console.log("length is " + parsed.categories.length);
-        for (i = 0; i < parsed.categories.length; i++) {
-        console.log(i);
-        var seg = new Catagory(parsed.categories[i].name, parsed.categories[i].id, parsed.categories[i].imageUrl);
-        modal.categories.push(seg);
-        }
-        });
-        }
-        ;
-
-        function clearList() {
-        modal.selecteditems([]);
-        }
-
-        //@depricated
-        function showList(){
-        localStorage.setItem('shopinglist', ko.toJSON(modal.selecteditems));
-        document.location="ShowList.html";
-        }
-
-        function addItem(){
-        var amountFloat =  parseFloat(document.getElementById("value").value);
-        if(!isNaN(amountFloat)){
-        modal.selecteditems.push(new ListItem(modal.currentItemName(), modal.currentItemId,amountFloat));
-        document.location='#main';
-        } else{
-        alert("Please enter a correct value");
-        }
-        }
-        /**
-        *  PART 4 - Run the initial functions. With asyncronous jilmart
-        **/
-        var millisecondsToWait = 1000;
-        setTimeout(function() {
-        load();
-        }, millisecondsToWait);
-
-    </script>    
-</body>
+        </script>    
+	</body>
 </html>
 
