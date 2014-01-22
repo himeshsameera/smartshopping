@@ -6,65 +6,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
 <head>
-<title>Home</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-      
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
 
 <link rel="stylesheet" href="css/ShopingUI.css" />
 <script type='text/javascript' src='js/knockoutjs.js'></script>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+<script src="js/jquery-1.9.0.min.js"></script>
+<script src="js/jquery.mobile-1.4.0.min.js"></script>
 <script src="js/init.js"></script>
 <script src="js/thameScripts.js"></script>
 
 <script type="text/javascript">
     
-                               $( document ).on( "pageinit", "#showlist", function( event ) {
-                                   console.log("init page--------------------");
-                                try{
-                                    var shoppingListString = getCookie('list');       
-                                    console.log(shoppingListString);
-                                    if(modal.selecteditems.length()==0 && !shoppingListString.equals("")){                                        
-                                    var shoppingList = eval(shoppingListString);
-                                    for (var i=0;i<shoppingList.length;i++)
-                                        {
-                                            modal.selecteditems.push(shoppingList[i]);
-                                        }
-                                    }
-                                }catch(e){
-                                    
-                                }
-                            });
+        
+        
 </script>
 
 </head>
 <body>
-    
+
     <div data-role="page"  class="pagecontent" id="main">    
 
         
         <div data-role="content">
             <div class="header" >
-		 <div class="headertop_desc">
+                <div class="headertop_desc">
                     <div class="wrap">
                         <div class="account_desc">
-                                <ul>
-                                        <li><a href="home.html" rel="external">Home</a></li>
-                                        <li><a href="signup.html" rel="external">Register</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                </ul>
+                            <ul>
+                                <li><a href="home.html" rel="external">Home</a></li>
+                                <li><a href="signup.html" rel="external">Register</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -83,58 +68,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </a>
                                 </div>
                             </div>		
-                            
+
                             <a href="AddList.html" class="right_bt" id="activator"><img src="images/search_icon.png" alt="" /></a>
                             <div class="clear"></div>
                         </div>
 
                         <div class="clear"></div>
                     </div>     
-                <div class="header_bottom">
-                    <div class="header_bottom_left">				
-                        <div class="categories">
-                            <div class="menu_container">
-                                <p class="menu_head">categories<span class="plusminus">+</span></p>
-                                <div class="menu_body">
-                                    <div class="list">
-                                        <ul>
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Vegitable</a></li>
-                                            <li><a href="#">Fruit</a></li>
-                                            <li><a href="#">English</a></li>
+                    <div class="header_bottom">
+                        <div class="header_bottom_left">				
+                            <div class="categories">
+                                <div class="menu_container">
+                                    <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                    <div class="menu_body">
+                                        <div class="list">
+                                            <ul>
+                                                <li><a href="#">All</a></li>
+                                                <li><a href="#">Vegitable</a></li>
+                                                <li><a href="#">Fruit</a></li>
+                                                <li><a href="#">English</a></li>
 
-                                        </ul>
-                                    </div>	
-                                </div>								
-                            </div>
-                        </div>					
-                    </div>
-                    
-                    <div class="header_bottom_right">					 
-                            <!------ Slider ------------>
-                        <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
-                            <div  class = "categoryBox">    
-                                <img data-bind=" attr:{src: image} , click: loadItems"/>
-                                <span class="boxtext" data-bind="text: name"></span>
-                            </div>
+                                            </ul>
+                                        </div>	
+                                    </div>								
+                                </div>
+                            </div>					
                         </div>
-                                <!------End Slider ------------>
+
+                        <div class="header_bottom_right">					 
+                            <!------ Slider ------------>
+                            <div class="categoryBlock" data-bind="foreach:categories" onchange="loadItems()">                        
+                                <div  class = "categoryBox">    
+                                    <img data-bind=" attr:{src: image} , click: loadItems"/>
+                                    <span class="boxtext" data-bind="text: name"></span>
+                                </div>
+                            </div>
+                            <!------End Slider ------------>
+                        </div>
+                        <div class="clear"></div>
                     </div>
+                    <!-- Category slideer-->
                     <div class="clear"></div>
                 </div>
-                    <!-- Category slideer-->
-                <div class="clear"></div>
             </div>
-        </div>
 
-   <!------------End Header ------------>
+            <!------------End Header ------------>
             <div class="main">
                 <div class="wrap">
                     <div class="content">
                         <div class="content_top">
-                                <div class="heading">
+                            <div class="heading">
                                 <h3>Items</h3>
-                                </div>
+                            </div>
                         </div>
 
                         <div data-bind="foreach:availableItems">
@@ -150,14 +135,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 
-     <div data-role="page"  class="pagecontent" id="showlist">    
+    <div data-role="page"  class="pagecontent" id="showlist">    
 
-    
-         
-         
-         
-            <div data-role="content">
-                
+
+
+
+
+        <div data-role="content">
+
             <table data-bind="foreach:selecteditems" class="shopinglist">
                 <tr>
                     <td data-bind="text:itemName"></td>
@@ -174,41 +159,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          
          
         </div>
+    </div>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <div data-role="page"  class="pagecontent" id="viewItem">    
-  
-            <div data-role="content">
-                
-                <div class="header">
-                    <div class="headertop_desc">
-			<div class="wrap">
-                            <div class="account_desc">
-                                <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="contact.html">Register</a></li>
-                                        <li><a href="contact.html">Login</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="clear"></div>
-			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div data-role="page"  class="pagecontent" id="viewItem">    
+
+        <div data-role="content">
+
+            <div class="header">
+                <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="contact.html">Register</a></li>
+                                <li><a href="contact.html">Login</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
                     </div>
-                    
+                </div>
   	  		<div class="wrap">
 				<div class="header_top">
 					<div class="logo">
@@ -257,22 +242,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h2 data-bind="text:currentItemName"> </h2>					
                                     <div class="available">
                                         <div class="price">
-                                             <p data-bind="text:currentItemDescription"></p>
+                                            <p data-bind="text:currentItemDescription"></p>
                                         </div>											
                                     </div>
-                                    <div>
-                                        Amount : <input type="text" id="value" /><p data-bind="text:currentItemUnit"></p>
-                                    </div>
                                     <div class="share-desc">
-                                            
-                                            <div class="button"><a href="#main" onclick="addItem()">Add to Cart</a></div>					                                            
-                                            <div class="button"><span><a href="#main">Back</a></span></div>					
-                                            <div class="clear"></div>
+                                        <div class="share">
+                                            Amount : <input class="text_box" type="text" id="value" /><p data-bind="text:currentItemUnit"></p>
+                                        </div>
+
+                                        <div class="button"><a href="#main" onclick="addItem()">Add to List</a></div>					                                            
+
+                                        <div class="clear"></div>
                                     </div>
                                 </div>
-                            <div class="clear"></div>
-                    </div>		
-                    </div>								 
+                                <div class="clear"></div>
+                            </div>		
+                        </div>								 
+                    </div>
+                </div>
             </div>
         </div>
     </div> 
@@ -439,6 +426,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 console.log("Ready to load categories");
                                 loadCategories();
+                                
+                                // Loading shopping list
+                                console.log("Ready to load current list");                            
+                                try{
+                                    var shoppingListString = getCookie('list');       
+                                    console.log(shoppingListString);
+                                    if( shoppingListString != ("")){                                        
+                                    var shoppingList = eval(shoppingListString);
+                                    for (var i=0;i<shoppingList.length;i++)
+                                        {
+                                            modal.selecteditems.push(shoppingList[i]);
+                                        }
+                                    }
+                                }catch(e){
+
+                                }
+                                updateCount();
                             }
 
 
@@ -506,7 +510,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     
                                     var cookieCount = modal.selecteditems().length;  //modal.selecteditems.length;
                                     setCookie('cItemList',cookieCount);
-                                    setCookie('list',ko.toJSON(self.selecteditems));
+                                    setCookie('list',ko.toJSON(modal.selecteditems));
                                     updateCount();
                                 } else{
                                     alert("Please enter a correct value");
@@ -521,9 +525,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 var cookieName = cname + "=";
                                 var cArray = document.cookie.split(';');
                                 for(var c=0; c<cArray.length; c++) {
-                                  var c = cArray[c].trim();
-                                  if (c.indexOf(cookieName)==0){
-                                      return c.substring(cookieName.length,c.length);
+                                  var cook = cArray[c].trim();
+                                  if (cook.indexOf(cookieName)==0){
+                                      return cook.substring(cookieName.length,cook.length);
                                   } 
                                 }
                                 return "";
@@ -531,7 +535,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             /**
                              *  PART 4 - Run the initial functions. With asyncronous jilmart
                              **/
-                            var millisecondsToWait = 1000;
+                            var millisecondsToWait = 80;
                             setTimeout(function() {
                                 load();
                             }, millisecondsToWait);

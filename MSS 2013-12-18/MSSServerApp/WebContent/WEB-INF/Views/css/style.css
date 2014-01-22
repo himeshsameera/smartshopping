@@ -646,6 +646,7 @@ a.boxclose{
 	color: #FFF;
 	text-decoration: none;
 	outline: 0;
+	margin: 3px;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
