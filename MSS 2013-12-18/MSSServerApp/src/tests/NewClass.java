@@ -26,9 +26,9 @@ import org.codehaus.jackson.map.util.JSONPObject;
 public class NewClass {
     public static void main(String[] args) throws Exception {
         ArrayList<ItemSearch> itemSearch = new ArrayList<ItemSearch>();
-        ItemSearch itemSearch1 = new ItemSearch("cake",1,2);
-        ItemSearch itemSearch2 = new ItemSearch("table",3,2);
-        ItemSearch itemSearch3 = new ItemSearch("tomato",5,2);
+        ItemSearch itemSearch1 = new ItemSearch("cake",1,2,"kg");
+        ItemSearch itemSearch2 = new ItemSearch("table",3,2,"kg");
+        ItemSearch itemSearch3 = new ItemSearch("tomato",5,2,"kg");
         itemSearch.add(itemSearch1);
         itemSearch.add(itemSearch2);
         itemSearch.add(itemSearch3);

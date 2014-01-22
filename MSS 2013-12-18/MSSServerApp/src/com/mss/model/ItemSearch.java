@@ -14,15 +14,17 @@ public class ItemSearch implements Serializable {
     private String itemName;
     private int itemId;
     private int amount;
+    private String itemUnit;
     
     public ItemSearch(){
     
     }
     
-    public ItemSearch(String itemName, int itemId, int amount){
+    public ItemSearch(String itemName, int itemId, int amount, String itemUnit){
         this.itemName=itemName;
         this.itemId=itemId;
         this.amount=amount;
+        this.itemUnit=itemUnit;
     }
 
     /**
@@ -65,5 +67,19 @@ public class ItemSearch implements Serializable {
      */
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    /**
+     * @return the itemUnit
+     */
+    public String getItemUnit() {
+        return itemUnit;
+    }
+
+    /**
+     * @param itemUnit the itemUnit to set
+     */
+    public void setItemUnit(String itemUnit) {
+        this.itemUnit = itemUnit;
     }
 }

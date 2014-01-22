@@ -202,7 +202,9 @@ and open the template in the editor.
                             <table class="resultTable">
                             <tbody data-bind="foreach: selectedShop.Items" >
                              <tr>
-                                 <td data-bind="text: Name">Carrot</td><td><span data-bind="text:amount"></span> kg</td><td>Rs <span data-bind="text: Price"></span> / kg</td>
+                                 <td data-bind="text: Name">Carrot</td>
+                                 <td><span data-bind="text:amount"></span><span data-bind="text:Unit"></span></td>
+                                 <td>Rs<span data-bind="text:Price"></span>/<span data-bind="text:Unit"></span></td>
                              </tr>
                             </tbody>
                             </table>    
@@ -251,7 +253,7 @@ and open the template in the editor.
                     var index=0;
 
                     for (index = 0; index < saveShop.itempriceList.length; ++index) {
-                       var myItem = new Item(saveShop.itempriceList[index].itemName,saveShop.itempriceList[index].price);
+                       var myItem = new Item(saveShop.itempriceList[index].itemName,saveShop.itempriceList[index].price,saveShop.itempriceList[index].itemUnit);
                        myItem.amount =saveShop.itempriceList[index].amount;
                        self.selectedShop.Items.push(myItem);
                     }
@@ -279,11 +281,12 @@ and open the template in the editor.
 
                 return this;
             }
-            function Item(name, price) {
+            function Item(name, price,unit) {
                 var sel = this;
                 sel.Name = name;
                 sel.Price = price;
                 sel.amount = 1;
+                sel.Unit = unit;
                 return this;
             }
 

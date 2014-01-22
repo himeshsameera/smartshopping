@@ -95,6 +95,10 @@ public class DB {
                     ItemPrice itemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
                     itemPrice.setItemName(r1.getString("item.name"));
                     itemPrice.setAmount(getRequiredAmount(r1.getInt("item_id"), itemSearchList));
+                   
+                    ResultSet r2 = DB.getDBResult("SELECT unitname FROM unit WHERE id=(SELECT unit_id FROM item WHERE id="+r1.getInt("item_id")+");");
+                    r2.first();
+                    itemPrice.setItemUnit(r2.getString("unitname"));
                     
                     ArrayList<ItemPrice> iPrice = shopList.get(i).getItempriceList();
                     iPrice.add(itemPrice);
@@ -110,8 +114,12 @@ public class DB {
                 ArrayList<ItemPrice> addItemPriceList = new ArrayList<ItemPrice>();//(r1.getInt("item_id"),r1.getDouble("price"));
                 ItemPrice addItemPrice = new ItemPrice(r1.getInt("item_id"),r1.getDouble("price"));
                 addItemPrice.setItemName(r1.getString("item.name"));
-               addItemPrice.setAmount(getRequiredAmount(r1.getInt("item_id"), itemSearchList));
+                addItemPrice.setAmount(getRequiredAmount(r1.getInt("item_id"), itemSearchList));
 
+                ResultSet r3 = DB.getDBResult("SELECT unitname FROM unit WHERE id=(SELECT unit_id FROM item WHERE id="+r1.getInt("item_id")+");");
+                r3.first();
+                addItemPrice.setItemUnit(r3.getString("unitname"));
+                    
                 addItemPriceList.add(addItemPrice);
                 ShopForItemList addNewShop = new ShopForItemList(shopId,addItemPriceList);
                 
@@ -137,6 +145,7 @@ public class DB {
         }
         return 0;
     }
+    
       /**
      * Search the database for a given item.
      **/
