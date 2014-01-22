@@ -27,6 +27,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/init.js"></script>
 <script src="js/thameScripts.js"></script>
 
+<script type="text/javascript">
+    
+        
+        
+</script>
 
 </head>
 <body>
@@ -147,6 +152,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <input  type="button"  value="Search" onclick="modal.save();">
                 <input type="button" value="Clear" onclick="clearList();">
             </div>
+         
+         
         </div>
 
     
@@ -334,6 +341,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     var cookieCount = getCookie('cItemList');
                                     cookieCount = cookieCount - 1;
                                     setCookie('cItemList',cookieCount);
+                                    setCookie('list',ko.toJSON(self.selecteditems));                                   
                                     updateCount();
                                 }
 
@@ -412,6 +420,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 console.log("Ready to load categories");
                                 loadCategories();
+                                
+                                // Loading shopping list
+                                console.log("Ready to load current list");                            
+                                try{
+                                    var shoppingListString = getCookie('list');       
+                                    console.log(shoppingListString);
+                                    if( shoppingListString != ("")){                                        
+                                    var shoppingList = eval(shoppingListString);
+                                    for (var i=0;i<shoppingList.length;i++)
+                                        {
+                                            modal.selecteditems.push(shoppingList[i]);
+                                        }
+                                    }
+                                }catch(e){
+
+                                }
+                                updateCount();
                             }
 
 
@@ -457,8 +482,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         modal.categories.push(seg);
                                     }
                                 });
-                            }
-                            ;
+                            };
 
                             function clearList() {
                                 modal.selecteditems([]);
@@ -480,6 +504,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     
                                     var cookieCount = modal.selecteditems().length;  //modal.selecteditems.length;
                                     setCookie('cItemList',cookieCount);
+                                    setCookie('list',ko.toJSON(modal.selecteditems));
                                     updateCount();
                                 } else{
                                     alert("Please enter a correct value");
@@ -494,9 +519,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 var cookieName = cname + "=";
                                 var cArray = document.cookie.split(';');
                                 for(var c=0; c<cArray.length; c++) {
-                                  var c = cArray[c].trim();
-                                  if (c.indexOf(cookieName)==0){
-                                      return c.substring(cookieName.length,c.length);
+                                  var cook = cArray[c].trim();
+                                  if (cook.indexOf(cookieName)==0){
+                                      return cook.substring(cookieName.length,cook.length);
                                   } 
                                 }
                                 return "";
@@ -504,10 +529,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             /**
                              *  PART 4 - Run the initial functions. With asyncronous jilmart
                              **/
-                            var millisecondsToWait = 1000;
+                            var millisecondsToWait = 80;
                             setTimeout(function() {
                                 load();
                             }, millisecondsToWait);
+
+                           
+                           /**
+                            * PART 5 - Jquarry Mobile PageInits.
+                            **/
+                           
+
+                           
+
+
+
 
         </script>    
 	</body>
