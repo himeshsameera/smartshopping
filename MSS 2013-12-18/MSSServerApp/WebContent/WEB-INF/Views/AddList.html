@@ -137,39 +137,75 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <div data-role="page"  class="pagecontent" id="showlist">    
 
-
-
-
-
         <div data-role="content">
+            <div class="header">
+                <div class="headertop_desc">
+                    <div class="wrap">
+                        <div class="account_desc">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="contact.html">Register</a></li>
+                                <li><a href="contact.html">Login</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+  	  		<div class="wrap">
+				<div class="header_top">
+					<div class="logo">
+						<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					</div>
+						<div class="header_top_right">
+							<div class="cart">
+			  	 				<div id="dd" class="wrapper-dropdown-3">
+                                                                    <img src="images/cart.png" alt="" />
+                                                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
+                                                                </div>
+						</div>											
+					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
+					     	    <div class="box" id="box">
+                                                        <div class="box_content">        					                         
+					                <div class="box_content_center">
+					                   <div class="form_content">
+						                 <div class="search_box">
+								     		<form>
+								     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+								     		</form>
+								     	</div>
+						                   <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
+					                   </div>                
+					                   <div class="clear"></div>
+					                </div> 
+					           </div>
+					        </div>
+						 <div class="clear"></div>
+					</div>
+		
+			 <div class="clear"></div>
+                    </div>      				
+                </div>
+            </div>
 
-            <table data-bind="foreach:selecteditems" class="shopinglist">
-                <tr>
-                    <td data-bind="text:itemName"></td>
-                    <td><span data-bind="text:amount"></span></td>
-                    <td><span data-bind="text:itemUnit"></span></td>
-                    <td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
-                </tr>
-            </table>
-                        
-                <a href="#main" data-transition="slide" data-role="button">Back</a>
-                <input  type="button"  value="Search" onclick="modal.save();">
-                <input type="button" value="Clear" onclick="clearList();">
+            <div>    
+                <table data-bind="foreach:selecteditems" class="shopinglist">
+                    <tr>
+                        <td data-bind="text:itemName"></td>
+                        <td><span data-bind="text:amount"></span></td>
+                        <td><span data-bind="text:itemUnit"></span></td>
+                        <td><image src='images/remove.png' data-bind="click: $parent.removeItem" /></td>
+                    </tr>
+                </table>
+
+                    <a href="#main" data-transition="slide" data-role="button">Back</a>
+                    <input  type="button"  value="Search" onclick="modal.save();">
+                    <input type="button" value="Clear" onclick="clearList();">
+                </div>
             </div>
          
-         
         </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
