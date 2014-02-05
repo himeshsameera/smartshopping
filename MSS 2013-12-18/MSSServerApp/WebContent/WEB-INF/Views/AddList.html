@@ -36,8 +36,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 
     <div data-role="page"  class="pagecontent" id="main">    
-
-        
         <div data-role="content">
             <div class="header" >
                 <div class="headertop_desc">
@@ -136,7 +134,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 
     <div data-role="page"  class="pagecontent" id="showlist">    
-
         <div data-role="content">
             <div class="header">
                 <div class="headertop_desc">
@@ -153,42 +150,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="clear"></div>
                     </div>
                 </div>
-  	  		<div class="wrap">
-				<div class="header_top">
-					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt="" /></a>
-					</div>
-						<div class="header_top_right">
-							<div class="cart">
-			  	 				<div id="dd" class="wrapper-dropdown-3">
-                                                                    <img src="images/cart.png" alt="" />
-                                                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
-                                                                </div>
-						</div>											
-					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
-					     	    <div class="box" id="box">
-                                                        <div class="box_content">        					                         
-					                <div class="box_content_center">
-					                   <div class="form_content">
-						                 <div class="search_box">
-								     		<form>
-								     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-								     		</form>
-								     	</div>
-						                   <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
-					                   </div>                
-					                   <div class="clear"></div>
-					                </div> 
-					           </div>
-					        </div>
-						 <div class="clear"></div>
-					</div>
-		
-			 <div class="clear"></div>
-                    </div>      				
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                                <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3">
+                                    <img src="images/cart.png" alt="" />
+                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
+                                </div>
+                            </div>											
+                            <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
+                            <div class="box" id="box">
+                                <div class="box_content">        					                         
+                                    <div class="box_content_center">
+                                        <div class="form_content">
+                                            <div class="search_box">
+                                                <form>
+                                                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                                                </form>
+                                            </div>
+                                            <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
+                                        </div>                
+                                        <div class="clear"></div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="header_bottom">
+                        <div class="header_bottom_left">				
+                            <div class="categories">
+                                <div class="menu_container">
+                                    <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                    <div class="menu_body">
+                                        <div class="list">
+                                            <ul>
+                                            </ul>
+                                        </div>	
+                                    </div>								
+                                </div>
+                            </div>					
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <div>    
                 <table data-bind="foreach:selecteditems" class="shopinglist">
                     <tr>
@@ -199,22 +209,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </tr>
                 </table>
 
-                    <a href="#main" data-transition="slide" data-role="button">Back</a>
-                    <input  type="button"  value="Search" onclick="modal.save();">
-                    <input type="button" value="Clear" onclick="clearList();">
-                </div>
+                <a href="#main" data-transition="slide" data-role="button">Back</a>
+                <input  type="button"  value="Search" onclick="modal.save();">
+                <input type="button" value="Clear" onclick="clearList();">
             </div>
-         
         </div>
-
-
-
-
+    </div>
 
     <div data-role="page"  class="pagecontent" id="viewItem">    
-
         <div data-role="content">
-
             <div class="header">
                 <div class="headertop_desc">
                     <div class="wrap">
@@ -230,52 +233,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="clear"></div>
                     </div>
                 </div>
-  	  		<div class="wrap">
-				<div class="header_top">
-					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt="" /></a>
-					</div>
-						<div class="header_top_right">
-							<div class="cart">
-			  	 				<div id="dd" class="wrapper-dropdown-3">
-                                                                    <img src="images/cart.png" alt="" />
-                                                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
-                                                                </div>
-						</div>											
-					     	 <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
-					     	    <div class="box" id="box">
-                                                        <div class="box_content">        					                         
-					                <div class="box_content_center">
-					                   <div class="form_content">
-						                 <div class="search_box">
-								     		<form>
-								     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-								     		</form>
-								     	</div>
-						                   <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
-					                   </div>                
-					                   <div class="clear"></div>
-					                </div> 
-					           </div>
-					        </div>
-						 <div class="clear"></div>
-					</div>
-		
-			 <div class="clear"></div>
-  		</div>      				
-   	</div>
-   </div>
-   <div class="main">
-   	 <div class="wrap">
-   	 	
-   	 	<div class="section group">
-				<div class="cont-desc span_1_of_2">
-                                    <div class="product-details">				
-					<div class="grid images_3_of_2">
-						<img data-bind=" attr:{src: currentItemImage}" alt="" />
-                                        </div>
-                           <div class="desc span_3_of_2">					
-				<h2 data-bind="text:currentItemName"> </h2>					
+                <div class="wrap">
+                    <div class="header_top">
+                        <div class="logo">
+                                <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                        <div class="header_top_right">
+                            <div class="cart">
+                                <div id="dd" class="wrapper-dropdown-3">
+                                    <img src="images/cart.png" alt="" />
+                                    <div class="noti_bubble"><span class="item_list_counter"></span></div>
+                                </div>
+                            </div>											
+                            <a href="#" class="right_bt" id="activator"><img src="images/search.png" alt="" /></a>
+                            <div class="box" id="box">
+                                <div class="box_content">        					                         
+                                    <div class="box_content_center">
+                                        <div class="form_content">
+                                            <div class="search_box">
+                                                <form>
+                                                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                                                </form>
+                                            </div>
+                                            <a class="boxclose" id="boxclose"><img src="images/button.png" alt="" /></a>
+                                        </div>                
+                                        <div class="clear"></div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    <div class="clear"></div>
+  		</div>
+                <div class="header_bottom">
+                    <div class="header_bottom_left">				
+                        <div class="categories">
+                            <div class="menu_container">
+                                <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                <div class="menu_body">
+                                    <div class="list">
+                                    </div>	
+                                </div>								
+                            </div>
+                        </div>					
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="main">
+                <div class="wrap">	
+                    <div class="section group">
+                        <div class="cont-desc span_1_of_2">
+                            <div class="product-details">				
+                                <div class="grid images_3_of_2">
+                                    <img data-bind=" attr:{src: currentItemImage}" alt="" />
+                                </div>
+                                <div class="desc span_3_of_2">					
+                                    <h2 data-bind="text:currentItemName"> </h2>					
                                     <div class="available">
                                         <div class="price">
                                             <p data-bind="text:currentItemDescription"></p>
@@ -283,7 +297,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </div>
                                     <div class="share-desc">
                                         <div class="share">
-                                            Amount : <input class="text_box" type="text" id="value" /><p data-bind="text:currentItemUnit"></p>
+                                            <div >Amount :</div>  <input class="text_box" type="text" id="value" style="width:20px" value="1"/><p data-bind="text:currentItemUnit"></p>
                                         </div>
 
                                         <div class="button"><a href="#main" onclick="addItem()">Add to List</a></div>					                                            
@@ -299,10 +313,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div> 
-    </div>
-</div>
-   
-   
+
    <!-- Scripts -->
 
         <script type="text/javascript">
@@ -582,12 +593,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             **/
                            
 
-                           
-
-
-
-
         </script>    
-	</body>
+    </body>
 </html>
 

@@ -78,11 +78,6 @@ and open the template in the editor.
                                 <div class="menu_body">
                                     <div class="list">
                                         <ul>
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Vegitable</a></li>
-                                            <li><a href="#">Fruit</a></li>
-                                            <li><a href="#">English</a></li>
-
                                         </ul>
                                     </div>	
                                 </div>								
@@ -119,7 +114,7 @@ and open the template in the editor.
                                     <h2 data-bind="text: shopName"></h2>
                                     <p data-bind="text: shopAddress"></p> 
                                 </a>
-                                <a href="popup.html"  data-bind="click: $parent.save" rel="external"></a>
+                                <a href="#popup"  data-bind="click: $parent.viewShopDetails"></a>
                             </li>
                         </ul>
         
@@ -173,7 +168,22 @@ and open the template in the editor.
                         </div>
 
                         <div class="clear"></div>
-                    </div>     
+                    </div>    
+                    <div class="header_bottom">
+                        <div class="header_bottom_left">				
+                            <div class="categories">
+                                <div class="menu_container">
+                                    <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                    <div class="menu_body">
+                                        <div class="list">
+                                            <ul>
+                                            </ul>
+                                        </div>	
+                                    </div>								
+                                </div>
+                            </div>					
+                        </div>
+                    </div>
                     <!-- Category slideer-->
                 <div class="clear"></div>
             </div>
@@ -189,10 +199,10 @@ and open the template in the editor.
                 <div class="cont-desc span_1_of_2">
                     <div class="product-details">				
                         <div class="grid images_3_of_2">
-                            <img data-bind=" attr:{src: selectedShop.Image}" alt="" />
+                            <a href="ShopDetail.html" rel="external"><img data-bind=" attr:{src: selectedShop.Image}" alt="" /></a>
                         </div>
                     <div class="desc span_3_of_2">
-                        <h2 data-bind="text: selectedShop.Title"> </h2>
+                        <a href="ShopDetail.html" rel="external"> <h2 data-bind="text: selectedShop.Title"> </h2></a>
                     <div class="available">
                         <div class="price">
                             <p data-bind="text: selectedShop.Address" ></p>
@@ -244,7 +254,7 @@ and open the template in the editor.
                 
                 self.viewShopDetails = function(saveShop){
               //      localStorage.setItem('viewResult', ko.toJSON(saveShop));
-                    alert(ko.toJSON(saveShop));
+              //      alert(ko.toJSON(saveShop));
                     self.selectedShop.Title(saveShop.shopName);
                     self.selectedShop.Address(saveShop.shopAddress);
                     self.selectedShop.Image(saveShop.shopimageUrl);
