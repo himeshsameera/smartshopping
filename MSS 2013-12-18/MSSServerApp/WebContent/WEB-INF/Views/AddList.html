@@ -9,10 +9,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <meta name="keywords" content="Stream Videos Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -81,10 +77,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <div class="menu_body">
                                         <div class="list">
                                             <ul>
-                                                <li><a href="#">All</a></li>
-                                                <li><a href="#">Vegitable</a></li>
-                                                <li><a href="#">Fruit</a></li>
-                                                <li><a href="#">English</a></li>
 
                                             </ul>
                                         </div>	
@@ -186,7 +178,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="header_bottom_left">				
                             <div class="categories">
                                 <div class="menu_container">
-                                    <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                    <p class="menu_head">View Shopping List<span class="plusminus">+</span></p>
                                     <div class="menu_body">
                                         <div class="list">
                                             <ul>
@@ -269,7 +261,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="header_bottom_left">				
                         <div class="categories">
                             <div class="menu_container">
-                                <p class="menu_head">categories<span class="plusminus">+</span></p>
+                                <p class="menu_head">View Items<span class="plusminus">+</span></p>
                                 <div class="menu_body">
                                     <div class="list">
                                     </div>	
@@ -360,7 +352,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 var self = this;
                                 self.selecteditems = ko.observableArray([]);
                                 self.availableItems = ko.observableArray([]);
-                                self.categories = ko.observableArray([new Catagory("Vegitables", 1)])
+                                self.categories = ko.observableArray([])
                                 self.currentItemId =ko.observable();
                                 self.currentItemName =ko.observable();
                                 self.currentItemImage =ko.observable();
@@ -582,7 +574,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             /**
                              *  PART 4 - Run the initial functions. With asyncronous jilmart
                              **/
-                            var millisecondsToWait = 80;
+                            var millisecondsToWait = 10;
                             setTimeout(function() {
                                 load();
                             }, millisecondsToWait);
